@@ -1,0 +1,240 @@
+#https://about.gitlab.com/blog/2022/03/15/publishing-obsidian-notes-with-gitlab-pages/
+
+site_name: Fridgely Dokumentation
+site_url: https://docu-71ce93.pages.fhnw.ch/
+site_dir: public
+docs_dir: ./website
+use_directory_urls: false
+
+# Themes: https://github.com/mkdocs/catalog#-theming
+# Themes (Visual comparison): https://github.com/mkdocs/mkdocs/wiki/MkDocs-Themes
+
+
+# Theme
+theme:
+  # name: simple-blog
+  name: material # Doc: https://squidfunk.github.io/mkdocs-material/
+  language: de
+  color_mode: dark
+  user_color_mode_toggle: true
+  palette:
+    - scheme: slate
+      primary: black
+      accent: black
+      
+  shortcuts:
+    help: 191    # ?
+    next: 78     # n
+    previous: 80 # p
+    search: 83   # s  locale: de
+  logo: images/fridgely_doc_logo.png
+  favicon: images/fridgely_doc_logo.png
+
+markdown_extensions:
+  - footnotes
+  - attr_list
+  - pymdownx.highlight
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.details
+  - pymdownx.magiclink
+  - pymdownx.tasklist
+  - pymdownx.emoji
+  - admonition
+  - toc:
+      permalink: true
+      title: Inhaltsverzeichnis
+
+
+extra:
+  homepage: https://docu-71ce93.pages.fhnw.ch/
+    
+  language: de
+  
+  # German translation
+  i18n:
+    prev: 'Zurück'
+    next: 'Weiter'
+    search:
+      language: de
+    # Custom translations for German
+  translations:
+    de:
+      # Header & footer
+      edit.link.title: Diese Seite bearbeiten
+      footer.next: Nächste
+      footer.previous: Vorherige
+      
+      # Navigation
+      nav.title: Navigation
+      toc.title: Inhaltsverzeichnis
+      content.tabs.link: Inhaltsverzeichnis
+      table_of_contents: Inhaltsverzeichnis
+      
+      # Search translations
+      search.placeholder: Suchen
+      search.result.placeholder: Suchbegriff eingeben
+      search.result.none: Keine Suchergebnisse
+      search.result.one: 1 Suchergebnis
+      search.result.other: "# Suchergebnisse"
+      search.result.more.one: 1 weiteres Ergebnis auf dieser Seite
+      search.result.more.other: "# weitere Ergebnisse auf dieser Seite"
+      search.result.term.missing: Fehlend
+      
+      # Cookies and meta
+      consent.title: Cookie-Einstellungen
+      consent.description: Wir verwenden Cookies, um Ihnen die beste Erfahrung auf unserer Website zu bieten.
+      consent.accept: Akzeptieren
+      consent.reject: Ablehnen
+      consent.manage: Einstellungen
+      consent.preferences: Präferenzen
+      
+      # Copy to clipboard
+      clipboard.copy: In die Zwischenablage kopieren
+      clipboard.copied: In Zwischenablage kopiert
+      
+      # Source code
+      source: Quellcode
+      source.file.date.created: Erstellt
+      source.file.date.updated: Aktualisiert
+      
+      # Admonitions
+      admonition.note: Hinweis
+      admonition.abstract: Zusammenfassung
+      admonition.info: Info
+      admonition.tip: Tipp
+      admonition.success: Erfolg
+      admonition.question: Frage
+      admonition.warning: Warnung
+      admonition.failure: Fehler
+      admonition.danger: Gefahr
+      admonition.bug: Fehler
+      admonition.example: Beispiel
+      admonition.quote: Zitat
+      
+      # 404 error page
+      404.title: Seite nicht gefunden
+      404.description: Die gesuchte Seite existiert nicht oder ist nicht verfügbar.
+
+extra_css:
+  - stylesheets/extra.css
+  - stylesheets/ambient-background.css
+
+extra_javascript:
+  - javascripts/extra.js
+  - javascripts/mermaid-config.js
+  - javascripts/ambient-background.js
+
+# Plugins: https://github.com/mkdocs/catalog
+plugins:
+  - search:
+      lang: de
+  - git-authors # Currently not in use
+  - roamlinks
+  - mermaid2:
+      version: 10.5.1
+      arguments:
+        securityLevel: 'loose'
+        theme: 'dark'
+  - git-revision-date-localized: #doc: https://timvink.github.io/mkdocs-git-revision-date-localized-plugin/index.html
+      fallback_to_build_date: true
+      locale: de
+      enable_creation_date: true
+      type: date
+
+# Navigation structure
+nav:
+  - Home: index.md
+  - Systemidee: System-idea/system-idee.md
+  - Erweiterungen: 
+    - Produkte:
+        - Produkt Modelle: Other/3D-Products.md
+        - Produkte Hinzufügen: Other/Adding3DProducts.md
+    - Rezepte:
+        - Rezepte Hinzufügen: Other/AddingRecipes.md
+    - Sprachen:
+        - Sprachen Hinzufügen: Other/AddingLanguages.md
+  - Software Architecture Documentation:
+    # - Überblick: SAD/index.md
+    - Einführung und Ziele: SAD/01_introduction_and_goals.md
+    - Randbedingungen: SAD/02_architecture_constraints.md
+    - Kontextabgrenzung: SAD/03_system_scope_and_context.md
+    - Lösungsstrategie: SAD/04_solution_strategy.md
+    - Bausteinsicht: SAD/05_building_block_view.md
+    - Laufzeitsicht: SAD/06_runtime_view.md
+    - Verteilungssicht: SAD/07_deployment_view.md
+    - Querschnittliche Konzepte: SAD/08_concepts.md
+    - Architekturentscheidungen: SAD/09_architecture_decisions.md
+    - Qualitätsanforderungen: SAD/10_quality_requirements.md
+    - Risiken und technische Schulden: SAD/11_technical_risks.md
+    - Glossar: SAD/12_glossary.md
+  - Hardware:
+    - Dokumentation: Hardware/Hardware.md
+  - Testing:
+    - Testplan: Testing/Testplan.md
+    - Test Überblick: Testing/Tests/Inhalt.md
+    - Tests:
+      - Abnahme-Test:
+        - Abnahme-Test Entwurf: Testing/Tests/Abnahmetest_Entwurf.md
+      - Funktions- und Integrationstests:
+        - Gameloop-Tests:
+          - Gameloop-Test 01: Testing/Tests/Funktion_Integrationtests/Gamelooptest01_08052025.md
+        - Rezept-Tests:
+          - Rezept-Test 01: Testing/Tests/Funktion_Integrationtests/Rezepttest01_02042025.md
+          - Rezept-Test 02: Testing/Tests/Funktion_Integrationtests/Rezepttest02_07052025.md
+        - Scan-Tests:
+          - Mock Scan-Test 01: Testing/Tests/Funktion_Integrationtests/Scantest_Mock01_05032025.md
+          - Scan-Test 02: Testing/Tests/Funktion_Integrationtests/Scantest02_02042025.md
+          - Scan-Test 03: Testing/Tests/Funktion_Integrationtests/Scantest03_05052025.md
+        - Sprach-Tests:
+          - Sprach-Test 01: Testing/Tests/Funktion_Integrationtests/Sprachtest01_26022025.md
+      - Hardware-Tests:
+        - Hardware-Test 01: Testing/Tests/Hardwaretests/TestHardware01_26022025.md
+        - Hardware-Test 02: Testing/Tests/Hardwaretests/TestHardware02_05052025.md
+      - Langzeit-Tests:
+        - Langzeit-Test 01: Testing/Tests/Langzeittests/Langzeittest01_06052025.md
+        - Langzeit-Test 02: Testing/Tests/Langzeittests/Langzeittest02_14052025.md
+      - Smoke-Tests:
+        - Mock Smoke-Test 01: Testing/Tests/Smoketests/Smoketest_Mock01_26022025.md
+        - Mock Smoke-Test 02: Testing/Tests/Smoketests/Smoketest_Mock02_05032025.md
+        - Mock Smoke-Test 03: Testing/Tests/Smoketests/Smoketest_Mock03_12032025.md
+        - Mock Smoke-Test 04: Testing/Tests/Smoketests/Smoketest_Mock04_19032025.md
+        - Mock Smoke-Test 05: Testing/Tests/Smoketests/Smoketest_Mock05_26032025.md
+        - Mock Smoke-Test 06: Testing/Tests/Smoketests/Smoketest_Mock06_02042025.md
+        - Mock Smoke-Test 07: Testing/Tests/Smoketests/Smoketest_Mock07_09042025.md
+        - Mock Smoke-Test 08: Testing/Tests/Smoketests/Smoketest_Mock08_16042025.md
+        - Smoke-Test 09: Testing/Tests/Smoketests/Smoketest09_06052025.md
+        - Smoke-Test 10: Testing/Tests/Smoketests/Smoketest10_14052025.md
+    - Testfälle: 
+      - Hardware Setup:
+        - Boot Raspberry PI: Testing/TestCases/TC_0_1_BootRaspberryPI.md
+        - Bildsignal Grosser Monitor: Testing/TestCases/TC_0_2_BildsignalGrosserMonitor.md
+        - Bildsignal Touchscreen: Testing/TestCases/TC_0_3_BildsignalTouchscreen.md
+        - Scanner Aufstarten: Testing/TestCases/TC_0_4_ScannerAufstarten.md
+        - Touchfunktion Touchscreen: Testing/TestCases/TC_0_5_TouchfunktionTouchscreen.md
+      - Grundlegende Funktionen:
+        - Einschalten: Testing/TestCases/TC_1_1_FridgelyEinschalten.md
+        - Ausschalten: Testing/TestCases/TC_1_2_FridgelyAusschalten.md
+      - Produktscanning:
+        - Produkt scannen: Testing/TestCases/TC_2_1_ProduktScannen.md
+        - Unbekanntes Produkt scannen: Testing/TestCases/TC_2_2_UnbekanntesProduktScan.md
+        - Bestand anzeigen: Testing/TestCases/TC_2_3_BestandAnzeigen.md
+        - Doppelter Scan: Testing/TestCases/TC_2_4_DoppelterScan.md
+        - Ablaufwarnung: Testing/TestCases/TC_2_5_Ablaufwarnung.md
+      - UI-Funktionen:
+        - Sprache umschalten: Testing/TestCases/TC_3_1_SpracheUmschalten.md
+      - Rezeptfunktionen:
+        - Rezeptvorschläge anzeigen: Testing/TestCases/TC_4_1_RezeptvorschlägeAnzeigen.md
+        - Kein Rezeptvorschlag gefunden: Testing/TestCases/TC_4_2_RezeptvorschlagNichtGefunden.md
+      - Analyse:
+        - Einkaufs- und Energieanalyse: Testing/TestCases/TC_7_1_EinkaufsEnergieAnalyse.md
+      - Spielmodus:
+        - Einkaufsphase starten: Testing/TestCases/TC_8_1_EinkaufsphaseStarten.md
+        - Einkaufsphase beenden: Testing/TestCases/TC_8_2_EinkaufsphaseBeenden.md
+        - Kochphase beenden: Testing/TestCases/TC_8_3_Kochphasebeenden.md
+        - Nachhaltigkeitsbewertung: Testing/TestCases/TC_8_4_NachhaltigkeitsbewertungFeedback.adoc.md
+        - Punktesystem Berechnung: Testing/TestCases/TC_8_5_PunktesystemBerechnung.md
+        - Spielzyklen: Testing/TestCases/TC_8_6_Spielzyklen.md

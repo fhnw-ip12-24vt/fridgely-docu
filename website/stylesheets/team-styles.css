@@ -1,0 +1,73 @@
+/* Team member role styling */
+
+/* Make team member links act like the previous divs */
+a.team-member {
+    background: linear-gradient(145deg, rgba(50, 50, 55, 0.6), rgba(40, 40, 45, 0.5));
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-align: center;
+    border: 1px solid rgba(80, 80, 95, 0.1);
+    backdrop-filter: blur(10px);
+    transform: translateY(0);
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+a.team-member:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+    background: linear-gradient(145deg, rgba(55, 55, 60, 0.7), rgba(45, 45, 50, 0.6));
+    border: 3px solid rgb(var(--md-primary-fg-color--rgb), 0.2);
+    z-index: 2;
+}
+
+/* Role badge styling */
+.role-badge {
+    background: rgba(var(--md-primary-fg-color--rgb), 0.1);
+    border-radius: 8px;
+    padding: 8px 12px;
+    margin: 8px 0;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+    border-left: 3px solid rgba(var(--md-primary-fg-color--rgb), 0.6);
+}
+
+.role-badge.special {
+    background: rgba(var(--md-accent-fg-color--rgb), 0.1);
+    border-left: 3px solid rgba(var(--md-accent-fg-color--rgb), 0.6);
+}
+
+a.team-member:hover .role-badge {
+    background: rgba(var(--md-primary-fg-color--rgb), 0.2);
+    /* transform: translateX(5px); */
+}
+
+a.team-member:hover .role-badge.special {
+    background: rgba(var(--md-accent-fg-color--rgb), 0.2);
+}
+
+.role-phase {
+    font-weight: bold;
+    color: var(--md-accent-fg-color--rgb);
+    font-size: 0.9em;
+    margin-bottom: 3px;
+    display: inline-block;
+    letter-spacing: 0.05em;
+}
+
+.role-title {
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1em;
+}
+
+.role-sub {
+    font-size: 0.85em;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 2px;
+    font-style: italic;
+}

@@ -1,0 +1,33 @@
+image: python:3.8-slim
+
+stages:
+  - deploy
+
+# Cache the dependencies between jobs
+cache:
+  paths:
+    - .cache/
+    - ~/.cache/pip/
+
+pages:
+  stage: deploy
+  before_script:
+    # Install git for the git-revision-date-localized plugin
+    - apt-get update
+    - apt-get install -y git
+  script:
+    # Install all of the python packages for mkdocs
+    - pip install -r requirements.txt
+    # Build the site using mkdocs
+    # --strict aborts the build on any warnings
+    # --verbose enables verbose output so that it's easier to see what mkdocs is doing
+    # neither --strict nor --verbose are necessary if you choose not to use them
+    - mkdocs build --verbose
+    # Check that the site was built successfully
+    - test -d public || exit 1
+  artifacts:
+    paths:
+      - public
+  # Can also be "rules" according to GitLab Docs (deactivated due to testing)
+  # only:
+  #   - main
