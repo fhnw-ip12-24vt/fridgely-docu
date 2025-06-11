@@ -60,4 +60,4 @@ In diesem Test werden noch einmal alle Test-Cases geprüft, geschaut, ob alle Mu
 
 Test | Datum | Status| 
 -------- | -------- |-------- |  
-[Abnahmetest](Abnahmetest_Entwurf.md)| 29.05.2025  | <span style="color:green;">Erfolgreich</span>   | 
+[Abnahmetest](Abnahmetest.md)| 29.05.2025  | <span style="color:green;">Erfolgreich</span>   | 
