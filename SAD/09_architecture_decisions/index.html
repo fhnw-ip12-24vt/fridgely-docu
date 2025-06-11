@@ -1,0 +1,1871 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="de">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://fhnw-ip12-24vt.github.io/fridgely-docu/SAD/09_architecture_decisions/" rel="canonical"/>
+<link href="../08_concepts/" rel="prev"/>
+<link href="../10_quality_requirements/" rel="next"/>
+<link href="../../images/fridgely_doc_logo.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.6.14" name="generator"/>
+<title>Architekturentscheidungen - Fridgely Dokumentation</title>
+<link href="../../assets/stylesheets/main.342714a4.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../stylesheets/extra.css" rel="stylesheet"/>
+<link href="../../stylesheets/ambient-background.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="black" data-md-color-primary="black" data-md-color-scheme="slate" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#9-architekturentscheidungen">
+          Zum Inhalt
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="Kopfzeile" class="md-header__inner md-grid">
+<a aria-label="Fridgely Dokumentation" class="md-header__button md-logo" data-md-component="logo" href="https://docu-71ce93.pages.fhnw.ch/" title="Fridgely Dokumentation">
+<img alt="logo" src="../../images/fridgely_doc_logo.png"/>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Fridgely Dokumentation
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Architekturentscheidungen
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-hidden="true" class="md-option" data-md-color-accent="black" data-md-color-media="" data-md-color-primary="black" data-md-color-scheme="slate" id="__palette_0" name="__palette" type="radio"/>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Suche" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Suche" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Suche" class="md-search__options">
+<button aria-label="Zurücksetzen" class="md-search__icon md-icon" tabindex="-1" title="Zurücksetzen" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Suche wird initialisiert
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Fridgely Dokumentation" class="md-nav__button md-logo" data-md-component="logo" href="https://docu-71ce93.pages.fhnw.ch/" title="Fridgely Dokumentation">
+<img alt="logo" src="../../images/fridgely_doc_logo.png"/>
+</a>
+    Fridgely Dokumentation
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+<span class="md-ellipsis">
+    Home
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../System-idea/system-idee/">
+<span class="md-ellipsis">
+    Systemidee
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Erweiterungen
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            Erweiterungen
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+<span class="md-ellipsis">
+    Produkte
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_1_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_1">
+<span class="md-nav__icon md-icon"></span>
+            Produkte
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Other/3D-Products/">
+<span class="md-ellipsis">
+    Produkt Modelle
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Other/Adding3DProducts/">
+<span class="md-ellipsis">
+    Produkte Hinzufügen
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Rezepte
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_2">
+<span class="md-nav__icon md-icon"></span>
+            Rezepte
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Other/AddingRecipes/">
+<span class="md-ellipsis">
+    Rezepte Hinzufügen
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Sprachen
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_3">
+<span class="md-nav__icon md-icon"></span>
+            Sprachen
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Other/AddingLanguages/">
+<span class="md-ellipsis">
+    Sprachen Hinzufügen
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-ellipsis">
+    Software Architecture Documentation
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            Software Architecture Documentation
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../01_introduction_and_goals/">
+<span class="md-ellipsis">
+    Einführung und Ziele
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../02_architecture_constraints/">
+<span class="md-ellipsis">
+    Randbedingungen
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../03_system_scope_and_context/">
+<span class="md-ellipsis">
+    Kontextabgrenzung
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../04_solution_strategy/">
+<span class="md-ellipsis">
+    Lösungsstrategie
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../05_building_block_view/">
+<span class="md-ellipsis">
+    Bausteinsicht
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../06_runtime_view/">
+<span class="md-ellipsis">
+    Laufzeitsicht
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../07_deployment_view/">
+<span class="md-ellipsis">
+    Verteilungssicht
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../08_concepts/">
+<span class="md-ellipsis">
+    Querschnittliche Konzepte
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    Architekturentscheidungen
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    Architekturentscheidungen
+    
+  </span>
+</a>
+<nav aria-label="Inhaltsverzeichnis" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Inhaltsverzeichnis
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#91-ubersicht-der-architekturentscheidungen">
+<span class="md-ellipsis">
+      9.1 Übersicht der Architekturentscheidungen
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#92-detaillierte-architekturentscheidungen">
+<span class="md-ellipsis">
+      9.2 Detaillierte Architekturentscheidungen
+    </span>
+</a>
+<nav aria-label="9.2 Detaillierte Architekturentscheidungen" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#adr-1-verwendung-von-java-swing-statt-javafx">
+<span class="md-ellipsis">
+      ADR-1. Verwendung von Java Swing statt JavaFX
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#adr-2-implementierung-des-mvc-architekturmusters">
+<span class="md-ellipsis">
+      ADR-2. Implementierung des MVC-Architekturmusters
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#adr-3-einsatz-des-repository-patterns-fur-datenzugriff">
+<span class="md-ellipsis">
+      ADR-3. Einsatz des Repository-Patterns für Datenzugriff
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#adr-4-mehrsprachigkeitskonzept-uber-zentrale-lokalisierungsservices">
+<span class="md-ellipsis">
+      ADR-4. Mehrsprachigkeitskonzept über zentrale Lokalisierungsservices
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#adr-5-verwendung-von-sqlite-als-eingebettete-datenbank">
+<span class="md-ellipsis">
+      ADR-5. Verwendung von SQLite als eingebettete Datenbank
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#adr-6-dual-display-management-fur-smart-fridge-erlebnis">
+<span class="md-ellipsis">
+      ADR-6. Dual-Display-Management für Smart-Fridge-Erlebnis
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#adr-7-zentrale-ressourcenverwaltung-via-singleton-services">
+<span class="md-ellipsis">
+      ADR-7. Zentrale Ressourcenverwaltung via Singleton-Services
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#adr-8-einsatz-von-spring-boot-als-anwendungsframework">
+<span class="md-ellipsis">
+      ADR-8. Einsatz von Spring Boot als Anwendungsframework
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#adr-9-observer-pattern-fur-ui-aktualisierungen">
+<span class="md-ellipsis">
+      ADR-9. Observer-Pattern für UI-Aktualisierungen
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#93-zusammenfassung-der-architekturentscheidungen">
+<span class="md-ellipsis">
+      9.3 Zusammenfassung der Architekturentscheidungen
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../10_quality_requirements/">
+<span class="md-ellipsis">
+    Qualitätsanforderungen
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../11_technical_risks/">
+<span class="md-ellipsis">
+    Risiken und technische Schulden
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../12_glossary/">
+<span class="md-ellipsis">
+    Glossar
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+<span class="md-ellipsis">
+    Hardware
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+            Hardware
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Hardware/Hardware/">
+<span class="md-ellipsis">
+    Dokumentation
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+<span class="md-ellipsis">
+    Testing
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+            Testing
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Testplan/">
+<span class="md-ellipsis">
+    Testplan
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Inhalt/">
+<span class="md-ellipsis">
+    Test Überblick
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Tests
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_3">
+<span class="md-nav__icon md-icon"></span>
+            Tests
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_3_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3_1" id="__nav_6_3_1_label" tabindex="0">
+<span class="md-ellipsis">
+    Abnahme-Test
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_1_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_3_1">
+<span class="md-nav__icon md-icon"></span>
+            Abnahme-Test
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Abnahmetest/">
+<span class="md-ellipsis">
+    Abnahme-Test
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_3_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3_2" id="__nav_6_3_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Funktions- und Integrationstests
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_2_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_3_2">
+<span class="md-nav__icon md-icon"></span>
+            Funktions- und Integrationstests
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_3_2_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3_2_1" id="__nav_6_3_2_1_label" tabindex="0">
+<span class="md-ellipsis">
+    Gameloop-Tests
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_2_1_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_6_3_2_1">
+<span class="md-nav__icon md-icon"></span>
+            Gameloop-Tests
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Funktion_Integrationtests/Gamelooptest01_08052025/">
+<span class="md-ellipsis">
+    Gameloop-Test 01
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_3_2_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3_2_2" id="__nav_6_3_2_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Rezept-Tests
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_2_2_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_6_3_2_2">
+<span class="md-nav__icon md-icon"></span>
+            Rezept-Tests
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Funktion_Integrationtests/Rezepttest01_02042025/">
+<span class="md-ellipsis">
+    Rezept-Test 01
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Funktion_Integrationtests/Rezepttest02_07052025/">
+<span class="md-ellipsis">
+    Rezept-Test 02
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_3_2_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3_2_3" id="__nav_6_3_2_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Scan-Tests
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_2_3_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_6_3_2_3">
+<span class="md-nav__icon md-icon"></span>
+            Scan-Tests
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Funktion_Integrationtests/Scantest_Mock01_05032025/">
+<span class="md-ellipsis">
+    Mock Scan-Test 01
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Funktion_Integrationtests/Scantest02_02042025/">
+<span class="md-ellipsis">
+    Scan-Test 02
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Funktion_Integrationtests/Scantest03_05052025/">
+<span class="md-ellipsis">
+    Scan-Test 03
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_3_2_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3_2_4" id="__nav_6_3_2_4_label" tabindex="0">
+<span class="md-ellipsis">
+    Sprach-Tests
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_2_4_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_6_3_2_4">
+<span class="md-nav__icon md-icon"></span>
+            Sprach-Tests
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Funktion_Integrationtests/Sprachtest01_26022025/">
+<span class="md-ellipsis">
+    Sprach-Test 01
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_3_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3_3" id="__nav_6_3_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Hardware-Tests
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_3_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_3_3">
+<span class="md-nav__icon md-icon"></span>
+            Hardware-Tests
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Hardwaretests/TestHardware01_26022025/">
+<span class="md-ellipsis">
+    Hardware-Test 01
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Hardwaretests/TestHardware02_05052025/">
+<span class="md-ellipsis">
+    Hardware-Test 02
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_3_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3_4" id="__nav_6_3_4_label" tabindex="0">
+<span class="md-ellipsis">
+    Langzeit-Tests
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_4_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_3_4">
+<span class="md-nav__icon md-icon"></span>
+            Langzeit-Tests
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Langzeittests/Langzeittest01_06052025/">
+<span class="md-ellipsis">
+    Langzeit-Test 01
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Langzeittests/Langzeittest02_14052025/">
+<span class="md-ellipsis">
+    Langzeit-Test 02
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_3_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3_5" id="__nav_6_3_5_label" tabindex="0">
+<span class="md-ellipsis">
+    Smoke-Tests
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_5_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_3_5">
+<span class="md-nav__icon md-icon"></span>
+            Smoke-Tests
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Smoketests/Smoketest_Mock01_26022025/">
+<span class="md-ellipsis">
+    Mock Smoke-Test 01
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Smoketests/Smoketest_Mock02_05032025/">
+<span class="md-ellipsis">
+    Mock Smoke-Test 02
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Smoketests/Smoketest_Mock03_12032025/">
+<span class="md-ellipsis">
+    Mock Smoke-Test 03
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Smoketests/Smoketest_Mock04_19032025/">
+<span class="md-ellipsis">
+    Mock Smoke-Test 04
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Smoketests/Smoketest_Mock05_26032025/">
+<span class="md-ellipsis">
+    Mock Smoke-Test 05
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Smoketests/Smoketest_Mock06_02042025/">
+<span class="md-ellipsis">
+    Mock Smoke-Test 06
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Smoketests/Smoketest_Mock07_09042025/">
+<span class="md-ellipsis">
+    Mock Smoke-Test 07
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Smoketests/Smoketest_Mock08_16042025/">
+<span class="md-ellipsis">
+    Mock Smoke-Test 08
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Smoketests/Smoketest09_06052025/">
+<span class="md-ellipsis">
+    Smoke-Test 09
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Smoketests/Smoketest10_14052025/">
+<span class="md-ellipsis">
+    Smoke-Test 10
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+<span class="md-ellipsis">
+    Testfälle
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_4_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_4">
+<span class="md-nav__icon md-icon"></span>
+            Testfälle
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_4_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_4_1" id="__nav_6_4_1_label" tabindex="0">
+<span class="md-ellipsis">
+    Hardware Setup
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_4_1_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_4_1">
+<span class="md-nav__icon md-icon"></span>
+            Hardware Setup
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_0_1_BootRaspberryPI/">
+<span class="md-ellipsis">
+    Boot Raspberry PI
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_0_2_BildsignalGrosserMonitor/">
+<span class="md-ellipsis">
+    Bildsignal Grosser Monitor
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_0_3_BildsignalTouchscreen/">
+<span class="md-ellipsis">
+    Bildsignal Touchscreen
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_0_4_ScannerAufstarten/">
+<span class="md-ellipsis">
+    Scanner Aufstarten
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_0_5_TouchfunktionTouchscreen/">
+<span class="md-ellipsis">
+    Touchfunktion Touchscreen
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_4_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_4_2" id="__nav_6_4_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Grundlegende Funktionen
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_4_2_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_4_2">
+<span class="md-nav__icon md-icon"></span>
+            Grundlegende Funktionen
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_1_1_FridgelyEinschalten/">
+<span class="md-ellipsis">
+    Einschalten
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_1_2_FridgelyAusschalten/">
+<span class="md-ellipsis">
+    Ausschalten
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_4_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_4_3" id="__nav_6_4_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Produktscanning
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_4_3_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_4_3">
+<span class="md-nav__icon md-icon"></span>
+            Produktscanning
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_2_1_ProduktScannen/">
+<span class="md-ellipsis">
+    Produkt scannen
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_2_2_UnbekanntesProduktScan/">
+<span class="md-ellipsis">
+    Unbekanntes Produkt scannen
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_2_3_BestandAnzeigen/">
+<span class="md-ellipsis">
+    Bestand anzeigen
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_2_4_DoppelterScan/">
+<span class="md-ellipsis">
+    Doppelter Scan
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_2_5_Ablaufwarnung/">
+<span class="md-ellipsis">
+    Ablaufwarnung
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_4_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_4_4" id="__nav_6_4_4_label" tabindex="0">
+<span class="md-ellipsis">
+    UI-Funktionen
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_4_4_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_4_4">
+<span class="md-nav__icon md-icon"></span>
+            UI-Funktionen
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_3_1_SpracheUmschalten/">
+<span class="md-ellipsis">
+    Sprache umschalten
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_4_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_4_5" id="__nav_6_4_5_label" tabindex="0">
+<span class="md-ellipsis">
+    Rezeptfunktionen
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_4_5_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_4_5">
+<span class="md-nav__icon md-icon"></span>
+            Rezeptfunktionen
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_4_1_Rezeptvorschl%C3%A4geAnzeigen/">
+<span class="md-ellipsis">
+    Rezeptvorschläge anzeigen
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_4_2_RezeptvorschlagNichtGefunden/">
+<span class="md-ellipsis">
+    Kein Rezeptvorschlag gefunden
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_4_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_4_6" id="__nav_6_4_6_label" tabindex="0">
+<span class="md-ellipsis">
+    Analyse
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_4_6_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_4_6">
+<span class="md-nav__icon md-icon"></span>
+            Analyse
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_7_1_EinkaufsEnergieAnalyse/">
+<span class="md-ellipsis">
+    Einkaufs- und Energieanalyse
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_4_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_4_7" id="__nav_6_4_7_label" tabindex="0">
+<span class="md-ellipsis">
+    Spielmodus
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_4_7_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_4_7">
+<span class="md-nav__icon md-icon"></span>
+            Spielmodus
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_8_1_EinkaufsphaseStarten/">
+<span class="md-ellipsis">
+    Einkaufsphase starten
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_8_2_EinkaufsphaseBeenden/">
+<span class="md-ellipsis">
+    Einkaufsphase beenden
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_8_3_Kochphasebeenden/">
+<span class="md-ellipsis">
+    Kochphase beenden
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_8_4_NachhaltigkeitsbewertungFeedback.adoc/">
+<span class="md-ellipsis">
+    Nachhaltigkeitsbewertung
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_8_5_PunktesystemBerechnung/">
+<span class="md-ellipsis">
+    Punktesystem Berechnung
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_8_6_Spielzyklen/">
+<span class="md-ellipsis">
+    Spielzyklen
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Inhaltsverzeichnis" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Inhaltsverzeichnis
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#91-ubersicht-der-architekturentscheidungen">
+<span class="md-ellipsis">
+      9.1 Übersicht der Architekturentscheidungen
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#92-detaillierte-architekturentscheidungen">
+<span class="md-ellipsis">
+      9.2 Detaillierte Architekturentscheidungen
+    </span>
+</a>
+<nav aria-label="9.2 Detaillierte Architekturentscheidungen" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#adr-1-verwendung-von-java-swing-statt-javafx">
+<span class="md-ellipsis">
+      ADR-1. Verwendung von Java Swing statt JavaFX
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#adr-2-implementierung-des-mvc-architekturmusters">
+<span class="md-ellipsis">
+      ADR-2. Implementierung des MVC-Architekturmusters
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#adr-3-einsatz-des-repository-patterns-fur-datenzugriff">
+<span class="md-ellipsis">
+      ADR-3. Einsatz des Repository-Patterns für Datenzugriff
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#adr-4-mehrsprachigkeitskonzept-uber-zentrale-lokalisierungsservices">
+<span class="md-ellipsis">
+      ADR-4. Mehrsprachigkeitskonzept über zentrale Lokalisierungsservices
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#adr-5-verwendung-von-sqlite-als-eingebettete-datenbank">
+<span class="md-ellipsis">
+      ADR-5. Verwendung von SQLite als eingebettete Datenbank
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#adr-6-dual-display-management-fur-smart-fridge-erlebnis">
+<span class="md-ellipsis">
+      ADR-6. Dual-Display-Management für Smart-Fridge-Erlebnis
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#adr-7-zentrale-ressourcenverwaltung-via-singleton-services">
+<span class="md-ellipsis">
+      ADR-7. Zentrale Ressourcenverwaltung via Singleton-Services
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#adr-8-einsatz-von-spring-boot-als-anwendungsframework">
+<span class="md-ellipsis">
+      ADR-8. Einsatz von Spring Boot als Anwendungsframework
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#adr-9-observer-pattern-fur-ui-aktualisierungen">
+<span class="md-ellipsis">
+      ADR-9. Observer-Pattern für UI-Aktualisierungen
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#93-zusammenfassung-der-architekturentscheidungen">
+<span class="md-ellipsis">
+      9.3 Zusammenfassung der Architekturentscheidungen
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="9-architekturentscheidungen">9. Architekturentscheidungen<a class="headerlink" href="#9-architekturentscheidungen" title="Permanent link">¶</a></h1>
+<p>Dieses Kapitel dokumentiert die wichtigsten Architekturentscheidungen, die während der Entwicklung des Fridgely-Systems getroffen wurden. Es folgt dem ADR (Architecture Decision Record) Format, um die Entscheidungen, deren Kontext, Alternativen und Konsequenzen klar zu dokumentieren.</p>
+<h2 id="91-ubersicht-der-architekturentscheidungen">9.1 Übersicht der Architekturentscheidungen<a class="headerlink" href="#91-ubersicht-der-architekturentscheidungen" title="Permanent link">¶</a></h2>
+<p>Die folgenden Architekturentscheidungen hatten wesentlichen Einfluss auf das Design und die Implementierung des Fridgely-Systems:</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Titel</th>
+<th>Kurzbeschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ADR-1</td>
+<td>Verwendung von Java Swing statt JavaFX</td>
+<td>Entscheidung für Java Swing als UI-Framework aufgrund von Performance-Vorteilen auf Raspberry Pi</td>
+</tr>
+<tr>
+<td>ADR-2</td>
+<td>Implementierung des MVC-Architekturmusters</td>
+<td>Strukturierung der Anwendung nach dem Model-View-Controller-Pattern für bessere Wartbarkeit</td>
+</tr>
+<tr>
+<td>ADR-3</td>
+<td>Einsatz des Repository-Patterns für Datenzugriff</td>
+<td>Abstraktion der Datenbankoperationen durch Repository-Interfaces</td>
+</tr>
+<tr>
+<td>ADR-4</td>
+<td>Mehrsprachigkeitskonzept über zentrale Lokalisierungsservices</td>
+<td>Implementierung eines flexiblen, Observer-basierten Mehrsprachigkeitssystems</td>
+</tr>
+<tr>
+<td>ADR-5</td>
+<td>Verwendung von SQLite als eingebettete Datenbank</td>
+<td>Einsatz einer lokalen, filebasierten Datenbank für Standalone-Betrieb</td>
+</tr>
+<tr>
+<td>ADR-6</td>
+<td>Dual-Display-Management für Smart-Fridge-Erlebnis</td>
+<td>Entwicklung einer spezialisierten Bildschirmerkennungs- und Verwaltungslogik</td>
+</tr>
+<tr>
+<td>ADR-7</td>
+<td>Zentrale Ressourcenverwaltung via Singleton-Services</td>
+<td>Implementierung von Singleton-Mustern für gemeinsam genutzte Ressourcen</td>
+</tr>
+<tr>
+<td>ADR-8</td>
+<td>Einsatz von Spring Boot als Anwendungsframework</td>
+<td>Nutzung des Dependency Injection Containers für modulare Architektur</td>
+</tr>
+<tr>
+<td>ADR-9</td>
+<td>Observer-Pattern für UI-Aktualisierungen</td>
+<td>Verwendung von PropertyChangeSupport/PropertyChangeListener für reaktive UI-Updates</td>
+</tr>
+<tr>
+<td>ADR-10</td>
+<td>Barcode-Scanner Integration</td>
+<td>Implementierung einer hardwareunabhängigen Schnittstelle für Barcode-Scannung</td>
+</tr>
+</tbody>
+</table>
+<h2 id="92-detaillierte-architekturentscheidungen">9.2 Detaillierte Architekturentscheidungen<a class="headerlink" href="#92-detaillierte-architekturentscheidungen" title="Permanent link">¶</a></h2>
+<h3 id="adr-1-verwendung-von-java-swing-statt-javafx">ADR-1. Verwendung von Java Swing statt JavaFX<a class="headerlink" href="#adr-1-verwendung-von-java-swing-statt-javafx" title="Permanent link">¶</a></h3>
+<p><strong>Status:</strong> Akzeptiert</p>
+<p><strong>Kontext:</strong> 
+Für die Entwicklung der Benutzeroberfläche des Fridgely-Systems musste ein geeignetes UI-Framework gewählt werden. Die Hauptkandidaten waren Java Swing und JavaFX.</p>
+<p><strong>Entscheidung:</strong> 
+Wir haben uns für Java Swing als UI-Framework anstelle von JavaFX entschieden.</p>
+<p><strong>Begründung:</strong></p>
+<ul>
+<li>Java Swing hat einen geringeren Speicher- und Ressourcenverbrauch auf dem Raspberry Pi</li>
+<li>Bessere Performance auf der Zielplattform Raspberry Pi 5 mit begrenzten Ressourcen</li>
+<li>Einfachere Integration mit Java SE Standards</li>
+<li>Höhere Kompatibilität mit älteren Java-Versionen, falls Downgrades notwendig werden</li>
+<li>Ausreichende Funktionalität für die Anforderungen des Fridgely-UI</li>
+</ul>
+<p><strong>Alternativen:</strong></p>
+<ul>
+<li><strong>JavaFX:</strong> Bietet modernere UI-Komponenten und bessere Animationsunterstützung, benötigt jedoch mehr Ressourcen. In ersten Tests zeigte JavaFX Leistungsprobleme auf dem Raspberry Pi, besonders bei der Dual-Display-Konfiguration.</li>
+<li><strong>Web-basierte UI:</strong> Wurde aufgrund von Komplexität und zusätzlichen Abhängigkeiten verworfen.</li>
+</ul>
+<p><strong>Konsequenzen:</strong></p>
+<ul>
+<li>Einfachere Entwicklung auf ressourcenbeschränkter Hardware</li>
+<li>Eingeschränkte Animationsmöglichkeiten</li>
+<li>Begrenztere UI-Gestaltungsmöglichkeiten im Vergleich zu JavaFX</li>
+<li>Geringerer Speicherverbrauch</li>
+<li>Schnellere Startzeit der Anwendung</li>
+</ul>
+<pre class="mermaid"><code>graph LR
+    A[UI-Framework Auswahl] --&gt; B[Java Swing]
+    A --&gt; C[JavaFX]
+    A --&gt; D[Web-basierte UI]
+
+    B --&gt; E["+ Ressourcenschonend&lt;br&gt;+ Gute Kompatibilität&lt;br&gt;- Weniger moderne UI-Elemente"]
+    C --&gt; F["+ Moderne UI-Komponenten&lt;br&gt;+ Bessere Animationen&lt;br&gt;- Höherer Ressourcenverbrauch"]
+    D --&gt; G["+ Flexibles Design&lt;br&gt;+ Plattformunabhängig&lt;br&gt;- Komplexere Architektur&lt;br&gt;- Zusätzliche Abhängigkeiten"]
+
+    style B fill:#1a202c,stroke:#4a5568
+    style C fill:#2b3d4f,stroke:#83a598
+    style D fill:#3c3836,stroke:#fabd2f</code></pre>
+<h3 id="adr-2-implementierung-des-mvc-architekturmusters">ADR-2. Implementierung des MVC-Architekturmusters<a class="headerlink" href="#adr-2-implementierung-des-mvc-architekturmusters" title="Permanent link">¶</a></h3>
+<p><strong>Status:</strong> Akzeptiert</p>
+<p><strong>Kontext:</strong> 
+Die Architektur des Fridgely-Systems erforderte eine klare Trennung von Daten, Benutzeroberfläche und Anwendungslogik, um Wartbarkeit und Testbarkeit zu gewährleisten.</p>
+<p><strong>Entscheidung:</strong> 
+Wir haben das MVC-Architekturmuster (Model-View-Controller) als grundlegendes Strukturierungsprinzip für das gesamte System implementiert.</p>
+<p><strong>Begründung:</strong></p>
+<ul>
+<li>Klare Trennung von Zuständigkeiten erleichtert Wartung und Erweiterung</li>
+<li>Ermöglicht parallele Entwicklung von UI und Geschäftslogik</li>
+<li>Bessere Testbarkeit durch isolierte Komponenten</li>
+<li>Passt gut zu Swing-basierten Anwendungen</li>
+<li>Unterstützt die Observer-Mechanismen für UI-Updates und Datensynchronisation</li>
+</ul>
+<p><strong>Alternativen:</strong></p>
+<ul>
+<li><strong>MVVM (Model-View-ViewModel):</strong> Bietet bessere Bindings, aber höhere Komplexität.</li>
+<li><strong>MVP (Model-View-Presenter):</strong> Ähnlich wie MVC, aber mit anderen Kommunikationsmustern.</li>
+</ul>
+<p><strong>Konsequenzen:</strong></p>
+<ul>
+<li>Erhöhte Anzahl von Klassen aufgrund der Trennung von Verantwortlichkeiten</li>
+<li>Bessere Wiederverwendbarkeit von Komponenten</li>
+<li>Leichtere Wartbarkeit und Testbarkeit</li>
+<li>Erleichterte parallele Entwicklung</li>
+</ul>
+<pre class="mermaid"><code>graph TB
+    subgraph V[Views]
+        MPGV[MultiplayerGameView]
+        MP1V[MultiplayerPlayer1View]
+        MP2V[MultiplayerPlayer2View]
+        SIV[ScannedItemsView]
+    end
+
+    subgraph C[Controller]
+        BC[BaseController Interface]
+        MGC[MultiplayerGameController]
+        MP1C[MultiplayerPlayer1Controller]
+        MP2C[MultiplayerPlayer2Controller]
+    end
+
+    subgraph M[Models]
+        MGSM[MultiplayerGameStateModel]
+        FSM[FridgeStockModel]
+        PM[PenguinModel]
+    end
+
+    C --&gt; V
+    C --&gt; M
+    M --&gt; C
+
+    classDef viewStyle fill:#2d3748,stroke:#a0aec0,stroke-width:1px;
+    classDef controllerStyle fill:#3c3836,stroke:#fabd2f,stroke-width:1px;
+    classDef modelStyle fill:#2d3b2d,stroke:#8ec07c,stroke-width:1px;
+
+    class V viewStyle;
+    class C controllerStyle;
+    class M modelStyle;
+    class MPGV,MP1V,MP2V,SIV viewStyle;
+    class BC,MGC,MP1C,MP2C controllerStyle;
+    class MGSM,FSM,PM modelStyle;</code></pre>
+<h3 id="adr-3-einsatz-des-repository-patterns-fur-datenzugriff">ADR-3. Einsatz des Repository-Patterns für Datenzugriff<a class="headerlink" href="#adr-3-einsatz-des-repository-patterns-fur-datenzugriff" title="Permanent link">¶</a></h3>
+<p><strong>Status:</strong> Akzeptiert</p>
+<p><strong>Kontext:</strong> 
+Für den Zugriff auf persistente Daten (Produkte, Rezepte, Kühlschrankinhalt) benötigte das System eine strukturierte und wartbare Datenzugriffsschicht.</p>
+<p><strong>Entscheidung:</strong> 
+Wir haben das Repository-Pattern als Abstraktionsschicht für Datenbankzugriffe implementiert, kombiniert mit Spring Data JPA und QueryDSL für typsichere Abfragen.</p>
+<p><strong>Begründung:</strong></p>
+<ul>
+<li>Abstrahiert Datenbankdetails von der Geschäftslogik</li>
+<li>Ermöglicht zentrale Fehlerbehandlung bei Datenbankoperationen</li>
+<li>Vereinfacht Unit-Tests durch Mock-Implementierungen der Repositories</li>
+<li>Unterstützt typsichere Abfragen mit QueryDSL und JPAQueryFactory</li>
+<li>Konsistente Schnittstelle unabhängig von der Datenbankimplementierung</li>
+</ul>
+<p><strong>Alternativen:</strong></p>
+<ul>
+<li><strong>DAO-Pattern:</strong> Ähnlich, aber weniger fokussiert auf die Domänenmodellierung.</li>
+<li><strong>Direct JDBC Access:</strong> Zu niedrig-levelig, erhöht die Kopplung.</li>
+<li><strong>Active Record Pattern:</strong> Vermischt Domänenlogik mit Datenbankzugriff.</li>
+</ul>
+<p><strong>Konsequenzen:</strong></p>
+<ul>
+<li>Erhöhte Abstraktion verbessert die Testbarkeit</li>
+<li>Zentrale Datenzugriffslogik verringert Codeduplizierung</li>
+<li>Vereinfachte Migration zu anderen Datenbanktypen bei Bedarf</li>
+<li>Zusätzliche Abstraktionsebene, die etwas Overhead verursacht</li>
+</ul>
+<pre class="mermaid"><code>graph TB
+    C[Controller] --&gt; R[Repository-Interfaces]
+    R --&gt; IMPL[Repository-Implementierungen]
+    IMPL --&gt; JPA[JPA Repositories]
+    JPA --&gt; DB[SQLite Datenbank]
+
+    subgraph "Repository-Interfaces"
+        PR[ProductRepository]
+        RR[RecipeRepository]  
+        FSR[FridgeStockRepository]
+    end
+
+    subgraph "JPA-Repositories"
+        JPAPR[ProductJpaRepository]
+        JPARR[RecipeJpaRepository]
+        JPAFSR[FridgeStockJpaRepository]
+    end
+
+    classDef interfaceStyle fill:#3c3836,stroke:#fabd2f,stroke-width:1px;
+    classDef implStyle fill:#2d3748,stroke:#a0aec0,stroke-width:1px;
+    classDef dbStyle fill:#2d3b2d,stroke:#8ec07c,stroke-width:1px;
+
+    class R,PR,RR,FSR interfaceStyle;
+    class IMPL,JPAPR,JPARR,JPAFSR implStyle;
+    class DB dbStyle;</code></pre>
+<h3 id="adr-4-mehrsprachigkeitskonzept-uber-zentrale-lokalisierungsservices">ADR-4. Mehrsprachigkeitskonzept über zentrale Lokalisierungsservices<a class="headerlink" href="#adr-4-mehrsprachigkeitskonzept-uber-zentrale-lokalisierungsservices" title="Permanent link">¶</a></h3>
+<p><strong>Status:</strong> Akzeptiert</p>
+<p><strong>Kontext:</strong> 
+Fridgely soll in mehreren Sprachen (Deutsch, Englisch, Französisch) verfügbar sein, um den Einsatz in verschiedenen Bildungskontexten zu ermöglichen.</p>
+<p><strong>Entscheidung:</strong> 
+Wir haben einen zentralen AppLocalizationService implementiert, der das Observer-Pattern verwendet, um UI-Komponenten über Sprachänderungen zu informieren.</p>
+<p><strong>Begründung:</strong></p>
+<ul>
+<li>Zentrale Verwaltung aller Übersetzungen</li>
+<li>Dynamischer Sprachwechsel zur Laufzeit ohne Anwendungsneustart</li>
+<li>Einheitliche Benennung von UI-Elementen in allen Sprachen</li>
+<li>Unterstützung für kindgerechte Formulierungen</li>
+<li>Erweiterbarkeit für zukünftige Sprachen</li>
+</ul>
+<p><strong>Alternativen:</strong></p>
+<ul>
+<li><strong>ResourceBundle direkt verwenden:</strong> Weniger flexibel und schwieriger zu zentralisieren.</li>
+<li><strong>Externe Lokalisierungsbibliotheken:</strong> Unnötige Abhängigkeiten für unsere Anforderungen.</li>
+</ul>
+<p><strong>Konsequenzen:</strong></p>
+<ul>
+<li>Konsistente mehrsprachige Benutzeroberfläche</li>
+<li>Einfaches Hinzufügen neuer Sprachen</li>
+<li>Kompaktere Wartung aller Übersetzungen an einem Ort</li>
+<li>Geringfügig erhöhte Komplexität durch Observer-Pattern</li>
+</ul>
+<pre class="mermaid"><code>graph TD
+    ALS[AppLocalizationService] --&gt; DE[DE languages_de.properties]
+    ALS --&gt; EN[EN languages_en.properties]
+    ALS --&gt; FR[FR languages_fr.properties]
+    ALS --&gt; LO[LocalizationObserver Interface]
+
+    LO --&gt; V1[Views]
+    LO --&gt; C1[Controllers]
+    LO --&gt; M1[Models mit UI-Text]
+
+    subgraph Änderungsmechanismus
+        LS[Sprachauswahl] --&gt; ALS
+        ALS --&gt; NT[Benachrichtigung an Observer]
+        NT --&gt; UT[UI-Text aktualisieren]
+    end
+
+    classDef serviceStyle fill:#3c3836,stroke:#fabd2f,stroke-width:1px;
+    classDef resourceStyle fill:#2d3b2d,stroke:#8ec07c,stroke-width:1px;
+    classDef interfaceStyle fill:#2b3d4f,stroke:#83a598,stroke-width:1px;
+    classDef componentStyle fill:#2d3748,stroke:#a0aec0,stroke-width:1px;
+
+    class ALS serviceStyle;
+    class DE,EN,FR resourceStyle;
+    class LO interfaceStyle;
+    class V1,C1,M1,LS,NT,UT componentStyle;</code></pre>
+<h3 id="adr-5-verwendung-von-sqlite-als-eingebettete-datenbank">ADR-5. Verwendung von SQLite als eingebettete Datenbank<a class="headerlink" href="#adr-5-verwendung-von-sqlite-als-eingebettete-datenbank" title="Permanent link">¶</a></h3>
+<p><strong>Status:</strong> Akzeptiert</p>
+<p><strong>Kontext:</strong> 
+Fridgely benötigt eine Datenbank zur Speicherung von Produktinformationen, Rezepten und Spielständen. Als Stand-alone-System auf einem Raspberry Pi waren die Anforderungen an Einfachheit, Ressourceneffizienz und Wartungsarmut hoch.</p>
+<p><strong>Entscheidung:</strong> 
+Wir haben SQLite als eingebettete, filebasierte Datenbank gewählt.</p>
+<p><strong>Begründung:</strong></p>
+<ul>
+<li>Kein separater Datenbankserver erforderlich</li>
+<li>Geringe Ressourcenanforderungen</li>
+<li>Einfache Sicherung durch Datei-Kopie</li>
+<li>Ausreichende Leistung für die Datenmengen von Fridgely</li>
+<li>Gut unterstützt durch Spring Data JPA und Hibernate</li>
+</ul>
+<p><strong>Alternativen:</strong></p>
+<ul>
+<li><strong>H2 Database:</strong> Ähnlich zu SQLite, aber mit etwas anderen Leistungsmerkmalen.</li>
+<li><strong>PostgreSQL, MySQL:</strong> Zu schwergewichtig für die Anforderungen, erfordert zusätzliche Server-Installation.</li>
+<li><strong>NoSQL-Datenbanken:</strong> Überdimensioniert für die einfachen Datenstrukturen von Fridgely.</li>
+</ul>
+<p><strong>Konsequenzen:</strong></p>
+<ul>
+<li>Vereinfachte Deployment- und Backup-Prozesse</li>
+<li>Geringerer Ressourcenverbrauch auf dem Raspberry Pi</li>
+<li>Eingeschränkte Parallelzugriffsmöglichkeiten (nicht kritisch für Fridgely)</li>
+<li>Gute Performance für die typische Nutzung von 1-2 gleichzeitigen Benutzern</li>
+</ul>
+<pre class="mermaid"><code>erDiagram
+    PRODUCT {
+        string barcode PK
+        string name
+        string imageUrl
+        boolean perishable
+    }
+
+    RECIPE {
+        int id PK
+        string name
+        string description
+        string difficulty
+    }
+
+    FRIDGE_STOCK {
+        int id PK
+        string product_barcode FK
+        int quantity
+        date expiry_date
+    }
+
+    RECIPE_INGREDIENT {
+        int recipe_id FK
+        string product_barcode FK
+        int required_quantity
+    }
+
+    GAME_SESSION {
+        string id PK
+        string mode
+        int score
+        timestamp created_at
+    }
+
+    PRODUCT ||--o{ FRIDGE_STOCK : "stored_as"
+    PRODUCT ||--o{ RECIPE_INGREDIENT : "used_in"
+    RECIPE ||--o{ RECIPE_INGREDIENT : "contains"</code></pre>
+<h3 id="adr-6-dual-display-management-fur-smart-fridge-erlebnis">ADR-6. Dual-Display-Management für Smart-Fridge-Erlebnis<a class="headerlink" href="#adr-6-dual-display-management-fur-smart-fridge-erlebnis" title="Permanent link">¶</a></h3>
+<p><strong>Status:</strong> Akzeptiert</p>
+<p><strong>Kontext:</strong> 
+Das Fridgely-System benötigt zwei Bildschirme für ein immersives Erlebnis: einen Hauptbildschirm für das Spiel und einen zweiten Bildschirm für die Anzeige des Kühlschrankinhalts.</p>
+<p><strong>Entscheidung:</strong> 
+Wir haben eine spezialisierte Bildschirmerkennungs- und Verwaltungslogik implementiert, die automatisch die angeschlossenen Displays erkennt und zuordnet.</p>
+<p><strong>Begründung:</strong></p>
+<ul>
+<li>Immersives Erlebnis erfordert separate Displays für Spiel und Kühlschrankinhalt</li>
+<li>Automatische Erkennung ermöglicht einfache Installation</li>
+<li>Fallback-Mechanismus für Single-Display-Betrieb erhöht die Flexibilität</li>
+<li>Optimale Nutzung der unterschiedlichen Displayauflösungen</li>
+<li>Kindergerechte Benutzerführung durch räumliche Trennung der Informationen</li>
+</ul>
+<p><strong>Alternativen:</strong></p>
+<ul>
+<li><strong>Single Display mit Split Screen:</strong> Weniger immersiv und technisch komplexer in der UI-Gestaltung.</li>
+<li><strong>Manuelle Konfiguration:</strong> Erhöhter Aufwand bei der Installation und Wartung.</li>
+</ul>
+<p><strong>Konsequenzen:</strong></p>
+<ul>
+<li>Verbesserte Benutzerinteraktion durch dedizierte Displays</li>
+<li>Flexible Einsatzmöglichkeiten (auch mit nur einem Bildschirm)</li>
+<li>Erhöhte Komplexität der Software-Architektur</li>
+<li>Zusätzliche Hardware-Anforderungen (zweites Display)</li>
+</ul>
+<pre class="mermaid"><code>sequenceDiagram
+    participant App as Fridgely Application
+    participant GE as GraphicsEnvironment
+    participant MC as MainController
+    participant SIV as ScannedItemsView
+
+    App-&gt;&gt;GE: detectScreens()
+    GE--&gt;&gt;App: screens[]
+
+    App-&gt;&gt;App: identifyScreensByResolution()
+    Note over App: Prüfung auf 600x1024 (Main)&lt;br/&gt;und 1080x1920 (FridgeView)
+
+    alt Single Display
+        App-&gt;&gt;App: isSingleDisplay = true
+        App-&gt;&gt;SIV: initialize(mainAppScreen)
+    else Dual Display 
+        App-&gt;&gt;App: mainAppScreen = screen1
+        App-&gt;&gt;App: scannedItemsScreen = screen2
+        App-&gt;&gt;SIV: initialize(scannedItemsScreen)
+    end
+
+    App-&gt;&gt;MC: startApplication()</code></pre>
+<h3 id="adr-7-zentrale-ressourcenverwaltung-via-singleton-services">ADR-7. Zentrale Ressourcenverwaltung via Singleton-Services<a class="headerlink" href="#adr-7-zentrale-ressourcenverwaltung-via-singleton-services" title="Permanent link">¶</a></h3>
+<p><strong>Status:</strong> Akzeptiert</p>
+<p><strong>Kontext:</strong> 
+Bestimmte Ressourcen wie Bilder und Lokalisierungstexte werden von vielen Komponenten im System benötigt. Eine effiziente Verwaltung dieser gemeinsam genutzten Ressourcen war erforderlich.</p>
+<p><strong>Entscheidung:</strong> 
+Wir haben das Singleton-Pattern für zentrale Services wie ImageLoader und AppLocalizationService implementiert.</p>
+<p><strong>Begründung:</strong></p>
+<ul>
+<li>Vermeidung redundanter Ressourcenladung durch zentrales Caching</li>
+<li>Konsistente Verwaltung gemeinsam genutzter Ressourcen</li>
+<li>Reduzierter Speicherverbrauch durch geteilte Ressourcen</li>
+<li>Vereinfachte Wartung durch Zentralisierung der Ressourcenverwaltungslogik</li>
+<li>Integration mit Spring-Dependency-Injection durch <code>@Component</code> und <code>@Scope("singleton")</code> Annotationen</li>
+</ul>
+<p><strong>Alternativen:</strong></p>
+<ul>
+<li><strong>Statische Utility-Klassen:</strong> Weniger flexibel für Dependency Injection und Testing.</li>
+<li><strong>Ressourcen bei Bedarf laden:</strong> Ineffizient für häufig verwendete Ressourcen.</li>
+</ul>
+<p><strong>Konsequenzen:</strong></p>
+<ul>
+<li>Reduzierter Speicherverbrauch durch geteilte Ressourcen</li>
+<li>Beschleunigte Anwendung durch vorgeladene Bilder und Texte</li>
+<li>Vereinfachter Zugriff auf Ressourcen im gesamten Code</li>
+<li>Potenzieller Thread-Safety-Overhead bei gleichzeitigen Zugriffen</li>
+</ul>
+<pre class="mermaid"><code>graph TD
+    SC[System-Konfiguration] --&gt; |Basis| AC[Application.properties]
+    AC --&gt; |Erweiterung| GC[GameConfig.java]
+    AC --&gt; |Laden| PC[PersistenceConfig.java]
+
+    GC --&gt; |beeinflusst| G[Spiellogik]
+    PC --&gt; |konfiguriert| DB[Datenbankzugriff]
+
+    subgraph Ressourcenmanagement 
+        IL[ImageLoader Singleton]
+        ALS[AppLocalizationService Singleton]
+    end
+
+    IL --&gt; |lädt und cached| IM[Bilder]
+    ALS --&gt; |verwaltet| LOC[Lokalisierungstexte]
+
+    subgraph "Ressourcentypen"
+        IM
+        LOC
+        CON[Verbindungen]
+        UI[UI-Komponenten]
+    end
+
+    classDef singletonStyle fill:#3c3836,stroke:#fabd2f,stroke-width:1px;
+    classDef resourceStyle fill:#2d3b2d,stroke:#8ec07c,stroke-width:1px;
+
+    class IL,ALS singletonStyle;
+    class IM,LOC,CON,UI resourceStyle;</code></pre>
+<h3 id="adr-8-einsatz-von-spring-boot-als-anwendungsframework">ADR-8. Einsatz von Spring Boot als Anwendungsframework<a class="headerlink" href="#adr-8-einsatz-von-spring-boot-als-anwendungsframework" title="Permanent link">¶</a></h3>
+<p><strong>Status:</strong> Akzeptiert</p>
+<p><strong>Kontext:</strong> 
+Für die Entwicklung einer modularen, wartbaren Anwendung wurde ein Framework mit Dependency Injection und standardisierten Anwendungsstrukturen benötigt.</p>
+<p><strong>Entscheidung:</strong> 
+Wir haben Spring Boot als Anwendungsframework gewählt.</p>
+<p><strong>Begründung:</strong></p>
+<ul>
+<li>Robustes Dependency Injection System erleichtert Modularität</li>
+<li>Umfangreiche Unterstützung für JPA und Datenbankzugriff</li>
+<li>Vereinfachte Konfiguration durch Auto-Configuration</li>
+<li>Gute Integration mit Swing über non-web Spring Boot Mode</li>
+<li>Einfache Testbarkeit durch Spring Testing Support</li>
+</ul>
+<p><strong>Alternativen:</strong></p>
+<ul>
+<li><strong>Manuelles Dependency Management:</strong> Zu aufwändig und fehleranfällig.</li>
+<li><strong>JavaEE/Jakarta EE:</strong> Überdimensioniert für Desktop-Anwendung.</li>
+<li><strong>Guice:</strong> Weniger umfangreiche Ökosystem-Unterstützung.</li>
+</ul>
+<p><strong>Konsequenzen:</strong></p>
+<ul>
+<li>Verbesserte Modularität und Testbarkeit</li>
+<li>Vereinfachtes Konfigurationsmanagement</li>
+<li>Verlängerter Anwendungsstart durch Spring-Kontext-Initialisierung</li>
+<li>Höherer Speicherbedarf durch das Framework</li>
+</ul>
+<pre class="mermaid"><code>graph TD
+    SB[Spring Boot Application] --&gt; DI[Dependency Injection]
+    SB --&gt; AC[Auto Configuration]
+    SB --&gt; JPA[JPA Support]
+
+    DI --&gt; BD[Bean Definition]
+    DI --&gt; BC[Bean Creation]
+    DI --&gt; BW[Bean Wiring]
+
+    subgraph Spring-Beans
+        MC[ChooseGameModeController]
+        IL[ImageLoader]
+        ALS[AppLocalizationService]
+        FSR[FridgeStockRepository]
+    end
+
+    BC --&gt; Spring-Beans
+
+    classDef springStyle fill:#3c3836,stroke:#fabd2f,stroke-width:1px;
+    classDef beanStyle fill:#2d3748,stroke:#a0aec0,stroke-width:1px;
+      class SB,DI,AC,JPA,BD,BC,BW springStyle;
+    class MC,IL,ALS,FSR beanStyle;</code></pre>
+<h3 id="adr-9-observer-pattern-fur-ui-aktualisierungen">ADR-9. Observer-Pattern für UI-Aktualisierungen<a class="headerlink" href="#adr-9-observer-pattern-fur-ui-aktualisierungen" title="Permanent link">¶</a></h3>
+<p><strong>Status:</strong> Akzeptiert</p>
+<p><strong>Kontext:</strong> 
+Bei einer MVC-Architektur muss sichergestellt werden, dass die Views automatisch aktualisiert werden, wenn sich die zugrundeliegenden Daten im Model ändern, ohne direkte Abhängigkeiten zwischen diesen Komponenten zu schaffen.</p>
+<p><strong>Entscheidung:</strong> 
+Wir haben das Observer-Pattern durch Verwendung von PropertyChangeSupport und PropertyChangeListener für die Kommunikation zwischen Models und Views implementiert.</p>
+<p><strong>Begründung:</strong></p>
+<ul>
+<li>Lose Kopplung zwischen Model- und View-Komponenten</li>
+<li>Automatische Aktualisierung der Benutzeroberfläche bei Datenänderungen</li>
+<li>Standardisierte Implementierung über die Java-Bibliothek</li>
+<li>Unterstützung für spezifische Änderungsbenachrichtigungen durch Property-Namen</li>
+<li>Gute Integration mit dem MVC-Architekturmuster</li>
+</ul>
+<p><strong>Alternativen:</strong></p>
+<ul>
+<li><strong>Eigene Event-Bus-Implementierung:</strong> Höhere Komplexität ohne signifikante Vorteile.</li>
+<li><strong>Direkte Methodenaufrufe:</strong> Würde die Trennung von Model und View kompromittieren.</li>
+<li><strong>Reactive Programming (z.B. RxJava):</strong> Zu schwergewichtig für die Anforderungen.</li>
+</ul>
+<p><strong>Konsequenzen:</strong></p>
+<ul>
+<li>Saubere Trennung von Datenmodell und Präsentation</li>
+<li>Reaktive Benutzeroberfläche, die automatisch auf Änderungen reagiert</li>
+<li>Leichte Erweiterbarkeit durch Hinzufügen neuer Observer ohne Änderung bestehender Komponenten</li>
+<li>Geringfügiger Overhead durch Event-Handling-Mechanismus</li>
+</ul>
+<pre class="mermaid"><code>sequenceDiagram
+    participant M as Model
+    participant PCS as PropertyChangeSupport
+    participant PCL as PropertyChangeListener
+    participant V as View
+
+    Note over M: Model implementiert&lt;br/&gt;PropertyChangeSupport
+    Note over V: View implementiert&lt;br/&gt;PropertyChangeListener
+
+    M-&gt;&gt;PCS: firePropertyChange("property", oldValue, newValue)
+    PCS-&gt;&gt;PCL: propertyChange(PropertyChangeEvent)
+    PCL-&gt;&gt;V: UI-Aktualisierung
+
+    Note over V: Die View wird nur über&lt;br/&gt;relevante Änderungen&lt;br/&gt;informiert</code></pre>
+<h2 id="93-zusammenfassung-der-architekturentscheidungen">9.3 Zusammenfassung der Architekturentscheidungen<a class="headerlink" href="#93-zusammenfassung-der-architekturentscheidungen" title="Permanent link">¶</a></h2>
+<p>Die dokumentierten Architekturentscheidungen verdeutlichen die grundlegenden Designprinzipien des Fridgely-Systems. Durch die Kombination von MVC-Architektur, Repository-Pattern, Singleton-Services und Spring Boot entstand eine modulare, wartbare und erweiterbare Anwendung. Die Entscheidung für Swing als UI-Framework und SQLite als Datenbank optimiert die Performance auf der ressourcenbeschränkten Raspberry Pi Plattform.</p>
+<p>Die Dual-Display-Lösung und das Mehrsprachigkeitskonzept unterstützen die pädagogischen Ziele des Projekts optimal und ermöglichen ein kindgerechtes, immersives Lernerlebnis. Die Implementierung des Observer-Patterns für UI-Aktualisierungen sorgt für eine reaktive Benutzeroberfläche bei gleichzeitiger sauberer Trennung der Architekturschichten. Diese Architekturentscheidungen bilden zusammen das technische Fundament, auf dem Fridgely seine Mission erfüllen kann: Kinder spielerisch für einen nachhaltigen Umgang mit Lebensmitteln zu sensibilisieren.</p>
+<aside class="md-source-file">
+<span class="md-source-file__fact">
+<span class="md-icon" title="Letztes Update">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
+</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="11. Juni 2025 08:40:14 UTC">11. Juni 2025</span>
+</span>
+<span class="md-source-file__fact">
+<span class="md-icon" title="Erstellt">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"></path></svg>
+</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="11. Juni 2025 08:40:14 UTC">11. Juni 2025</span>
+</span>
+<span class="md-source-file__fact">
+<span class="md-icon" title="Mitwirkende">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"></path></svg>
+</span>
+<nav>
+<a href="mailto:ben.woodtli@students.fhnw.ch">Ben Woodtli</a>
+</nav>
+</span>
+</aside>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "In Zwischenablage kopiert", "clipboard.copy": "In Zwischenablage kopieren", "search.result.more.one": "1 weiteres Suchergebnis auf dieser Seite", "search.result.more.other": "# weitere Suchergebnisse auf dieser Seite", "search.result.none": "Keine Suchergebnisse", "search.result.one": "1 Suchergebnis", "search.result.other": "# Suchergebnisse", "search.result.placeholder": "Suchbegriff eingeben", "search.result.term.missing": "Es fehlt", "select.version": "Version ausw\u00e4hlen"}, "version": null}</script>
+<script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+<script src="../../javascripts/extra.js"></script>
+<script src="../../javascripts/mermaid-config.js"></script>
+<script src="../../javascripts/ambient-background.js"></script>
+</body>
+</html>

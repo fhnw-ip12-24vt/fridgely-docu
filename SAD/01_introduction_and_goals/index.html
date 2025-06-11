@@ -1,0 +1,1389 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="de">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://fhnw-ip12-24vt.github.io/fridgely-docu/SAD/01_introduction_and_goals/" rel="canonical"/>
+<link href="../../Other/AddingLanguages/" rel="prev"/>
+<link href="../02_architecture_constraints/" rel="next"/>
+<link href="../../images/fridgely_doc_logo.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.6.14" name="generator"/>
+<title>Einführung und Ziele - Fridgely Dokumentation</title>
+<link href="../../assets/stylesheets/main.342714a4.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../stylesheets/extra.css" rel="stylesheet"/>
+<link href="../../stylesheets/ambient-background.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="black" data-md-color-primary="black" data-md-color-scheme="slate" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#1-einfuhrung-und-ziele">
+          Zum Inhalt
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="Kopfzeile" class="md-header__inner md-grid">
+<a aria-label="Fridgely Dokumentation" class="md-header__button md-logo" data-md-component="logo" href="https://docu-71ce93.pages.fhnw.ch/" title="Fridgely Dokumentation">
+<img alt="logo" src="../../images/fridgely_doc_logo.png"/>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Fridgely Dokumentation
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Einführung und Ziele
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-hidden="true" class="md-option" data-md-color-accent="black" data-md-color-media="" data-md-color-primary="black" data-md-color-scheme="slate" id="__palette_0" name="__palette" type="radio"/>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Suche" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Suche" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Suche" class="md-search__options">
+<button aria-label="Zurücksetzen" class="md-search__icon md-icon" tabindex="-1" title="Zurücksetzen" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Suche wird initialisiert
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Fridgely Dokumentation" class="md-nav__button md-logo" data-md-component="logo" href="https://docu-71ce93.pages.fhnw.ch/" title="Fridgely Dokumentation">
+<img alt="logo" src="../../images/fridgely_doc_logo.png"/>
+</a>
+    Fridgely Dokumentation
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+<span class="md-ellipsis">
+    Home
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../System-idea/system-idee/">
+<span class="md-ellipsis">
+    Systemidee
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Erweiterungen
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            Erweiterungen
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+<span class="md-ellipsis">
+    Produkte
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_1_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_1">
+<span class="md-nav__icon md-icon"></span>
+            Produkte
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Other/3D-Products/">
+<span class="md-ellipsis">
+    Produkt Modelle
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Other/Adding3DProducts/">
+<span class="md-ellipsis">
+    Produkte Hinzufügen
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Rezepte
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_2">
+<span class="md-nav__icon md-icon"></span>
+            Rezepte
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Other/AddingRecipes/">
+<span class="md-ellipsis">
+    Rezepte Hinzufügen
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Sprachen
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_3">
+<span class="md-nav__icon md-icon"></span>
+            Sprachen
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Other/AddingLanguages/">
+<span class="md-ellipsis">
+    Sprachen Hinzufügen
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-ellipsis">
+    Software Architecture Documentation
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            Software Architecture Documentation
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    Einführung und Ziele
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    Einführung und Ziele
+    
+  </span>
+</a>
+<nav aria-label="Inhaltsverzeichnis" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Inhaltsverzeichnis
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#aufgabenstellung">
+<span class="md-ellipsis">
+      Aufgabenstellung
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#qualitatsziele">
+<span class="md-ellipsis">
+      Qualitätsziele
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#stakeholder">
+<span class="md-ellipsis">
+      Stakeholder
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#treibende-faktoren">
+<span class="md-ellipsis">
+      Treibende Faktoren
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../02_architecture_constraints/">
+<span class="md-ellipsis">
+    Randbedingungen
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../03_system_scope_and_context/">
+<span class="md-ellipsis">
+    Kontextabgrenzung
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../04_solution_strategy/">
+<span class="md-ellipsis">
+    Lösungsstrategie
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../05_building_block_view/">
+<span class="md-ellipsis">
+    Bausteinsicht
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../06_runtime_view/">
+<span class="md-ellipsis">
+    Laufzeitsicht
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../07_deployment_view/">
+<span class="md-ellipsis">
+    Verteilungssicht
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../08_concepts/">
+<span class="md-ellipsis">
+    Querschnittliche Konzepte
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../09_architecture_decisions/">
+<span class="md-ellipsis">
+    Architekturentscheidungen
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../10_quality_requirements/">
+<span class="md-ellipsis">
+    Qualitätsanforderungen
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../11_technical_risks/">
+<span class="md-ellipsis">
+    Risiken und technische Schulden
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../12_glossary/">
+<span class="md-ellipsis">
+    Glossar
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+<span class="md-ellipsis">
+    Hardware
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+            Hardware
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Hardware/Hardware/">
+<span class="md-ellipsis">
+    Dokumentation
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+<span class="md-ellipsis">
+    Testing
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+            Testing
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Testplan/">
+<span class="md-ellipsis">
+    Testplan
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Inhalt/">
+<span class="md-ellipsis">
+    Test Überblick
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Tests
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_3">
+<span class="md-nav__icon md-icon"></span>
+            Tests
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_3_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3_1" id="__nav_6_3_1_label" tabindex="0">
+<span class="md-ellipsis">
+    Abnahme-Test
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_1_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_3_1">
+<span class="md-nav__icon md-icon"></span>
+            Abnahme-Test
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Abnahmetest/">
+<span class="md-ellipsis">
+    Abnahme-Test
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_3_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3_2" id="__nav_6_3_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Funktions- und Integrationstests
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_2_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_3_2">
+<span class="md-nav__icon md-icon"></span>
+            Funktions- und Integrationstests
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_3_2_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3_2_1" id="__nav_6_3_2_1_label" tabindex="0">
+<span class="md-ellipsis">
+    Gameloop-Tests
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_2_1_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_6_3_2_1">
+<span class="md-nav__icon md-icon"></span>
+            Gameloop-Tests
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Funktion_Integrationtests/Gamelooptest01_08052025/">
+<span class="md-ellipsis">
+    Gameloop-Test 01
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_3_2_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3_2_2" id="__nav_6_3_2_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Rezept-Tests
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_2_2_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_6_3_2_2">
+<span class="md-nav__icon md-icon"></span>
+            Rezept-Tests
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Funktion_Integrationtests/Rezepttest01_02042025/">
+<span class="md-ellipsis">
+    Rezept-Test 01
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Funktion_Integrationtests/Rezepttest02_07052025/">
+<span class="md-ellipsis">
+    Rezept-Test 02
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_3_2_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3_2_3" id="__nav_6_3_2_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Scan-Tests
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_2_3_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_6_3_2_3">
+<span class="md-nav__icon md-icon"></span>
+            Scan-Tests
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Funktion_Integrationtests/Scantest_Mock01_05032025/">
+<span class="md-ellipsis">
+    Mock Scan-Test 01
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Funktion_Integrationtests/Scantest02_02042025/">
+<span class="md-ellipsis">
+    Scan-Test 02
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Funktion_Integrationtests/Scantest03_05052025/">
+<span class="md-ellipsis">
+    Scan-Test 03
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_3_2_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3_2_4" id="__nav_6_3_2_4_label" tabindex="0">
+<span class="md-ellipsis">
+    Sprach-Tests
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_2_4_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_6_3_2_4">
+<span class="md-nav__icon md-icon"></span>
+            Sprach-Tests
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Funktion_Integrationtests/Sprachtest01_26022025/">
+<span class="md-ellipsis">
+    Sprach-Test 01
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_3_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3_3" id="__nav_6_3_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Hardware-Tests
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_3_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_3_3">
+<span class="md-nav__icon md-icon"></span>
+            Hardware-Tests
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Hardwaretests/TestHardware01_26022025/">
+<span class="md-ellipsis">
+    Hardware-Test 01
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Hardwaretests/TestHardware02_05052025/">
+<span class="md-ellipsis">
+    Hardware-Test 02
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_3_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3_4" id="__nav_6_3_4_label" tabindex="0">
+<span class="md-ellipsis">
+    Langzeit-Tests
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_4_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_3_4">
+<span class="md-nav__icon md-icon"></span>
+            Langzeit-Tests
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Langzeittests/Langzeittest01_06052025/">
+<span class="md-ellipsis">
+    Langzeit-Test 01
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Langzeittests/Langzeittest02_14052025/">
+<span class="md-ellipsis">
+    Langzeit-Test 02
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_3_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3_5" id="__nav_6_3_5_label" tabindex="0">
+<span class="md-ellipsis">
+    Smoke-Tests
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_5_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_3_5">
+<span class="md-nav__icon md-icon"></span>
+            Smoke-Tests
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Smoketests/Smoketest_Mock01_26022025/">
+<span class="md-ellipsis">
+    Mock Smoke-Test 01
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Smoketests/Smoketest_Mock02_05032025/">
+<span class="md-ellipsis">
+    Mock Smoke-Test 02
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Smoketests/Smoketest_Mock03_12032025/">
+<span class="md-ellipsis">
+    Mock Smoke-Test 03
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Smoketests/Smoketest_Mock04_19032025/">
+<span class="md-ellipsis">
+    Mock Smoke-Test 04
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Smoketests/Smoketest_Mock05_26032025/">
+<span class="md-ellipsis">
+    Mock Smoke-Test 05
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Smoketests/Smoketest_Mock06_02042025/">
+<span class="md-ellipsis">
+    Mock Smoke-Test 06
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Smoketests/Smoketest_Mock07_09042025/">
+<span class="md-ellipsis">
+    Mock Smoke-Test 07
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Smoketests/Smoketest_Mock08_16042025/">
+<span class="md-ellipsis">
+    Mock Smoke-Test 08
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Smoketests/Smoketest09_06052025/">
+<span class="md-ellipsis">
+    Smoke-Test 09
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Smoketests/Smoketest10_14052025/">
+<span class="md-ellipsis">
+    Smoke-Test 10
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+<span class="md-ellipsis">
+    Testfälle
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_4_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_4">
+<span class="md-nav__icon md-icon"></span>
+            Testfälle
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_4_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_4_1" id="__nav_6_4_1_label" tabindex="0">
+<span class="md-ellipsis">
+    Hardware Setup
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_4_1_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_4_1">
+<span class="md-nav__icon md-icon"></span>
+            Hardware Setup
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_0_1_BootRaspberryPI/">
+<span class="md-ellipsis">
+    Boot Raspberry PI
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_0_2_BildsignalGrosserMonitor/">
+<span class="md-ellipsis">
+    Bildsignal Grosser Monitor
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_0_3_BildsignalTouchscreen/">
+<span class="md-ellipsis">
+    Bildsignal Touchscreen
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_0_4_ScannerAufstarten/">
+<span class="md-ellipsis">
+    Scanner Aufstarten
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_0_5_TouchfunktionTouchscreen/">
+<span class="md-ellipsis">
+    Touchfunktion Touchscreen
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_4_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_4_2" id="__nav_6_4_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Grundlegende Funktionen
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_4_2_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_4_2">
+<span class="md-nav__icon md-icon"></span>
+            Grundlegende Funktionen
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_1_1_FridgelyEinschalten/">
+<span class="md-ellipsis">
+    Einschalten
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_1_2_FridgelyAusschalten/">
+<span class="md-ellipsis">
+    Ausschalten
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_4_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_4_3" id="__nav_6_4_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Produktscanning
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_4_3_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_4_3">
+<span class="md-nav__icon md-icon"></span>
+            Produktscanning
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_2_1_ProduktScannen/">
+<span class="md-ellipsis">
+    Produkt scannen
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_2_2_UnbekanntesProduktScan/">
+<span class="md-ellipsis">
+    Unbekanntes Produkt scannen
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_2_3_BestandAnzeigen/">
+<span class="md-ellipsis">
+    Bestand anzeigen
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_2_4_DoppelterScan/">
+<span class="md-ellipsis">
+    Doppelter Scan
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_2_5_Ablaufwarnung/">
+<span class="md-ellipsis">
+    Ablaufwarnung
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_4_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_4_4" id="__nav_6_4_4_label" tabindex="0">
+<span class="md-ellipsis">
+    UI-Funktionen
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_4_4_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_4_4">
+<span class="md-nav__icon md-icon"></span>
+            UI-Funktionen
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_3_1_SpracheUmschalten/">
+<span class="md-ellipsis">
+    Sprache umschalten
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_4_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_4_5" id="__nav_6_4_5_label" tabindex="0">
+<span class="md-ellipsis">
+    Rezeptfunktionen
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_4_5_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_4_5">
+<span class="md-nav__icon md-icon"></span>
+            Rezeptfunktionen
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_4_1_Rezeptvorschl%C3%A4geAnzeigen/">
+<span class="md-ellipsis">
+    Rezeptvorschläge anzeigen
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_4_2_RezeptvorschlagNichtGefunden/">
+<span class="md-ellipsis">
+    Kein Rezeptvorschlag gefunden
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_4_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_4_6" id="__nav_6_4_6_label" tabindex="0">
+<span class="md-ellipsis">
+    Analyse
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_4_6_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_4_6">
+<span class="md-nav__icon md-icon"></span>
+            Analyse
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_7_1_EinkaufsEnergieAnalyse/">
+<span class="md-ellipsis">
+    Einkaufs- und Energieanalyse
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_4_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_4_7" id="__nav_6_4_7_label" tabindex="0">
+<span class="md-ellipsis">
+    Spielmodus
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_4_7_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_4_7">
+<span class="md-nav__icon md-icon"></span>
+            Spielmodus
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_8_1_EinkaufsphaseStarten/">
+<span class="md-ellipsis">
+    Einkaufsphase starten
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_8_2_EinkaufsphaseBeenden/">
+<span class="md-ellipsis">
+    Einkaufsphase beenden
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_8_3_Kochphasebeenden/">
+<span class="md-ellipsis">
+    Kochphase beenden
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_8_4_NachhaltigkeitsbewertungFeedback.adoc/">
+<span class="md-ellipsis">
+    Nachhaltigkeitsbewertung
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_8_5_PunktesystemBerechnung/">
+<span class="md-ellipsis">
+    Punktesystem Berechnung
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_8_6_Spielzyklen/">
+<span class="md-ellipsis">
+    Spielzyklen
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Inhaltsverzeichnis" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Inhaltsverzeichnis
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#aufgabenstellung">
+<span class="md-ellipsis">
+      Aufgabenstellung
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#qualitatsziele">
+<span class="md-ellipsis">
+      Qualitätsziele
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#stakeholder">
+<span class="md-ellipsis">
+      Stakeholder
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#treibende-faktoren">
+<span class="md-ellipsis">
+      Treibende Faktoren
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="1-einfuhrung-und-ziele">1. Einführung und Ziele<a class="headerlink" href="#1-einfuhrung-und-ziele" title="Permanent link">¶</a></h1>
+<p>Dieses Dokument beschreibt die wesentlichen Anforderungen und treibenden Kräfte, die bei der Umsetzung der Softwarearchitektur und Entwicklung des Fridgely-Systems berücksichtigt werden müssen. </p>
+<p>Fridgely ist ein Smart-Fridge-System, das interaktiv und spielerisch Kinder (7–13 Jahre) für einen bewussten Umgang mit Lebensmitteln sensibilisiert und Lebensmittelverschwendung reduziert. </p>
+<p>Das System kombiniert Hard- und Softwarekomponenten, darunter Barcode-Scanner (über USB angeschlossen), Dual-Displays (ein Display mit 1024x600 Auflösung für die Bedienung und ein zweites Display mit 1920x1080 Auflösung für die Lageranzeige, und läuft auf einem Raspberry Pi unter Verwendung von Java mit Swing als UI-Framework und Spring Boot für Dependency Injection und Datenverwaltung. Es unterstützt u.a. die automatische Produkterkennung durch Barcode-Scanning (Produkte werden in einer eingebetteten SQLite-Datenbank mit JPA gespeichert), interaktive Spielmodi (Einzelspieler und Mehrspieler), mehrsprachige Benutzerführung (Deutsch, Englisch, Französisch) und eine kinderfreundliche Benutzeroberfläche mit einem animierten Pinguin-Maskottchen, das verschiedene Gesichtsausdrücke zeigen und seinen Gesundheitszustand in sechs Stufen (EXCELLENT, GOOD, OKAY, STRUGGLING, CRITICAL und DEAD) mit entsprechenden Sprites darstellen kann.</p>
+<p>Dazu zählen insbesondere:</p>
+<ul>
+<li><strong>Geschäftsziele:</strong> Sensibilisierung der jungen Zielgruppe für Nachhaltigkeit und Reduktion von Lebensmittelverschwendung, Unterstützung von Bildungsmassnahmen und Demonstration innovativer, nachhaltiger Technologien.</li>
+<li><strong>Wesentliche Aufgabenstellungen:</strong> Realisierung eines interaktiven, gamifizierten Kühlschranks, der den Zustand von Lebensmitteln erfasst, Warnmeldungen bei unökologischen Produkten aussendet und Rezeptvorschläge unterbreitet.<ul>
+<li>[HOCH] Barcode-basiertes Foodmanagement zur Erfassung und Inventarisierung von Produkten</li>
+<li>[HOCH] Gamifizierte Nutzererfahrung durch Einzelspieler- und Mehrspielermodi (wobei der Mehrspielermodus vollständig implementiert ist mit einem Spieler für das Scannen von Produkten und einem zweiten Spieler für die Rezeptauswahl)</li>
+<li>[MITTEL] Empfehlung passender Rezepte basierend auf verfügbaren Zutaten</li>
+<li>[HOCH] Überwachung des Gesundheitszustands des Pinguin-Maskottchens in Abhängigkeit vom Umgang mit Lebensmitteln</li>
+<li>[MITTEL] Mehrsprachigkeit (DE, EN, FR) für eine intuitive, kindgerechte Bedienung</li>
+<li>[NIEDRIG] Automatische Erkennung und Anpassung an verschiedene Bildschirmkonfigurationen</li>
+</ul>
+</li>
+<li><strong>Qualitätsziele für die Architektur:</strong> Hohe Usability, Robustheit, Wartbarkeit, Modifizierbarkeit und Attraktivität durch eine ansprechende, visuelle Gestaltung (inklusive Maskottchen) sowie eine klare, intuitive Interaktion.</li>
+<li><strong>Relevante Stakeholder:</strong> Kinder als primäre Nutzer, Mitarbeiter von Primeo, Lehrkräfte und Eltern als sekundäre Nutzer, der Product Owner sowie weitere Projektbeteiligte und -beauftragte.</li>
+</ul>
+<h2 id="aufgabenstellung">Aufgabenstellung<a class="headerlink" href="#aufgabenstellung" title="Permanent link">¶</a></h2>
+<p>Fridgely ist ein interaktiver Mock-Smart-Kühlschrank, der speziell entwickelt wurde, um Kinder auf spielerische Weise für den nachhaltigen Umgang mit Lebensmitteln zu sensibilisieren und Lebensmittelverschwendung zu reduzieren. Das System erfasst automatisch Produkte über Barcode-Scanning, überwacht deren Haltbarkeit und bietet proaktive Rezeptvorschläge, sodass Kinder lernen, Lebensmittel effizient zu verwalten. Die fachliche Aufgabenstellung umfasst die Umsetzung einer robusten, benutzerfreundlichen und interaktiven Lösung, die mit einem begrenzten Budget (CHF 200.- für die Kühlschrankattrappe aus Holz) realisiert werden muss.</p>
+<p>Der Beweggrund für die Entwicklung von Fridgely liegt in der Notwendigkeit, jungen Menschen ein Bewusstsein für Lebensmittelverschwendung und nachhaltigen Konsum zu vermitteln. Durch eine interaktive Lernumgebung, in der Hardware und Software kombiniert werden, wird ein praktischer und spielerischer Zugang zu diesen Themen ermöglicht.</p>
+<p>Die Architektur und das Design sind darauf ausgerichtet, eine intuitive Bedienung über den Touch-Display und dem Barcode-Scanner zu gewährleisten, wobei die modulare Anbindung von Hardwarekomponenten (USB-Barcode-Scanner, Dual-Displays mit unterschiedlichen Auflösungen: 1024x600 und 1920x1080) zentrale Anforderungen darstellt. Die Anwendungsarchitektur folgt dem MVC-Pattern mit klarer Trennung von Model (Produkte, Rezepte, Lagerbestand, Pinguin-Zustände), View (Swing-basierte UI-Komponenten) und Controller (Spiellogik, Benutzerinteraktion). Der Observer-Pattern wird für die Kommunikation zwischen Komponenten verwendet, insbesondere für die Lokalisierung und Statusaktualisierungen.</p>
+<p>Technisch wird die Anwendung mit Spring Boot realisiert, wobei folgende Komponenten zum Einsatz kommen:</p>
+<ul>
+<li>Component-basierte Dependency Injection für Serviceklassen und Controller</li>
+<li>JPA mit Repository-Pattern für die Datenpersistenz (SQLite-Datenbank)</li>
+<li>Swing für die UI-Komponenten mit MVC-Pattern </li>
+<li>PropertyChangeSupport für Observer-Pattern-Implementierung</li>
+<li>Mehrschichtige Architektur mit Service-Layern und Repository-Interfaces</li>
+<li>Vollständige Implementierung des Mehrspielermodus mit spezialisierten Launchern, Controllern und Views für die beiden Spielerrollen (MultiplayerPlayer1Controller für den Scanvorgang und MultiplayerPlayer2Controller für die Rezeptauswahl)</li>
+<li>Implementierung eines State-Pattern im MultiplayerGameStateModel für die Verwaltung der Spielphasen und Zustandsübergänge</li>
+</ul>
+<h2 id="qualitatsziele">Qualitätsziele<a class="headerlink" href="#qualitatsziele" title="Permanent link">¶</a></h2>
+<pre class="mermaid"><code>flowchart TD
+    A[Fridgely System] --&gt;|Barcode Scanning| B[Food Management]
+    A --&gt;|Interactive Modes| C[Gamified Experience]
+    A --&gt;|Recipe Suggestions| D[Efficient Food Usage]
+    A --&gt;|Multilingual Support| E["Child-Friendly UI"]
+    A --&gt;|Hardware Integration| F["USB Barcode Scanner, Dual Displays, Raspberry Pi"]
+    A --&gt;|Budget Constraint| G["CHF 200.- Wooden Mock Fridge"]
+
+    subgraph Goals
+        H[Reduce Food Waste]
+        I[Educate Children on Sustainability]
+        J[Demonstrate Innovative Technology]
+    end
+
+    subgraph Quality Attributes
+        K[Usability]
+        L[Robustness]
+        M[Maintainability]
+        N[Attractiveness]
+    end
+
+    B --&gt; H
+    C --&gt; I
+    D --&gt; H
+    E --&gt; I
+    F --&gt; J
+    G --&gt; J
+
+    H --&gt; K
+    I --&gt; N
+    J --&gt; L
+    J --&gt; M</code></pre>
+<p>Die Top-Qualitätsanforderungen für die Architektur von Fridgely sind:</p>
+<ul>
+<li><strong>Usability:</strong> Das System muss intuitiv und selbsterklärend bedienbar sein, um Kindern ohne ausführliche Erklärungen einen einfachen Zugang zu bieten.</li>
+<li><strong>Robustheit und Zuverlässigkeit:</strong> Der Kühlschrank soll auch bei intensiver Nutzung durch Kinder stabil arbeiten, ohne Verzögerungen oder Systemausfälle. Dies beinhaltet auch die automatische Erkennung und Anpassung an verschiedene Display-Konfigurationen, mit Fallback-Optionen für Single-Display-Setups.</li>
+<li><strong>Wartbarkeit und Modifizierbarkeit:</strong> Die Architektur muss eine einfache Fehlersuche und Wartung (z.B. über SSH-Zugriff auf den Raspberry Pi) ermöglichen sowie zukünftige Erweiterungen (z.B. zusätzliche Sensoren oder Funktionalitäten) unterstützen.</li>
+<li><strong>Attraktivität:</strong> Eine ansprechende, kinderfreundliche Benutzeroberfläche mit visuellen Elementen (z. B. unserem Pinguin-Maskottchen mit verschiedenen Emotionen) fördert die Motivation und Interaktion.</li>
+</ul>
+<p>Die Einhaltung dieser Qualitätsziele ist massgeblich, um die Akzeptanz und Effektivität des Systems bei den jungen Nutzern sowie bei den betreuenden Lehrkräften und Eltern sicherzustellen.</p>
+<table>
+<thead>
+<tr>
+<th>Qualitätsziel</th>
+<th>Szenario / Massnahme</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Usability</td>
+<td>Intuitive Bedienung über Touch-Display, klare visuelle Rückmeldungen (z. B. Maskottchen)</td>
+</tr>
+<tr>
+<td>Robustheit</td>
+<td>Stabiler Betrieb auch bei hoher Interaktionsfrequenz, zuverlässige Barcode-Erfassung und Echtzeitverarbeitung, automatische Erkennung und Anpassung an die verfügbaren Displays (ein Display mit 1024x600 Auflösung für die Bedienung und ein zweites Display mit 1920x1080 Auflösung für die Lageranzeige) über die GraphicsEnvironment und GraphicsDevice API von Java mit integrierter Fallback-Logik für Single-Display-Setups</td>
+</tr>
+<tr>
+<td>Wartbarkeit</td>
+<td>Einfache Debugging-Möglichkeiten und modularer Aufbau mit Spring Boot Dependency Injection, klar getrennte MVC-Architektur und Observer-Pattern (PropertyChangeSupport) für die Kommunikation zwischen Komponenten, um Wartungsarbeiten und zukünftige Erweiterungen zu erleichtern</td>
+</tr>
+<tr>
+<td>Attractiveness</td>
+<td>Ansprechendes, kindgerechtes Design mit animiertem Pinguin-Maskottchen, das verschiedene Gesichtsausdrücke zeigen und seinen Gesundheitszustand anzeigen kann (sechs definierte Zustände: EXCELLENT, GOOD, OKAY, STRUGGLING, CRITICAL und DEAD mit passenden Sprites wie Pinguin auf grossem Eisblock, Pinguin auf schrumpfendem Eis, schwimmender Pinguin, brennender Pinguin und verstorbener Pinguin), was Lernmotivation und nachhaltiges Verhalten visuell unterstützt</td>
+</tr>
+</tbody>
+</table>
+<h2 id="stakeholder">Stakeholder<a class="headerlink" href="#stakeholder" title="Permanent link">¶</a></h2>
+<p>Die folgenden Stakeholder sind für die Architektur und Entwicklung von Fridgely relevant:</p>
+<table>
+<thead>
+<tr>
+<th>Rolle</th>
+<th>Kontakt</th>
+<th>Erwartungshaltung</th>
+<th>Einfluss und Relevanz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kinder (Primäre Nutzer)</td>
+<td>-</td>
+<td>Eine intuitive, spielerische und interaktive Bedienung, die das Lernen über Lebensmittelmanagement unterstützt.</td>
+<td><strong>Hoch</strong>: Als primäre Zielgruppe bestimmen ihre Bedürfnisse und Fähigkeiten massgeblich die Usability-Anforderungen und das Interaktionsdesign.</td>
+</tr>
+<tr>
+<td>Lehrkräfte / Eltern (Sekundäre Nutzer)</td>
+<td>-</td>
+<td>Ein System, das den Kindern nachhaltigen Umgang mit Lebensmitteln vermittelt und dabei einfach zu bedienen ist.</td>
+<td><strong>Mittel</strong>: Unterstützen die Nutzung und müssen das System verstehen, um es zu erklären; beeinflussen pädagogische Aspekte.</td>
+</tr>
+<tr>
+<td>Product Owner</td>
+<td>Elif Gürcinar</td>
+<td>Umsetzung eines innovativen, edukativen Produkts, das den ökologischen und pädagogischen Anforderungen entspricht.</td>
+<td><strong>Hoch</strong>: Trifft zentrale Produktentscheidungen und ist verantwortlich für die Erfüllung der übergeordneten Projektziele.</td>
+</tr>
+<tr>
+<td>Primeo Energie AG (Auftraggeber)</td>
+<td>Eugen Leu</td>
+<td>Entwicklung eines robusten und ansprechenden Demonstrationsobjekts, das Nachhaltigkeit und Energieeffizienz vermittelt.</td>
+<td><strong>Hoch</strong>: Als Finanzier des Projekts haben ihre strategischen Ziele hohen Einfluss auf die Ausrichtung und Priorisierung der Funktionalitäten.</td>
+</tr>
+<tr>
+<td>FHNW (Projektbegleitung)</td>
+<td>Prof. Stefan Vetter</td>
+<td>Sicherstellung akademischer Standards und didaktischer Qualität.</td>
+<td><strong>Mittel</strong>: Bietet fachliche Beratung und stellt Ressourcen bereit; beeinflusst methodischen Ansatz.</td>
+</tr>
+<tr>
+<td>Entwicklungsteam</td>
+<td>Team Fridgely</td>
+<td>Technisch realisierbare, wartbare und testbare Umsetzung der Anforderungen innerhalb der gegebenen Rahmenbedingungen.</td>
+<td><strong>Hoch</strong>: Direkt verantwortlich für die technische Umsetzung und Qualität des Produkts.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="treibende-faktoren">Treibende Faktoren<a class="headerlink" href="#treibende-faktoren" title="Permanent link">¶</a></h2>
+<p>Die Entwicklung von Fridgely wird durch folgende zentrale Faktoren angetrieben:</p>
+<ol>
+<li>
+<p><strong>Gesellschaftliche Relevanz</strong>: Lebensmittelverschwendung ist ein globales Problem mit erheblichen ökologischen und wirtschaftlichen Folgen. Durch frühe Bewusstseinsbildung bei Kindern kann langfristig ein nachhaltigerer Umgang mit Lebensmitteln gefördert werden.</p>
+</li>
+<li>
+<p><strong>Pädagogischer Nutzen</strong>: Die spielerische Vermittlung wichtiger Nachhaltigkeitskonzepte durch interaktive Technologie entspricht modernen pädagogischen Ansätzen und fördert nachhaltiges Handeln durch positive Verstärkung anstatt durch reine Wissensvermittlung.</p>
+</li>
+<li>
+<p><strong>Technologische Innovation</strong>: Die Kombination von Hardware (Barcode-Scanner, Dual-Display-Setup) und Software (intelligente Rezeptvorschläge, Gamification) schafft ein einzigartiges Lerngerät, das sowohl technisch anspruchsvoll als auch benutzerfreundlich ist.</p>
+</li>
+<li>
+<p><strong>Wirtschaftliche Faktoren</strong>: Mit einem begrenzten Budget (CHF 200.- für die Kühlschrankattrappe) muss eine robuste, attraktive Lösung entwickelt werden, die sowohl technisch funktional als auch optisch ansprechend ist.</p>
+</li>
+</ol>
+<p>Die Qualitätsziele wurden direkt aus diesen treibenden Faktoren abgeleitet, um sicherzustellen, dass das System seinen pädagogischen Zweck erfüllt und gleichzeitig technisch robust und attraktiv für die junge Zielgruppe ist.</p>
+<aside class="md-source-file">
+<span class="md-source-file__fact">
+<span class="md-icon" title="Letztes Update">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
+</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="11. Juni 2025 08:40:14 UTC">11. Juni 2025</span>
+</span>
+<span class="md-source-file__fact">
+<span class="md-icon" title="Erstellt">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"></path></svg>
+</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="11. Juni 2025 08:40:14 UTC">11. Juni 2025</span>
+</span>
+<span class="md-source-file__fact">
+<span class="md-icon" title="Mitwirkende">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"></path></svg>
+</span>
+<nav>
+<a href="mailto:ben.woodtli@students.fhnw.ch">Ben Woodtli</a>
+</nav>
+</span>
+</aside>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "In Zwischenablage kopiert", "clipboard.copy": "In Zwischenablage kopieren", "search.result.more.one": "1 weiteres Suchergebnis auf dieser Seite", "search.result.more.other": "# weitere Suchergebnisse auf dieser Seite", "search.result.none": "Keine Suchergebnisse", "search.result.one": "1 Suchergebnis", "search.result.other": "# Suchergebnisse", "search.result.placeholder": "Suchbegriff eingeben", "search.result.term.missing": "Es fehlt", "select.version": "Version ausw\u00e4hlen"}, "version": null}</script>
+<script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+<script src="../../javascripts/extra.js"></script>
+<script src="../../javascripts/mermaid-config.js"></script>
+<script src="../../javascripts/ambient-background.js"></script>
+</body>
+</html>

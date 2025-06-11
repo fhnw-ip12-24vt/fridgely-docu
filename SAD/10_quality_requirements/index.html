@@ -1,0 +1,1933 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="de">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://fhnw-ip12-24vt.github.io/fridgely-docu/SAD/10_quality_requirements/" rel="canonical"/>
+<link href="../09_architecture_decisions/" rel="prev"/>
+<link href="../11_technical_risks/" rel="next"/>
+<link href="../../images/fridgely_doc_logo.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.6.14" name="generator"/>
+<title>Qualitätsanforderungen - Fridgely Dokumentation</title>
+<link href="../../assets/stylesheets/main.342714a4.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../stylesheets/extra.css" rel="stylesheet"/>
+<link href="../../stylesheets/ambient-background.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="black" data-md-color-primary="black" data-md-color-scheme="slate" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#qualitatsanforderungen">
+          Zum Inhalt
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="Kopfzeile" class="md-header__inner md-grid">
+<a aria-label="Fridgely Dokumentation" class="md-header__button md-logo" data-md-component="logo" href="https://docu-71ce93.pages.fhnw.ch/" title="Fridgely Dokumentation">
+<img alt="logo" src="../../images/fridgely_doc_logo.png"/>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Fridgely Dokumentation
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Qualitätsanforderungen
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-hidden="true" class="md-option" data-md-color-accent="black" data-md-color-media="" data-md-color-primary="black" data-md-color-scheme="slate" id="__palette_0" name="__palette" type="radio"/>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Suche" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Suche" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Suche" class="md-search__options">
+<button aria-label="Zurücksetzen" class="md-search__icon md-icon" tabindex="-1" title="Zurücksetzen" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Suche wird initialisiert
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Fridgely Dokumentation" class="md-nav__button md-logo" data-md-component="logo" href="https://docu-71ce93.pages.fhnw.ch/" title="Fridgely Dokumentation">
+<img alt="logo" src="../../images/fridgely_doc_logo.png"/>
+</a>
+    Fridgely Dokumentation
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+<span class="md-ellipsis">
+    Home
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../System-idea/system-idee/">
+<span class="md-ellipsis">
+    Systemidee
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Erweiterungen
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            Erweiterungen
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+<span class="md-ellipsis">
+    Produkte
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_1_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_1">
+<span class="md-nav__icon md-icon"></span>
+            Produkte
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Other/3D-Products/">
+<span class="md-ellipsis">
+    Produkt Modelle
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Other/Adding3DProducts/">
+<span class="md-ellipsis">
+    Produkte Hinzufügen
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Rezepte
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_2">
+<span class="md-nav__icon md-icon"></span>
+            Rezepte
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Other/AddingRecipes/">
+<span class="md-ellipsis">
+    Rezepte Hinzufügen
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Sprachen
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_3">
+<span class="md-nav__icon md-icon"></span>
+            Sprachen
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Other/AddingLanguages/">
+<span class="md-ellipsis">
+    Sprachen Hinzufügen
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-ellipsis">
+    Software Architecture Documentation
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            Software Architecture Documentation
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../01_introduction_and_goals/">
+<span class="md-ellipsis">
+    Einführung und Ziele
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../02_architecture_constraints/">
+<span class="md-ellipsis">
+    Randbedingungen
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../03_system_scope_and_context/">
+<span class="md-ellipsis">
+    Kontextabgrenzung
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../04_solution_strategy/">
+<span class="md-ellipsis">
+    Lösungsstrategie
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../05_building_block_view/">
+<span class="md-ellipsis">
+    Bausteinsicht
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../06_runtime_view/">
+<span class="md-ellipsis">
+    Laufzeitsicht
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../07_deployment_view/">
+<span class="md-ellipsis">
+    Verteilungssicht
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../08_concepts/">
+<span class="md-ellipsis">
+    Querschnittliche Konzepte
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../09_architecture_decisions/">
+<span class="md-ellipsis">
+    Architekturentscheidungen
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    Qualitätsanforderungen
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    Qualitätsanforderungen
+    
+  </span>
+</a>
+<nav aria-label="Inhaltsverzeichnis" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Inhaltsverzeichnis
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#qualitatsanforderungen">
+<span class="md-ellipsis">
+      Qualitätsanforderungen
+    </span>
+</a>
+<nav aria-label="Qualitätsanforderungen" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#qualitatsbaum">
+<span class="md-ellipsis">
+      Qualitätsbaum
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#qualitatsszenarien">
+<span class="md-ellipsis">
+      Qualitätsszenarien
+    </span>
+</a>
+<nav aria-label="Qualitätsszenarien" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#benutzbarkeit-usability-hochste-prioritat">
+<span class="md-ellipsis">
+      Benutzbarkeit (Usability) - Höchste Priorität
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#zuverlassigkeit-reliability-hochste-prioritat">
+<span class="md-ellipsis">
+      Zuverlässigkeit (Reliability) - Höchste Priorität
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#wartbarkeit-maintainability-hochste-prioritat">
+<span class="md-ellipsis">
+      Wartbarkeit (Maintainability) - Höchste Priorität
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#performance-effizienz-mittlere-prioritat">
+<span class="md-ellipsis">
+      Performance (Effizienz) - Mittlere Priorität
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#funktionale-eignung-mittlere-prioritat">
+<span class="md-ellipsis">
+      Funktionale Eignung - Mittlere Priorität
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ubertragbarkeit-portability-mittlere-bis-niedrige-prioritat">
+<span class="md-ellipsis">
+      Übertragbarkeit (Portability) - Mittlere bis Niedrige Priorität
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#sicherheit-security-niedrige-prioritat">
+<span class="md-ellipsis">
+      Sicherheit (Security) - Niedrige Priorität
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#konkrete-nutzungsszenarien">
+<span class="md-ellipsis">
+      Konkrete Nutzungsszenarien
+    </span>
+</a>
+<nav aria-label="Konkrete Nutzungsszenarien" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#nutzungsszenario-1-erstmalige-benutzung-durch-ein-kind">
+<span class="md-ellipsis">
+      Nutzungsszenario 1: Erstmalige Benutzung durch ein Kind
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#nutzungsszenario-2-fehlerfall-beim-spielen">
+<span class="md-ellipsis">
+      Nutzungsszenario 2: Fehlerfall beim Spielen
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#nutzungsszenario-3-wartung-und-update">
+<span class="md-ellipsis">
+      Nutzungsszenario 3: Wartung und Update
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#priorisierung-und-qualitatskonflikte">
+<span class="md-ellipsis">
+      Priorisierung und Qualitätskonflikte
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#validierung-und-messung-der-qualitatsanforderungen">
+<span class="md-ellipsis">
+      Validierung und Messung der Qualitätsanforderungen
+    </span>
+</a>
+<nav aria-label="Validierung und Messung der Qualitätsanforderungen" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#performance-messung">
+<span class="md-ellipsis">
+      Performance-Messung
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fehlerprotokollierung">
+<span class="md-ellipsis">
+      Fehlerprotokollierung
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../11_technical_risks/">
+<span class="md-ellipsis">
+    Risiken und technische Schulden
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../12_glossary/">
+<span class="md-ellipsis">
+    Glossar
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+<span class="md-ellipsis">
+    Hardware
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+            Hardware
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Hardware/Hardware/">
+<span class="md-ellipsis">
+    Dokumentation
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+<span class="md-ellipsis">
+    Testing
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+            Testing
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Testplan/">
+<span class="md-ellipsis">
+    Testplan
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Inhalt/">
+<span class="md-ellipsis">
+    Test Überblick
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Tests
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_3">
+<span class="md-nav__icon md-icon"></span>
+            Tests
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_3_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3_1" id="__nav_6_3_1_label" tabindex="0">
+<span class="md-ellipsis">
+    Abnahme-Test
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_1_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_3_1">
+<span class="md-nav__icon md-icon"></span>
+            Abnahme-Test
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Abnahmetest/">
+<span class="md-ellipsis">
+    Abnahme-Test
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_3_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3_2" id="__nav_6_3_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Funktions- und Integrationstests
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_2_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_3_2">
+<span class="md-nav__icon md-icon"></span>
+            Funktions- und Integrationstests
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_3_2_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3_2_1" id="__nav_6_3_2_1_label" tabindex="0">
+<span class="md-ellipsis">
+    Gameloop-Tests
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_2_1_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_6_3_2_1">
+<span class="md-nav__icon md-icon"></span>
+            Gameloop-Tests
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Funktion_Integrationtests/Gamelooptest01_08052025/">
+<span class="md-ellipsis">
+    Gameloop-Test 01
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_3_2_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3_2_2" id="__nav_6_3_2_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Rezept-Tests
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_2_2_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_6_3_2_2">
+<span class="md-nav__icon md-icon"></span>
+            Rezept-Tests
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Funktion_Integrationtests/Rezepttest01_02042025/">
+<span class="md-ellipsis">
+    Rezept-Test 01
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Funktion_Integrationtests/Rezepttest02_07052025/">
+<span class="md-ellipsis">
+    Rezept-Test 02
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_3_2_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3_2_3" id="__nav_6_3_2_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Scan-Tests
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_2_3_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_6_3_2_3">
+<span class="md-nav__icon md-icon"></span>
+            Scan-Tests
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Funktion_Integrationtests/Scantest_Mock01_05032025/">
+<span class="md-ellipsis">
+    Mock Scan-Test 01
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Funktion_Integrationtests/Scantest02_02042025/">
+<span class="md-ellipsis">
+    Scan-Test 02
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Funktion_Integrationtests/Scantest03_05052025/">
+<span class="md-ellipsis">
+    Scan-Test 03
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_3_2_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3_2_4" id="__nav_6_3_2_4_label" tabindex="0">
+<span class="md-ellipsis">
+    Sprach-Tests
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_2_4_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_6_3_2_4">
+<span class="md-nav__icon md-icon"></span>
+            Sprach-Tests
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Funktion_Integrationtests/Sprachtest01_26022025/">
+<span class="md-ellipsis">
+    Sprach-Test 01
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_3_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3_3" id="__nav_6_3_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Hardware-Tests
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_3_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_3_3">
+<span class="md-nav__icon md-icon"></span>
+            Hardware-Tests
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Hardwaretests/TestHardware01_26022025/">
+<span class="md-ellipsis">
+    Hardware-Test 01
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Hardwaretests/TestHardware02_05052025/">
+<span class="md-ellipsis">
+    Hardware-Test 02
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_3_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3_4" id="__nav_6_3_4_label" tabindex="0">
+<span class="md-ellipsis">
+    Langzeit-Tests
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_4_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_3_4">
+<span class="md-nav__icon md-icon"></span>
+            Langzeit-Tests
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Langzeittests/Langzeittest01_06052025/">
+<span class="md-ellipsis">
+    Langzeit-Test 01
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Langzeittests/Langzeittest02_14052025/">
+<span class="md-ellipsis">
+    Langzeit-Test 02
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_3_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3_5" id="__nav_6_3_5_label" tabindex="0">
+<span class="md-ellipsis">
+    Smoke-Tests
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_5_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_3_5">
+<span class="md-nav__icon md-icon"></span>
+            Smoke-Tests
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Smoketests/Smoketest_Mock01_26022025/">
+<span class="md-ellipsis">
+    Mock Smoke-Test 01
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Smoketests/Smoketest_Mock02_05032025/">
+<span class="md-ellipsis">
+    Mock Smoke-Test 02
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Smoketests/Smoketest_Mock03_12032025/">
+<span class="md-ellipsis">
+    Mock Smoke-Test 03
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Smoketests/Smoketest_Mock04_19032025/">
+<span class="md-ellipsis">
+    Mock Smoke-Test 04
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Smoketests/Smoketest_Mock05_26032025/">
+<span class="md-ellipsis">
+    Mock Smoke-Test 05
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Smoketests/Smoketest_Mock06_02042025/">
+<span class="md-ellipsis">
+    Mock Smoke-Test 06
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Smoketests/Smoketest_Mock07_09042025/">
+<span class="md-ellipsis">
+    Mock Smoke-Test 07
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Smoketests/Smoketest_Mock08_16042025/">
+<span class="md-ellipsis">
+    Mock Smoke-Test 08
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Smoketests/Smoketest09_06052025/">
+<span class="md-ellipsis">
+    Smoke-Test 09
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Smoketests/Smoketest10_14052025/">
+<span class="md-ellipsis">
+    Smoke-Test 10
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+<span class="md-ellipsis">
+    Testfälle
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_4_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_4">
+<span class="md-nav__icon md-icon"></span>
+            Testfälle
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_4_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_4_1" id="__nav_6_4_1_label" tabindex="0">
+<span class="md-ellipsis">
+    Hardware Setup
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_4_1_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_4_1">
+<span class="md-nav__icon md-icon"></span>
+            Hardware Setup
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_0_1_BootRaspberryPI/">
+<span class="md-ellipsis">
+    Boot Raspberry PI
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_0_2_BildsignalGrosserMonitor/">
+<span class="md-ellipsis">
+    Bildsignal Grosser Monitor
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_0_3_BildsignalTouchscreen/">
+<span class="md-ellipsis">
+    Bildsignal Touchscreen
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_0_4_ScannerAufstarten/">
+<span class="md-ellipsis">
+    Scanner Aufstarten
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_0_5_TouchfunktionTouchscreen/">
+<span class="md-ellipsis">
+    Touchfunktion Touchscreen
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_4_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_4_2" id="__nav_6_4_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Grundlegende Funktionen
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_4_2_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_4_2">
+<span class="md-nav__icon md-icon"></span>
+            Grundlegende Funktionen
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_1_1_FridgelyEinschalten/">
+<span class="md-ellipsis">
+    Einschalten
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_1_2_FridgelyAusschalten/">
+<span class="md-ellipsis">
+    Ausschalten
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_4_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_4_3" id="__nav_6_4_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Produktscanning
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_4_3_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_4_3">
+<span class="md-nav__icon md-icon"></span>
+            Produktscanning
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_2_1_ProduktScannen/">
+<span class="md-ellipsis">
+    Produkt scannen
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_2_2_UnbekanntesProduktScan/">
+<span class="md-ellipsis">
+    Unbekanntes Produkt scannen
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_2_3_BestandAnzeigen/">
+<span class="md-ellipsis">
+    Bestand anzeigen
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_2_4_DoppelterScan/">
+<span class="md-ellipsis">
+    Doppelter Scan
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_2_5_Ablaufwarnung/">
+<span class="md-ellipsis">
+    Ablaufwarnung
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_4_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_4_4" id="__nav_6_4_4_label" tabindex="0">
+<span class="md-ellipsis">
+    UI-Funktionen
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_4_4_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_4_4">
+<span class="md-nav__icon md-icon"></span>
+            UI-Funktionen
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_3_1_SpracheUmschalten/">
+<span class="md-ellipsis">
+    Sprache umschalten
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_4_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_4_5" id="__nav_6_4_5_label" tabindex="0">
+<span class="md-ellipsis">
+    Rezeptfunktionen
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_4_5_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_4_5">
+<span class="md-nav__icon md-icon"></span>
+            Rezeptfunktionen
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_4_1_Rezeptvorschl%C3%A4geAnzeigen/">
+<span class="md-ellipsis">
+    Rezeptvorschläge anzeigen
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_4_2_RezeptvorschlagNichtGefunden/">
+<span class="md-ellipsis">
+    Kein Rezeptvorschlag gefunden
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_4_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_4_6" id="__nav_6_4_6_label" tabindex="0">
+<span class="md-ellipsis">
+    Analyse
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_4_6_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_4_6">
+<span class="md-nav__icon md-icon"></span>
+            Analyse
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_7_1_EinkaufsEnergieAnalyse/">
+<span class="md-ellipsis">
+    Einkaufs- und Energieanalyse
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_4_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_4_7" id="__nav_6_4_7_label" tabindex="0">
+<span class="md-ellipsis">
+    Spielmodus
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_4_7_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_4_7">
+<span class="md-nav__icon md-icon"></span>
+            Spielmodus
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_8_1_EinkaufsphaseStarten/">
+<span class="md-ellipsis">
+    Einkaufsphase starten
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_8_2_EinkaufsphaseBeenden/">
+<span class="md-ellipsis">
+    Einkaufsphase beenden
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_8_3_Kochphasebeenden/">
+<span class="md-ellipsis">
+    Kochphase beenden
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_8_4_NachhaltigkeitsbewertungFeedback.adoc/">
+<span class="md-ellipsis">
+    Nachhaltigkeitsbewertung
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_8_5_PunktesystemBerechnung/">
+<span class="md-ellipsis">
+    Punktesystem Berechnung
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_8_6_Spielzyklen/">
+<span class="md-ellipsis">
+    Spielzyklen
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Inhaltsverzeichnis" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Inhaltsverzeichnis
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#qualitatsanforderungen">
+<span class="md-ellipsis">
+      Qualitätsanforderungen
+    </span>
+</a>
+<nav aria-label="Qualitätsanforderungen" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#qualitatsbaum">
+<span class="md-ellipsis">
+      Qualitätsbaum
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#qualitatsszenarien">
+<span class="md-ellipsis">
+      Qualitätsszenarien
+    </span>
+</a>
+<nav aria-label="Qualitätsszenarien" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#benutzbarkeit-usability-hochste-prioritat">
+<span class="md-ellipsis">
+      Benutzbarkeit (Usability) - Höchste Priorität
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#zuverlassigkeit-reliability-hochste-prioritat">
+<span class="md-ellipsis">
+      Zuverlässigkeit (Reliability) - Höchste Priorität
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#wartbarkeit-maintainability-hochste-prioritat">
+<span class="md-ellipsis">
+      Wartbarkeit (Maintainability) - Höchste Priorität
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#performance-effizienz-mittlere-prioritat">
+<span class="md-ellipsis">
+      Performance (Effizienz) - Mittlere Priorität
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#funktionale-eignung-mittlere-prioritat">
+<span class="md-ellipsis">
+      Funktionale Eignung - Mittlere Priorität
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ubertragbarkeit-portability-mittlere-bis-niedrige-prioritat">
+<span class="md-ellipsis">
+      Übertragbarkeit (Portability) - Mittlere bis Niedrige Priorität
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#sicherheit-security-niedrige-prioritat">
+<span class="md-ellipsis">
+      Sicherheit (Security) - Niedrige Priorität
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#konkrete-nutzungsszenarien">
+<span class="md-ellipsis">
+      Konkrete Nutzungsszenarien
+    </span>
+</a>
+<nav aria-label="Konkrete Nutzungsszenarien" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#nutzungsszenario-1-erstmalige-benutzung-durch-ein-kind">
+<span class="md-ellipsis">
+      Nutzungsszenario 1: Erstmalige Benutzung durch ein Kind
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#nutzungsszenario-2-fehlerfall-beim-spielen">
+<span class="md-ellipsis">
+      Nutzungsszenario 2: Fehlerfall beim Spielen
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#nutzungsszenario-3-wartung-und-update">
+<span class="md-ellipsis">
+      Nutzungsszenario 3: Wartung und Update
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#priorisierung-und-qualitatskonflikte">
+<span class="md-ellipsis">
+      Priorisierung und Qualitätskonflikte
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#validierung-und-messung-der-qualitatsanforderungen">
+<span class="md-ellipsis">
+      Validierung und Messung der Qualitätsanforderungen
+    </span>
+</a>
+<nav aria-label="Validierung und Messung der Qualitätsanforderungen" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#performance-messung">
+<span class="md-ellipsis">
+      Performance-Messung
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fehlerprotokollierung">
+<span class="md-ellipsis">
+      Fehlerprotokollierung
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1>Qualitätsanforderungen</h1>
+<h2 id="qualitatsanforderungen">Qualitätsanforderungen<a class="headerlink" href="#qualitatsanforderungen" title="Permanent link">¶</a></h2>
+<p>Dieser Abschnitt dokumentiert die wichtigsten Qualitätsanforderungen an das Fridgely-System. Die grundlegenden Qualitätsziele wurden bereits in Abschnitt 1.2 vorgestellt. Hier werden diese nun durch einen strukturierten Qualitätsbaum und konkrete Qualitätsszenarien weiter spezifiziert und operationalisiert.</p>
+<p>Fridgely als bildungsorientiertes Smart-Fridge-System stellt besondere Anforderungen an die Qualität, da es von Kindern im Alter von 7-13 Jahren genutzt wird und gleichzeitig robust, wartbar und attraktiv sein muss. Die nachfolgenden Qualitätsanforderungen bilden einen wesentlichen Leitfaden für Architekturentscheidungen und die Produktentwicklung.</p>
+<hr/>
+<h3 id="qualitatsbaum">Qualitätsbaum<a class="headerlink" href="#qualitatsbaum" title="Permanent link">¶</a></h3>
+<p>Der folgende Qualitätsbaum gibt einen strukturierten Überblick über die relevanten Qualitätsanforderungen an das Fridgely-System. Die Hauptäste repräsentieren die ISO 25010 Qualitätskategorien, die für unser System von Bedeutung sind.</p>
+<pre class="mermaid"><code>graph TD
+    Q[Qualität Fridgely-System] --&gt; F[Funktionale Eignung]
+    Q --&gt; P[Performance]
+    Q --&gt; K[Kompatibilität]
+    Q --&gt; B[Benutzbarkeit]
+    Q --&gt; Z[Zuverlässigkeit]
+    Q --&gt; S[Sicherheit]
+    Q --&gt; W[Wartbarkeit]
+    Q --&gt; T[Übertragbarkeit]
+
+    F --&gt; F1[Funktionale Vollständigkeit]
+    F --&gt; F2[Funktionale Korrektheit]
+    F --&gt; F3[Funktionale Angemessenheit]
+
+    P --&gt; P1[Zeitverhalten]
+    P --&gt; P2[Ressourcenverbrauch]
+
+    K --&gt; K1[Koexistenz]
+    K --&gt; K2[Interoperabilität]
+
+    B --&gt; B1[Angemessenheit Erkennbarkeit]
+    B --&gt; B2[Erlernbarkeit]
+    B --&gt; B3[Bedienbarkeit]
+    B --&gt; B4[Benutzerfehlerschutz]
+    B --&gt; B5[Ästhetik der Benutzeroberfläche]
+    B --&gt; B6[Barrierefreiheit]
+
+    Z --&gt; Z1[Reife]
+    Z --&gt; Z2[Verfügbarkeit]
+    Z --&gt; Z3[Fehlertoleranz]
+    Z --&gt; Z4[Wiederherstellbarkeit]
+
+    S --&gt; S1[Vertraulichkeit]
+    S --&gt; S2[Integrität]
+    S --&gt; S3[Nachweisbarkeit]
+
+    W --&gt; W1[Modularität]
+    W --&gt; W2[Wiederverwendbarkeit]
+    W --&gt; W3[Analysierbarkeit]
+    W --&gt; W4[Modifizierbarkeit]
+    W --&gt; W5[Testbarkeit]
+
+    T --&gt; T1[Anpassungsfähigkeit]
+    T --&gt; T2[Installierbarkeit]
+    T --&gt; T3[Austauschbarkeit]
+
+    %% Priorisierung durch unterschiedliche Stile
+    classDef highPriority fill:#1a202c,stroke:#4a5568,stroke-width:2px;
+    classDef mediumPriority fill:#2b3d4f,stroke:#83a598,stroke-width:1.5px;
+    classDef lowPriority fill:#3c3836,stroke:#fabd2f,stroke-width:1px;
+
+    %% Hohe Priorität
+    class B,Z,W,B1,B2,B3,B5,Z1,Z3,Z4,W1,W4,W5 highPriority;
+
+    %% Mittlere Priorität
+    class F,P,F1,F2,P1,B4,B6,S1,W2,W3,T1,T2 mediumPriority;
+
+    %% Niedrige Priorität
+    class K,S,T,F3,P2,K1,K2,S2,S3,T3 lowPriority;</code></pre>
+<p>Die Farbkodierung im Qualitätsbaum zeigt die Priorität der jeweiligen Qualitätsanforderungen:
+- <strong>Rot</strong> markiert Anforderungen mit höchster Priorität für das Fridgely-System
+- <strong>Gelb</strong> markiert Anforderungen mit mittlerer Priorität
+- <strong>Grau</strong> markiert Anforderungen mit geringerer Priorität</p>
+<hr/>
+<h3 id="qualitatsszenarien">Qualitätsszenarien<a class="headerlink" href="#qualitatsszenarien" title="Permanent link">¶</a></h3>
+<p>Die Szenarien definieren die oben dargestellten Qualitätsanforderungen und machen sie mess- sowie überprüfbar. Sie sind nach Kategorien und Priorität geordnet.</p>
+<h4 id="benutzbarkeit-usability-hochste-prioritat">Benutzbarkeit (Usability) - Höchste Priorität<a class="headerlink" href="#benutzbarkeit-usability-hochste-prioritat" title="Permanent link">¶</a></h4>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Szenario</th>
+<th>Auslöser</th>
+<th>Metrik/Reaktion</th>
+<th>Priorität</th>
+<th>Verweis auf Architekturentscheidung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>U-1</td>
+<td><strong>Intuitive Bedienung für Kinder</strong></td>
+<td>Ein Kind (7-10 Jahre) nutzt zum ersten Mal den Kühlschrank</td>
+<td>Das Kind kann innerhalb von 5 Minuten ohne Hilfe ein Produkt scannen und in den Kühlschrank einordnen.</td>
+<td>Hoch</td>
+<td><a href="../09_architecture_decisions/#adr-1-verwendung-von-java-swing-statt-javafx">ADR-1</a></td>
+</tr>
+<tr>
+<td>U-2</td>
+<td><strong>Mehrsprachige Bedienung</strong></td>
+<td>Ein Kind wechselt die Spracheinstellung</td>
+<td>Die UI aktualisiert sich sofort mit den Texten in der gewählten Sprache, ohne Neustart der Anwendung.</td>
+<td>Hoch</td>
+<td><a href="../09_architecture_decisions/#adr-4-mehrsprachigkeitskonzept-über-zentrale-lokalisierungsservices">ADR-4</a></td>
+</tr>
+<tr>
+<td>U-3</td>
+<td><strong>Visuelles Feedback bei Aktionen</strong></td>
+<td>Ein Produkt wird gescannt</td>
+<td>Der Nutzer erhält innerhalb von 0,5 Sekunden visuelles Feedback (Animation oder Farbänderung), ob der Scan erfolgreich war.</td>
+<td>Hoch</td>
+<td><a href="../09_architecture_decisions/#adr-1-verwendung-von-java-swing-statt-javafx">ADR-1</a></td>
+</tr>
+<tr>
+<td>U-4</td>
+<td><strong>Kindgerechte Fehlermeldungen</strong></td>
+<td>Ein Fehler tritt während der Nutzung auf</td>
+<td>Das System zeigt eine kindgerechte, nicht-technische Erklärung mit Pinguin-Maskottchen an und bietet einfache Handlungsoptionen.</td>
+<td>Mittel</td>
+<td><a href="../09_architecture_decisions/#adr-3-einsatz-des-repository-patterns-für-datenzugriff">ADR-3</a></td>
+</tr>
+<tr>
+<td>U-5</td>
+<td><strong>Attraktives Design</strong></td>
+<td>Kind öffnet die App zum ersten Mal</td>
+<td>Das ansprechende Design mit konsistentem Farbschema und Pinguin-Maskottchen erzeugt positive emotionale Reaktion und motiviert zur weiteren Nutzung.</td>
+<td>Hoch</td>
+<td><a href="../09_architecture_decisions/#adr-1-verwendung-von-java-swing-statt-javafx">ADR-1</a></td>
+</tr>
+</tbody>
+</table>
+<h4 id="zuverlassigkeit-reliability-hochste-prioritat">Zuverlässigkeit (Reliability) - Höchste Priorität<a class="headerlink" href="#zuverlassigkeit-reliability-hochste-prioritat" title="Permanent link">¶</a></h4>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Szenario</th>
+<th>Auslöser</th>
+<th>Metrik/Reaktion</th>
+<th>Priorität</th>
+<th>Verweis auf Architekturentscheidung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R-1</td>
+<td><strong>Resilienz bei intensiver Nutzung</strong></td>
+<td>System wird über 8 Stunden kontinuierlich in einer Lehrveranstaltung genutzt</td>
+<td>Keine erkennbaren Leistungseinbussen oder Speicherlecks.</td>
+<td>Hoch</td>
+<td><a href="../09_architecture_decisions/#adr-7-zentrale-ressourcenverwaltung-via-singleton-services">ADR-7</a></td>
+</tr>
+<tr>
+<td>R-2</td>
+<td><strong>Umgang mit Barcode-Scanner-Ausfällen</strong></td>
+<td>Der Barcode-Scanner reagiert nicht</td>
+<td>System erkennt den Ausfall innerhalb von 2 Sekunden und zeigt eine benutzerfreundliche Fehlermeldung mit Handlungsanweisung.</td>
+<td>Hoch</td>
+<td><a href="../09_architecture_decisions/#adr-6-dual-display-management-für-smart-fridge-erlebnis">ADR-6</a></td>
+</tr>
+<tr>
+<td>R-3</td>
+<td><strong>Datenerhalt bei Stromausfall</strong></td>
+<td>Unerwarteter Stromausfall während des Betriebs</td>
+<td>Nach Wiederherstellung der Stromversorgung startet das System automatisch und alle vorher gespeicherten Daten sind intakt.</td>
+<td>Hoch</td>
+<td><a href="../09_architecture_decisions/#adr-5-verwendung-von-sqlite-als-eingebettete-datenbank">ADR-5</a></td>
+</tr>
+<tr>
+<td>R-4</td>
+<td><strong>Fehlertoleranz bei falschen Eingaben</strong></td>
+<td>Kind scannt einen nicht unterstützten Barcode</td>
+<td>System zeigt freundliche Meldung "Dieses Produkt kenne ich noch nicht" und bietet Option zur manuellen Eingabe.</td>
+<td>Mittel</td>
+<td><a href="../09_architecture_decisions/#adr-3-einsatz-des-repository-patterns-für-datenzugriff">ADR-3</a></td>
+</tr>
+</tbody>
+</table>
+<h4 id="wartbarkeit-maintainability-hochste-prioritat">Wartbarkeit (Maintainability) - Höchste Priorität<a class="headerlink" href="#wartbarkeit-maintainability-hochste-prioritat" title="Permanent link">¶</a></h4>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Szenario</th>
+<th>Auslöser</th>
+<th>Metrik/Reaktion</th>
+<th>Priorität</th>
+<th>Verweis auf Architekturentscheidung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M-1</td>
+<td><strong>Erweiterbarkeit der Produktdatenbank</strong></td>
+<td>Neue Produkte sollen hinzugefügt werden</td>
+<td>Ein Entwickler kann die Produktdatenbank um 50 neue Einträge in weniger als 30 Minuten erweitern.</td>
+<td>Hoch</td>
+<td><a href="../09_architecture_decisions/#adr-3-einsatz-des-repository-patterns-für-datenzugriff">ADR-3</a></td>
+</tr>
+<tr>
+<td>M-2</td>
+<td><strong>Einfacher Austausch von UI-Komponenten</strong></td>
+<td>Anforderung zur Änderung des Spielmodus-Bildschirms</td>
+<td>Ein Entwickler kann die betreffende View-Komponente isoliert ändern, ohne andere Systemteile zu beeinflussen.</td>
+<td>Hoch</td>
+<td><a href="../09_architecture_decisions/#adr-2-implementierung-des-mvc-architekturmusters">ADR-2</a></td>
+</tr>
+<tr>
+<td>M-3</td>
+<td><strong>Hinzufügen einer neuen Sprache</strong></td>
+<td>Französische Sprachunterstützung soll ergänzt werden</td>
+<td>Integration aller französischen Texte durch Hinzufügen einer Properties-Datei ohne Codeänderungen in weniger als 2 Stunden.</td>
+<td>Hoch</td>
+<td><a href="../09_architecture_decisions/#adr-4-mehrsprachigkeitskonzept-über-zentrale-lokalisierungsservices">ADR-4</a></td>
+</tr>
+<tr>
+<td>M-4</td>
+<td><strong>Fehlerdiagnose bei Problemen</strong></td>
+<td>Ein Fehler im Mehrspieler-Modus wird gemeldet</td>
+<td>Entwickler kann den Fehler durch Logs innerhalb von 30 Minuten lokalisieren.</td>
+<td>Hoch</td>
+<td><a href="../09_architecture_decisions/#adr-7-zentrale-ressourcenverwaltung-via-singleton-services">ADR-7</a></td>
+</tr>
+<tr>
+<td>M-5</td>
+<td><strong>Testbarkeit von Komponenten</strong></td>
+<td>Neue Funktion wird entwickelt</td>
+<td>Entwickler kann isolierte Unit-Tests für neue Komponenten schreiben, ohne komplexe Mocking-Strukturen aufbauen zu müssen.</td>
+<td>Hoch</td>
+<td><a href="../09_architecture_decisions/#adr-2-implementierung-des-mvc-architekturmusters">ADR-2</a></td>
+</tr>
+</tbody>
+</table>
+<h4 id="performance-effizienz-mittlere-prioritat">Performance (Effizienz) - Mittlere Priorität<a class="headerlink" href="#performance-effizienz-mittlere-prioritat" title="Permanent link">¶</a></h4>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Szenario</th>
+<th>Auslöser</th>
+<th>Metrik/Reaktion</th>
+<th>Priorität</th>
+<th>Verweis auf Architekturentscheidung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P-1</td>
+<td><strong>Schnelle Startzeit</strong></td>
+<td>System wird eingeschaltet</td>
+<td>Die Anwendung ist in weniger als 15 Sekunden nach dem Hochfahren des Raspberry Pi vollständig betriebsbereit.</td>
+<td>Mittel</td>
+<td><a href="../09_architecture_decisions/#adr-8-einsatz-von-spring-boot-als-anwendungsframework">ADR-8</a></td>
+</tr>
+<tr>
+<td>P-2</td>
+<td><strong>Reaktionsgeschwindigkeit bei Interaktionen</strong></td>
+<td>Benutzer drückt einen Button</td>
+<td>Die Reaktion erfolgt in weniger als 100ms, sodass keine wahrnehmbare Verzögerung auftritt.</td>
+<td>Hoch</td>
+<td><a href="../09_architecture_decisions/#adr-1-verwendung-von-java-swing-statt-javafx">ADR-1</a></td>
+</tr>
+<tr>
+<td>P-3</td>
+<td><strong>Effizienter Speicherverbrauch</strong></td>
+<td>System läuft durchgehend über mehrere Tage</td>
+<td>Speichernutzung bleibt unter 80% der verfügbaren Ressourcen des Raspberry Pi 5.</td>
+<td>Mittel</td>
+<td><a href="../09_architecture_decisions/#adr-7-zentrale-ressourcenverwaltung-via-singleton-services">ADR-7</a></td>
+</tr>
+<tr>
+<td>P-4</td>
+<td><strong>Schnelles Datenbankzugriffe</strong></td>
+<td>Abfrage des Kühlschrankinhalts</td>
+<td>Abfrage und Darstellung von bis zu 50 Produkten im Kühlschrank erfolgt in weniger als 1 Sekunde.</td>
+<td>Mittel</td>
+<td><a href="../09_architecture_decisions/#adr-5-verwendung-von-sqlite-als-eingebettete-datenbank">ADR-5</a></td>
+</tr>
+</tbody>
+</table>
+<h4 id="funktionale-eignung-mittlere-prioritat">Funktionale Eignung - Mittlere Priorität<a class="headerlink" href="#funktionale-eignung-mittlere-prioritat" title="Permanent link">¶</a></h4>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Szenario</th>
+<th>Auslöser</th>
+<th>Metrik/Reaktion</th>
+<th>Priorität</th>
+<th>Verweis auf Architekturentscheidung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F-1</td>
+<td><strong>Korrekte Produkterkennung</strong></td>
+<td>Barcode eines bekannten Produkts wird gescannt</td>
+<td>System identifiziert das Produkt korrekt in &gt;98% der Fälle.</td>
+<td>Hoch</td>
+<td><a href="../09_architecture_decisions/#adr-3-einsatz-des-repository-patterns-für-datenzugriff">ADR-3</a></td>
+</tr>
+<tr>
+<td>F-2</td>
+<td><strong>Passende Rezeptvorschläge</strong></td>
+<td>Neue Produkte werden zum Kühlschrank hinzugefügt</td>
+<td>System schlägt relevante Rezepte vor, die die vorhandenen Zutaten verwenden.</td>
+<td>Mittel</td>
+<td><a href="../09_architecture_decisions/#adr-3-einsatz-des-repository-patterns-für-datenzugriff">ADR-3</a></td>
+</tr>
+<tr>
+<td>F-3</td>
+<td><strong>Korrekte Haltbarkeitsprüfung</strong></td>
+<td>Ein Produkt nähert sich seinem Ablaufdatum</td>
+<td>System zeigt korrekte Warnungen an, wenn Produkte innerhalb der nächsten 3 Tage ablaufen.</td>
+<td>Mittel</td>
+<td><a href="../09_architecture_decisions/#adr-3-einsatz-des-repository-patterns-für-datenzugriff">ADR-3</a></td>
+</tr>
+</tbody>
+</table>
+<h4 id="ubertragbarkeit-portability-mittlere-bis-niedrige-prioritat">Übertragbarkeit (Portability) - Mittlere bis Niedrige Priorität<a class="headerlink" href="#ubertragbarkeit-portability-mittlere-bis-niedrige-prioritat" title="Permanent link">¶</a></h4>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Szenario</th>
+<th>Auslöser</th>
+<th>Metrik/Reaktion</th>
+<th>Priorität</th>
+<th>Verweis auf Architekturentscheidung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T-1</td>
+<td><strong>Einfache Installation</strong></td>
+<td>Neues Fridgely-System wird aufgebaut</td>
+<td>Die Software kann durch ein einfaches Installationsskript in weniger als 10 Minuten installiert werden.</td>
+<td>Mittel</td>
+<td><a href="../09_architecture_decisions/#adr-8-einsatz-von-spring-boot-als-anwendungsframework">ADR-8</a></td>
+</tr>
+<tr>
+<td>T-2</td>
+<td><strong>Systemupgrade</strong></td>
+<td>Neue Version des Betriebssystems wird installiert</td>
+<td>Das System funktioniert weiterhin ohne Anpassung am Code.</td>
+<td>Niedrig</td>
+<td><a href="../09_architecture_decisions/#adr-5-verwendung-von-sqlite-als-eingebettete-datenbank">ADR-5</a></td>
+</tr>
+<tr>
+<td>T-3</td>
+<td><strong>Hardwarekompatibilität</strong></td>
+<td>Austausch des Barcode-Scanners gegen ein neueres Modell</td>
+<td>Das System erkennt das neue Gerät automatisch und funktioniert ohne Codeänderungen.</td>
+<td>Niedrig</td>
+<td><a href="../09_architecture_decisions/#adr-6-dual-display-management-für-smart-fridge-erlebnis">ADR-6</a></td>
+</tr>
+</tbody>
+</table>
+<h4 id="sicherheit-security-niedrige-prioritat">Sicherheit (Security) - Niedrige Priorität<a class="headerlink" href="#sicherheit-security-niedrige-prioritat" title="Permanent link">¶</a></h4>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Szenario</th>
+<th>Auslöser</th>
+<th>Metrik/Reaktion</th>
+<th>Priorität</th>
+<th>Verweis auf Architekturentscheidung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S-1</td>
+<td><strong>Datenschutz</strong></td>
+<td>Persönliche Daten werden im System verarbeitet</td>
+<td>Keine dauerhafte Speicherung personenbezogener Daten; lokale Begrenzung der Datenerfassung auf das Gerät.</td>
+<td>Niedrig</td>
+<td><a href="../09_architecture_decisions/#adr-5-verwendung-von-sqlite-als-eingebettete-datenbank">ADR-5</a></td>
+</tr>
+<tr>
+<td>S-2</td>
+<td><strong>SSH-Zugriffssicherheit</strong></td>
+<td>Fernwartung über SSH</td>
+<td>Zugriff nur mit sicheren Schlüsseln möglich, keine Passwortauthentifizierung erlaubt.</td>
+<td>Niedrig</td>
+<td>Systemkonfiguration</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h3 id="konkrete-nutzungsszenarien">Konkrete Nutzungsszenarien<a class="headerlink" href="#konkrete-nutzungsszenarien" title="Permanent link">¶</a></h3>
+<p>Diese detaillierten Szenarien beschreiben typische Nutzungsfälle und zeigen, wie die verschiedenen Qualitätsaspekte bei der Anwendung zusammenwirken.</p>
+<h4 id="nutzungsszenario-1-erstmalige-benutzung-durch-ein-kind">Nutzungsszenario 1: Erstmalige Benutzung durch ein Kind<a class="headerlink" href="#nutzungsszenario-1-erstmalige-benutzung-durch-ein-kind" title="Permanent link">¶</a></h4>
+<p><strong>Kontext:</strong><br/>
+Ein 8-jähriges Kind (Erstnutzer) steht vor dem Fridgely-System.</p>
+<p><strong>Auslöser:</strong><br/>
+Das Kind schaltet das System ein und sieht den Begrüssungsbildschirm.</p>
+<p><strong>Qualitätsanforderungen:</strong><br/>
+- Benutzbarkeit (U-1, U-3, U-5)
+- Performance (P-1, P-2)</p>
+<p><strong>Szenarioablauf:</strong>
+1. Das System startet in unter 15 Sekunden.
+2. Das Pinguin-Maskottchen begrüsst das Kind mit einer kurzen Animation und einem Text in kindgerechter Sprache.
+3. Das Kind tippt intuitiv auf "Starten" und wählt den Einzelspieler-Modus.
+4. Das System reagiert sofort auf jede Interaktion (unter 100ms).
+5. Eine kurze, verständliche Einführung erklärt dem Kind, wie es den Barcode-Scanner benutzen kann.
+6. Das Kind scannt erfolgreich ein erstes Produkt und erhält positives Feedback vom System.
+7. Die gesamte Interaktion vom Einschalten bis zum ersten erfolgreichen Scan dauert weniger als 5 Minuten.</p>
+<h4 id="nutzungsszenario-2-fehlerfall-beim-spielen">Nutzungsszenario 2: Fehlerfall beim Spielen<a class="headerlink" href="#nutzungsszenario-2-fehlerfall-beim-spielen" title="Permanent link">¶</a></h4>
+<p><strong>Kontext:</strong><br/>
+Zwei Kinder spielen den Mehrspieler-Modus auf dem Fridgely-System.</p>
+<p><strong>Auslöser:</strong><br/>
+Der Barcode-Scanner von Spieler 2 funktioniert während des Spiels nicht mehr.</p>
+<p><strong>Qualitätsanforderungen:</strong>
+- Zuverlässigkeit (R-2, R-4)
+- Benutzbarkeit (U-4)</p>
+<p><strong>Szenarioablauf:</strong>
+1. Das System erkennt den Ausfall des Scanners innerhalb von 2 Sekunden.
+2. Das Pinguin-Maskottchen erscheint und erklärt kindgerecht: "Oh nein, der Scanner macht gerade eine Pause!"
+3. Das System bietet automatisch eine Alternative: "Ihr könnt die Produkte auch über die Tasten eingeben."
+4. Die Kinder können das Spiel ohne technisches Verständnis fortsetzen.
+5. Im Hintergrund protokolliert das System den Fehler für die spätere Diagnose durch Wartungspersonal.</p>
+<h4 id="nutzungsszenario-3-wartung-und-update">Nutzungsszenario 3: Wartung und Update<a class="headerlink" href="#nutzungsszenario-3-wartung-und-update" title="Permanent link">¶</a></h4>
+<p><strong>Kontext:</strong><br/>
+Ein Entwickler muss neue Produkte hinzufügen und eine neue Sprache integrieren.</p>
+<p><strong>Auslöser:</strong><br/>
+Schulungseinsatz in einer französischsprachigen Region mit neuen lokalen Produkten.</p>
+<p><strong>Qualitätsanforderungen:</strong>
+- Wartbarkeit (M-1, M-3)
+- Übertragbarkeit (T-1)</p>
+<p><strong>Szenarioablauf:</strong>
+1. Der Entwickler verbindet sich per SSH mit dem Fridgely-System.
+2. Neue Produktdaten werden über SQL-Skripte der SQLite-Datenbank hinzugefügt (30 Minuten).
+3. Französische Übersetzungen werden als neue Properties-Datei im Lokalisierungsverzeichnis abgelegt (90 Minuten).
+4. Nach einem Neustart der Anwendung sind alle neuen Produkte verfügbar.
+5. Die französische Sprache erscheint als neue Option im Sprachauswahlmenü.
+6. Alle UI-Elemente werden korrekt in Französisch angezeigt, wenn diese Sprache gewählt wird.</p>
+<hr/>
+<h3 id="priorisierung-und-qualitatskonflikte">Priorisierung und Qualitätskonflikte<a class="headerlink" href="#priorisierung-und-qualitatskonflikte" title="Permanent link">¶</a></h3>
+<p>Bei einigen Qualitätsanforderungen können Zielkonflikte auftreten, die abgewogen werden müssen:</p>
+<table>
+<thead>
+<tr>
+<th>Konflikt</th>
+<th>Bevorzugte Qualität</th>
+<th>Begründung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Performance vs. Wartbarkeit</td>
+<td>Wartbarkeit</td>
+<td>Für ein Bildungssystem ist langfristige Anpassbarkeit und Erweiterbarkeit wichtiger als maximale Performance. Die gewählte Hardware ist ausreichend leistungsstark.</td>
+</tr>
+<tr>
+<td>Funktionsumfang vs. Benutzbarkeit</td>
+<td>Benutzbarkeit</td>
+<td>Für die junge Zielgruppe ist eine intuitive, klare Bedienung wichtiger als ein grosser Funktionsumfang.</td>
+</tr>
+<tr>
+<td>Robustheit vs. Ressourcenverbrauch</td>
+<td>Robustheit</td>
+<td>Die Stabilität des Systems, besonders bei intensiver Nutzung durch Kinder, hat Vorrang gegenüber optimalem Ressourcenverbrauch.</td>
+</tr>
+</tbody>
+</table>
+<p>Die hier dokumentierten Qualitätsanforderungen bilden die Grundlage für kontinuierliche Evaluation und Verbesserung des Fridgely-Systems und stellen sicher, dass sowohl die technischen als auch die pädagogischen Ziele erreicht werden.</p>
+<hr/>
+<h3 id="validierung-und-messung-der-qualitatsanforderungen">Validierung und Messung der Qualitätsanforderungen<a class="headerlink" href="#validierung-und-messung-der-qualitatsanforderungen" title="Permanent link">¶</a></h3>
+<p>Um sicherzustellen, dass die Qualitätsanforderungen nicht nur dokumentiert, sondern auch erfüllt werden, implementiert das Fridgely-System verschiedene Validierungs- und Messmechanismen:</p>
+<h4 id="performance-messung">Performance-Messung<a class="headerlink" href="#performance-messung" title="Permanent link">¶</a></h4>
+<p>Für Performance-Anforderungen wie P-1 (Startzeit unter 15 Sekunden) und P-2 (Reaktionsgeschwindigkeit unter 100ms) implementiert das System:</p>
+<ul>
+<li><strong>Startzeit-Logging</strong>: Die <code>Fridgely.java</code> Hauptklasse misst die Zeit vom Anwendungsstart bis zur vollständigen Bereitschaft der UI</li>
+<li><strong>UI-Reaktionszeit-Monitoring</strong>: Ein Event-Handling-System, das die Zeit zwischen Benutzeraktion und System-Reaktion misst</li>
+<li><strong>Ressourcen-Monitoring</strong>: Regelmässige Erfassung von Speicher- und CPU-Nutzung während des Betriebs</li>
+</ul>
+<h4 id="fehlerprotokollierung">Fehlerprotokollierung<a class="headerlink" href="#fehlerprotokollierung" title="Permanent link">¶</a></h4>
+<p>Das im Code sichtbare Logging-System (durch Logger.getLogger in Fridgely.java) implementiert die Anforderung M-4 (Fehlerdiagnose) durch:</p>
+<ul>
+<li><strong>Strukturierte Logs</strong>: Verschiedene Log-Level (INFO, WARNING, SEVERE) für unterschiedliche Ereignistypen</li>
+<li><strong>Kontextbezogene Informationen</strong>: Jeder Log enthält Informationen zur Ereignisquelle</li>
+<li><strong>Persistente Speicherung</strong>: Logs werden so gespeichert, dass sie auch nach einem Neustart verfügbar sind</li>
+</ul>
+<p>Diese Implementierungen ermöglichen es, die im Qualitätsbaum und in den Qualitätsszenarien definierten Anforderungen objektiv zu messen und nachzuweisen.</p>
+<hr/>
+<aside class="md-source-file">
+<span class="md-source-file__fact">
+<span class="md-icon" title="Letztes Update">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
+</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="11. Juni 2025 08:40:14 UTC">11. Juni 2025</span>
+</span>
+<span class="md-source-file__fact">
+<span class="md-icon" title="Erstellt">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"></path></svg>
+</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="11. Juni 2025 08:40:14 UTC">11. Juni 2025</span>
+</span>
+<span class="md-source-file__fact">
+<span class="md-icon" title="Mitwirkende">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"></path></svg>
+</span>
+<nav>
+<a href="mailto:ben.woodtli@students.fhnw.ch">Ben Woodtli</a>
+</nav>
+</span>
+</aside>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "In Zwischenablage kopiert", "clipboard.copy": "In Zwischenablage kopieren", "search.result.more.one": "1 weiteres Suchergebnis auf dieser Seite", "search.result.more.other": "# weitere Suchergebnisse auf dieser Seite", "search.result.none": "Keine Suchergebnisse", "search.result.one": "1 Suchergebnis", "search.result.other": "# Suchergebnisse", "search.result.placeholder": "Suchbegriff eingeben", "search.result.term.missing": "Es fehlt", "select.version": "Version ausw\u00e4hlen"}, "version": null}</script>
+<script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+<script src="../../javascripts/extra.js"></script>
+<script src="../../javascripts/mermaid-config.js"></script>
+<script src="../../javascripts/ambient-background.js"></script>
+</body>
+</html>

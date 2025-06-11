@@ -1,0 +1,2927 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="de">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://fhnw-ip12-24vt.github.io/fridgely-docu/SAD/05_building_block_view/" rel="canonical"/>
+<link href="../04_solution_strategy/" rel="prev"/>
+<link href="../06_runtime_view/" rel="next"/>
+<link href="../../images/fridgely_doc_logo.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.6.14" name="generator"/>
+<title>Bausteinsicht - Fridgely Dokumentation</title>
+<link href="../../assets/stylesheets/main.342714a4.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../stylesheets/extra.css" rel="stylesheet"/>
+<link href="../../stylesheets/ambient-background.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="black" data-md-color-primary="black" data-md-color-scheme="slate" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#5-bausteinsicht">
+          Zum Inhalt
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="Kopfzeile" class="md-header__inner md-grid">
+<a aria-label="Fridgely Dokumentation" class="md-header__button md-logo" data-md-component="logo" href="https://docu-71ce93.pages.fhnw.ch/" title="Fridgely Dokumentation">
+<img alt="logo" src="../../images/fridgely_doc_logo.png"/>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Fridgely Dokumentation
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Bausteinsicht
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-hidden="true" class="md-option" data-md-color-accent="black" data-md-color-media="" data-md-color-primary="black" data-md-color-scheme="slate" id="__palette_0" name="__palette" type="radio"/>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Suche" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Suche" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Suche" class="md-search__options">
+<button aria-label="Zurücksetzen" class="md-search__icon md-icon" tabindex="-1" title="Zurücksetzen" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Suche wird initialisiert
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Fridgely Dokumentation" class="md-nav__button md-logo" data-md-component="logo" href="https://docu-71ce93.pages.fhnw.ch/" title="Fridgely Dokumentation">
+<img alt="logo" src="../../images/fridgely_doc_logo.png"/>
+</a>
+    Fridgely Dokumentation
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+<span class="md-ellipsis">
+    Home
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../System-idea/system-idee/">
+<span class="md-ellipsis">
+    Systemidee
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Erweiterungen
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            Erweiterungen
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+<span class="md-ellipsis">
+    Produkte
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_1_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_1">
+<span class="md-nav__icon md-icon"></span>
+            Produkte
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Other/3D-Products/">
+<span class="md-ellipsis">
+    Produkt Modelle
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Other/Adding3DProducts/">
+<span class="md-ellipsis">
+    Produkte Hinzufügen
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Rezepte
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_2">
+<span class="md-nav__icon md-icon"></span>
+            Rezepte
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Other/AddingRecipes/">
+<span class="md-ellipsis">
+    Rezepte Hinzufügen
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Sprachen
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_3">
+<span class="md-nav__icon md-icon"></span>
+            Sprachen
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Other/AddingLanguages/">
+<span class="md-ellipsis">
+    Sprachen Hinzufügen
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-ellipsis">
+    Software Architecture Documentation
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            Software Architecture Documentation
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../01_introduction_and_goals/">
+<span class="md-ellipsis">
+    Einführung und Ziele
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../02_architecture_constraints/">
+<span class="md-ellipsis">
+    Randbedingungen
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../03_system_scope_and_context/">
+<span class="md-ellipsis">
+    Kontextabgrenzung
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../04_solution_strategy/">
+<span class="md-ellipsis">
+    Lösungsstrategie
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    Bausteinsicht
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    Bausteinsicht
+    
+  </span>
+</a>
+<nav aria-label="Inhaltsverzeichnis" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Inhaltsverzeichnis
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#gesamtsystem">
+<span class="md-ellipsis">
+      Gesamtsystem
+    </span>
+</a>
+<nav aria-label="Gesamtsystem" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#prasentationsschicht-views">
+<span class="md-ellipsis">
+      Präsentationsschicht (Views)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#anwendungsschicht-controller">
+<span class="md-ellipsis">
+      Anwendungsschicht (Controller)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#domanenschicht-models">
+<span class="md-ellipsis">
+      Domänenschicht (Models)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#datenschicht-repositories">
+<span class="md-ellipsis">
+      Datenschicht (Repositories)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#querschnittskomponenten-utils">
+<span class="md-ellipsis">
+      Querschnittskomponenten (Utils)
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ebene-2">
+<span class="md-ellipsis">
+      Ebene 2
+    </span>
+</a>
+<nav aria-label="Ebene 2" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#detaillierte-struktur-der-controller-schicht">
+<span class="md-ellipsis">
+      Detaillierte Struktur der Controller-Schicht
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#hauptinteraktionsfluss-im-mehrspielermodus">
+<span class="md-ellipsis">
+      Hauptinteraktionsfluss im Mehrspielermodus
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#multiplayergamecontroller">
+<span class="md-ellipsis">
+      MultiplayerGameController
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fridgestockrepository">
+<span class="md-ellipsis">
+      FridgeStockRepository
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ebene-3">
+<span class="md-ellipsis">
+      Ebene 3
+    </span>
+</a>
+<nav aria-label="Ebene 3" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#applocalizationservice">
+<span class="md-ellipsis">
+      AppLocalizationService
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fridgestockmodel">
+<span class="md-ellipsis">
+      FridgeStockModel
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#recipemodel">
+<span class="md-ellipsis">
+      RecipeModel
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#multiplayergamestatemodel">
+<span class="md-ellipsis">
+      MultiplayerGameStateModel
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#baseview-basecontroller">
+<span class="md-ellipsis">
+      BaseView &amp; BaseController
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#querschnitts-komponenten">
+<span class="md-ellipsis">
+      Querschnitts-Komponenten
+    </span>
+</a>
+<nav aria-label="Querschnitts-Komponenten" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#imageloader">
+<span class="md-ellipsis">
+      ImageLoader
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#constants">
+<span class="md-ellipsis">
+      Constants
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#zusammenfassung-der-bausteinsicht">
+<span class="md-ellipsis">
+      Zusammenfassung der Bausteinsicht
+    </span>
+</a>
+<nav aria-label="Zusammenfassung der Bausteinsicht" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#multiplayergamecontroller_1">
+<span class="md-ellipsis">
+      MultiplayerGameController
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fridgestockrepository_1">
+<span class="md-ellipsis">
+      FridgeStockRepository
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#enthaltene-bausteine">
+<span class="md-ellipsis">
+      Enthaltene Bausteine:
+    </span>
+</a>
+<nav aria-label="Enthaltene Bausteine:" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#imageloader_1">
+<span class="md-ellipsis">
+      ImageLoader
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#enthaltene-bausteine_1">
+<span class="md-ellipsis">
+      Enthaltene Bausteine:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#zusammenfassung-und-bewertung">
+<span class="md-ellipsis">
+      Zusammenfassung und Bewertung
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../06_runtime_view/">
+<span class="md-ellipsis">
+    Laufzeitsicht
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../07_deployment_view/">
+<span class="md-ellipsis">
+    Verteilungssicht
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../08_concepts/">
+<span class="md-ellipsis">
+    Querschnittliche Konzepte
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../09_architecture_decisions/">
+<span class="md-ellipsis">
+    Architekturentscheidungen
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../10_quality_requirements/">
+<span class="md-ellipsis">
+    Qualitätsanforderungen
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../11_technical_risks/">
+<span class="md-ellipsis">
+    Risiken und technische Schulden
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../12_glossary/">
+<span class="md-ellipsis">
+    Glossar
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+<span class="md-ellipsis">
+    Hardware
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+            Hardware
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Hardware/Hardware/">
+<span class="md-ellipsis">
+    Dokumentation
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+<span class="md-ellipsis">
+    Testing
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+            Testing
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Testplan/">
+<span class="md-ellipsis">
+    Testplan
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Inhalt/">
+<span class="md-ellipsis">
+    Test Überblick
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Tests
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_3">
+<span class="md-nav__icon md-icon"></span>
+            Tests
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_3_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3_1" id="__nav_6_3_1_label" tabindex="0">
+<span class="md-ellipsis">
+    Abnahme-Test
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_1_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_3_1">
+<span class="md-nav__icon md-icon"></span>
+            Abnahme-Test
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Abnahmetest/">
+<span class="md-ellipsis">
+    Abnahme-Test
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_3_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3_2" id="__nav_6_3_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Funktions- und Integrationstests
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_2_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_3_2">
+<span class="md-nav__icon md-icon"></span>
+            Funktions- und Integrationstests
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_3_2_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3_2_1" id="__nav_6_3_2_1_label" tabindex="0">
+<span class="md-ellipsis">
+    Gameloop-Tests
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_2_1_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_6_3_2_1">
+<span class="md-nav__icon md-icon"></span>
+            Gameloop-Tests
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Funktion_Integrationtests/Gamelooptest01_08052025/">
+<span class="md-ellipsis">
+    Gameloop-Test 01
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_3_2_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3_2_2" id="__nav_6_3_2_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Rezept-Tests
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_2_2_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_6_3_2_2">
+<span class="md-nav__icon md-icon"></span>
+            Rezept-Tests
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Funktion_Integrationtests/Rezepttest01_02042025/">
+<span class="md-ellipsis">
+    Rezept-Test 01
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Funktion_Integrationtests/Rezepttest02_07052025/">
+<span class="md-ellipsis">
+    Rezept-Test 02
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_3_2_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3_2_3" id="__nav_6_3_2_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Scan-Tests
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_2_3_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_6_3_2_3">
+<span class="md-nav__icon md-icon"></span>
+            Scan-Tests
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Funktion_Integrationtests/Scantest_Mock01_05032025/">
+<span class="md-ellipsis">
+    Mock Scan-Test 01
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Funktion_Integrationtests/Scantest02_02042025/">
+<span class="md-ellipsis">
+    Scan-Test 02
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Funktion_Integrationtests/Scantest03_05052025/">
+<span class="md-ellipsis">
+    Scan-Test 03
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_3_2_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3_2_4" id="__nav_6_3_2_4_label" tabindex="0">
+<span class="md-ellipsis">
+    Sprach-Tests
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_2_4_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_6_3_2_4">
+<span class="md-nav__icon md-icon"></span>
+            Sprach-Tests
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Funktion_Integrationtests/Sprachtest01_26022025/">
+<span class="md-ellipsis">
+    Sprach-Test 01
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_3_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3_3" id="__nav_6_3_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Hardware-Tests
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_3_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_3_3">
+<span class="md-nav__icon md-icon"></span>
+            Hardware-Tests
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Hardwaretests/TestHardware01_26022025/">
+<span class="md-ellipsis">
+    Hardware-Test 01
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Hardwaretests/TestHardware02_05052025/">
+<span class="md-ellipsis">
+    Hardware-Test 02
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_3_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3_4" id="__nav_6_3_4_label" tabindex="0">
+<span class="md-ellipsis">
+    Langzeit-Tests
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_4_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_3_4">
+<span class="md-nav__icon md-icon"></span>
+            Langzeit-Tests
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Langzeittests/Langzeittest01_06052025/">
+<span class="md-ellipsis">
+    Langzeit-Test 01
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Langzeittests/Langzeittest02_14052025/">
+<span class="md-ellipsis">
+    Langzeit-Test 02
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_3_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3_5" id="__nav_6_3_5_label" tabindex="0">
+<span class="md-ellipsis">
+    Smoke-Tests
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_5_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_3_5">
+<span class="md-nav__icon md-icon"></span>
+            Smoke-Tests
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Smoketests/Smoketest_Mock01_26022025/">
+<span class="md-ellipsis">
+    Mock Smoke-Test 01
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Smoketests/Smoketest_Mock02_05032025/">
+<span class="md-ellipsis">
+    Mock Smoke-Test 02
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Smoketests/Smoketest_Mock03_12032025/">
+<span class="md-ellipsis">
+    Mock Smoke-Test 03
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Smoketests/Smoketest_Mock04_19032025/">
+<span class="md-ellipsis">
+    Mock Smoke-Test 04
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Smoketests/Smoketest_Mock05_26032025/">
+<span class="md-ellipsis">
+    Mock Smoke-Test 05
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Smoketests/Smoketest_Mock06_02042025/">
+<span class="md-ellipsis">
+    Mock Smoke-Test 06
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Smoketests/Smoketest_Mock07_09042025/">
+<span class="md-ellipsis">
+    Mock Smoke-Test 07
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Smoketests/Smoketest_Mock08_16042025/">
+<span class="md-ellipsis">
+    Mock Smoke-Test 08
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Smoketests/Smoketest09_06052025/">
+<span class="md-ellipsis">
+    Smoke-Test 09
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Smoketests/Smoketest10_14052025/">
+<span class="md-ellipsis">
+    Smoke-Test 10
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+<span class="md-ellipsis">
+    Testfälle
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_4_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_4">
+<span class="md-nav__icon md-icon"></span>
+            Testfälle
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_4_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_4_1" id="__nav_6_4_1_label" tabindex="0">
+<span class="md-ellipsis">
+    Hardware Setup
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_4_1_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_4_1">
+<span class="md-nav__icon md-icon"></span>
+            Hardware Setup
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_0_1_BootRaspberryPI/">
+<span class="md-ellipsis">
+    Boot Raspberry PI
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_0_2_BildsignalGrosserMonitor/">
+<span class="md-ellipsis">
+    Bildsignal Grosser Monitor
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_0_3_BildsignalTouchscreen/">
+<span class="md-ellipsis">
+    Bildsignal Touchscreen
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_0_4_ScannerAufstarten/">
+<span class="md-ellipsis">
+    Scanner Aufstarten
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_0_5_TouchfunktionTouchscreen/">
+<span class="md-ellipsis">
+    Touchfunktion Touchscreen
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_4_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_4_2" id="__nav_6_4_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Grundlegende Funktionen
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_4_2_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_4_2">
+<span class="md-nav__icon md-icon"></span>
+            Grundlegende Funktionen
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_1_1_FridgelyEinschalten/">
+<span class="md-ellipsis">
+    Einschalten
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_1_2_FridgelyAusschalten/">
+<span class="md-ellipsis">
+    Ausschalten
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_4_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_4_3" id="__nav_6_4_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Produktscanning
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_4_3_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_4_3">
+<span class="md-nav__icon md-icon"></span>
+            Produktscanning
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_2_1_ProduktScannen/">
+<span class="md-ellipsis">
+    Produkt scannen
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_2_2_UnbekanntesProduktScan/">
+<span class="md-ellipsis">
+    Unbekanntes Produkt scannen
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_2_3_BestandAnzeigen/">
+<span class="md-ellipsis">
+    Bestand anzeigen
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_2_4_DoppelterScan/">
+<span class="md-ellipsis">
+    Doppelter Scan
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_2_5_Ablaufwarnung/">
+<span class="md-ellipsis">
+    Ablaufwarnung
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_4_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_4_4" id="__nav_6_4_4_label" tabindex="0">
+<span class="md-ellipsis">
+    UI-Funktionen
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_4_4_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_4_4">
+<span class="md-nav__icon md-icon"></span>
+            UI-Funktionen
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_3_1_SpracheUmschalten/">
+<span class="md-ellipsis">
+    Sprache umschalten
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_4_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_4_5" id="__nav_6_4_5_label" tabindex="0">
+<span class="md-ellipsis">
+    Rezeptfunktionen
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_4_5_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_4_5">
+<span class="md-nav__icon md-icon"></span>
+            Rezeptfunktionen
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_4_1_Rezeptvorschl%C3%A4geAnzeigen/">
+<span class="md-ellipsis">
+    Rezeptvorschläge anzeigen
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_4_2_RezeptvorschlagNichtGefunden/">
+<span class="md-ellipsis">
+    Kein Rezeptvorschlag gefunden
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_4_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_4_6" id="__nav_6_4_6_label" tabindex="0">
+<span class="md-ellipsis">
+    Analyse
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_4_6_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_4_6">
+<span class="md-nav__icon md-icon"></span>
+            Analyse
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_7_1_EinkaufsEnergieAnalyse/">
+<span class="md-ellipsis">
+    Einkaufs- und Energieanalyse
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_4_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_4_7" id="__nav_6_4_7_label" tabindex="0">
+<span class="md-ellipsis">
+    Spielmodus
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_4_7_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_4_7">
+<span class="md-nav__icon md-icon"></span>
+            Spielmodus
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_8_1_EinkaufsphaseStarten/">
+<span class="md-ellipsis">
+    Einkaufsphase starten
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_8_2_EinkaufsphaseBeenden/">
+<span class="md-ellipsis">
+    Einkaufsphase beenden
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_8_3_Kochphasebeenden/">
+<span class="md-ellipsis">
+    Kochphase beenden
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_8_4_NachhaltigkeitsbewertungFeedback.adoc/">
+<span class="md-ellipsis">
+    Nachhaltigkeitsbewertung
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_8_5_PunktesystemBerechnung/">
+<span class="md-ellipsis">
+    Punktesystem Berechnung
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_8_6_Spielzyklen/">
+<span class="md-ellipsis">
+    Spielzyklen
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Inhaltsverzeichnis" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Inhaltsverzeichnis
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#gesamtsystem">
+<span class="md-ellipsis">
+      Gesamtsystem
+    </span>
+</a>
+<nav aria-label="Gesamtsystem" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#prasentationsschicht-views">
+<span class="md-ellipsis">
+      Präsentationsschicht (Views)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#anwendungsschicht-controller">
+<span class="md-ellipsis">
+      Anwendungsschicht (Controller)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#domanenschicht-models">
+<span class="md-ellipsis">
+      Domänenschicht (Models)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#datenschicht-repositories">
+<span class="md-ellipsis">
+      Datenschicht (Repositories)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#querschnittskomponenten-utils">
+<span class="md-ellipsis">
+      Querschnittskomponenten (Utils)
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ebene-2">
+<span class="md-ellipsis">
+      Ebene 2
+    </span>
+</a>
+<nav aria-label="Ebene 2" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#detaillierte-struktur-der-controller-schicht">
+<span class="md-ellipsis">
+      Detaillierte Struktur der Controller-Schicht
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#hauptinteraktionsfluss-im-mehrspielermodus">
+<span class="md-ellipsis">
+      Hauptinteraktionsfluss im Mehrspielermodus
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#multiplayergamecontroller">
+<span class="md-ellipsis">
+      MultiplayerGameController
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fridgestockrepository">
+<span class="md-ellipsis">
+      FridgeStockRepository
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ebene-3">
+<span class="md-ellipsis">
+      Ebene 3
+    </span>
+</a>
+<nav aria-label="Ebene 3" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#applocalizationservice">
+<span class="md-ellipsis">
+      AppLocalizationService
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fridgestockmodel">
+<span class="md-ellipsis">
+      FridgeStockModel
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#recipemodel">
+<span class="md-ellipsis">
+      RecipeModel
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#multiplayergamestatemodel">
+<span class="md-ellipsis">
+      MultiplayerGameStateModel
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#baseview-basecontroller">
+<span class="md-ellipsis">
+      BaseView &amp; BaseController
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#querschnitts-komponenten">
+<span class="md-ellipsis">
+      Querschnitts-Komponenten
+    </span>
+</a>
+<nav aria-label="Querschnitts-Komponenten" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#imageloader">
+<span class="md-ellipsis">
+      ImageLoader
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#constants">
+<span class="md-ellipsis">
+      Constants
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#zusammenfassung-der-bausteinsicht">
+<span class="md-ellipsis">
+      Zusammenfassung der Bausteinsicht
+    </span>
+</a>
+<nav aria-label="Zusammenfassung der Bausteinsicht" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#multiplayergamecontroller_1">
+<span class="md-ellipsis">
+      MultiplayerGameController
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fridgestockrepository_1">
+<span class="md-ellipsis">
+      FridgeStockRepository
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#enthaltene-bausteine">
+<span class="md-ellipsis">
+      Enthaltene Bausteine:
+    </span>
+</a>
+<nav aria-label="Enthaltene Bausteine:" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#imageloader_1">
+<span class="md-ellipsis">
+      ImageLoader
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#enthaltene-bausteine_1">
+<span class="md-ellipsis">
+      Enthaltene Bausteine:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#zusammenfassung-und-bewertung">
+<span class="md-ellipsis">
+      Zusammenfassung und Bewertung
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="5-bausteinsicht">5. Bausteinsicht<a class="headerlink" href="#5-bausteinsicht" title="Permanent link">¶</a></h1>
+<p>Die Bausteinsicht zeigt die statische Zerlegung des Systems in Bausteine (Module, Komponenten, Subsysteme, Klassen, Schnittstellen, Pakete, Bibliotheken, Frameworks, Schichten, Partitionen, Tiers, Funktionen, Makros, Operationen, Datenstrukturen, ...) sowie deren Abhängigkeiten (Beziehungen, Assoziationen, ...).</p>
+<h2 id="gesamtsystem">Gesamtsystem<a class="headerlink" href="#gesamtsystem" title="Permanent link">¶</a></h2>
+<p><strong>Übersicht der Architektur (Whiteboard-Style)</strong></p>
+<pre class="mermaid"><code>graph TD
+    %% Layers and Components
+    subgraph Präsentationsschicht["Präsentationsschicht (Views)"]
+        V["Views"] -.-&gt; |implementiert| PCL["PropertyChangeListener"]
+        V -.-&gt; |implementiert| LO["LocalizationObserver"]
+        V -.-&gt; |nutzt| UIC["UI-Komponenten"]
+    end
+
+    subgraph Anwendungsschicht["Anwendungsschicht (Controller)"]
+        C["Controller"] -.-&gt; |implementiert| BC["BaseController"]
+        C -- "aktualisiert" --&gt; V
+        C -- "verarbeitet Eingaben von" --&gt; V
+    end
+
+    subgraph Domänenschicht["Domänenschicht (Models)"]
+        M["Models"] -.-&gt; |nutzt| PCS["PropertyChangeSupport"]
+        M -- "stellt Daten bereit" --&gt; C
+    end
+
+    subgraph Datenschicht["Datenschicht (Repositories)"]
+        R["Repositories"] 
+        DB[(SQLite DB)]
+        R &lt;--&gt; DB
+        M &lt;--&gt; R
+    end
+
+    subgraph Querschnittskomponenten["Querschnittskomponenten"]
+        I["ImageLoader"] -- "stellt Ressourcen bereit" --&gt; V
+        L["AppLocalizationService"] -- "übersetzt UI" --&gt; V
+        CFG["Configuration"] -- "konfiguriert" --&gt; C
+    end
+
+    %% Styling
+    classDef layerStyle fill:#1a202c,stroke:#4a5568,stroke-width:2px;
+    classDef componentStyle fill:#2b3d4f,stroke:#83a598,stroke-width:1px;
+    classDef interfaceStyle fill:#3c3836,stroke:#fabd2f,stroke-width:1px;
+    classDef dbStyle fill:#2d3b2d,stroke:#8ec07c,stroke-width:1px;
+
+    class Präsentationsschicht,Anwendungsschicht,Domänenschicht,Datenschicht,Querschnittskomponenten layerStyle;
+    class V,C,M,R,I,L,CFG,UIC componentStyle;
+    class PCL,LO,BC,PCS interfaceStyle;
+    class DB dbStyle;</code></pre>
+<p><strong>Übersichtsdiagramm des Fridgely-Systems</strong></p>
+<p><img alt="Übersicht Fridgely-System" src="../../images/FridgelyAppV3_uml.png"/></p>
+<pre class="mermaid"><code>graph TD
+    %% Layers
+    subgraph Präsentationsschicht 
+        Views["Views&lt;br&gt;UI-Komponenten"]
+        ScannedItemsView["ScannedItemsView&lt;br&gt;2nd Monitor"]
+    end
+
+    subgraph Anwendungsschicht
+        Controllers["Controllers&lt;br&gt;Steuerungslogik"]
+    end
+
+    subgraph Domänenschicht
+        Models["Models&lt;br&gt;Entities &amp; Geschäftslogik"]
+    end
+
+    subgraph Datenschicht
+        Repositories["Repositories&lt;br&gt;Datenzugriff"]
+        DB[(SQLite DB)]
+    end
+
+    subgraph Querschnittskomponenten
+        Utils["Utils&lt;br&gt;Gemeinsame Funktionen"]
+        Config["Config&lt;br&gt;Konfiguration"]
+        Localization["Localization&lt;br&gt;Mehrsprachigkeit"]
+    end
+
+    %% Connections
+    Views &lt;--&gt; Controllers
+    ScannedItemsView &lt;--&gt; Controllers
+    Controllers &lt;--&gt; Models
+    Models &lt;--&gt; Repositories
+    Repositories &lt;--&gt; DB
+
+    Utils --&gt; Views
+    Utils --&gt; Controllers
+    Utils --&gt; Models
+    Localization --&gt; Views
+    Config --&gt; Controllers
+
+    %% Styling
+    classDef viewStyle fill:#2d3748,stroke:#a0aec0,stroke-width:1px;
+    classDef controllerStyle fill:#1e3a59,stroke:#6fb1fc,stroke-width:1px;
+    classDef modelStyle fill:#252d3a,stroke:#9fa8da,stroke-width:1px;
+    classDef repoStyle fill:#2d3b2d,stroke:#8ec07c,stroke-width:1px;
+    classDef utilsStyle fill:#3c3836,stroke:#fabd2f,stroke-width:1px;
+    classDef configStyle fill:#3c3836,stroke:#fabd2f,stroke-width:1px;
+    classDef localizationStyle fill:#3c3836,stroke:#fabd2f,stroke-width:1px;
+    classDef dbStyle fill:#2d3b2d,stroke:#8ec07c,stroke-width:1px;
+    classDef layerStyle fill:#1a202c,stroke:#4a5568,stroke-width:2px;
+
+    class Präsentationsschicht,Anwendungsschicht,Domänenschicht,Datenschicht,Querschnittskomponenten layerStyle;
+    class Views,ScannedItemsView viewStyle;
+    class Controllers controllerStyle;
+    class Models modelStyle;
+    class Repositories repoStyle;
+    class Utils utilsStyle;
+    class Config configStyle;
+    class Localization localizationStyle;
+    class DB dbStyle;</code></pre>
+<p><strong>Begründung:</strong> Die hier dargestellte Zerlegung folgt dem klassischen MVC-Pattern (Model-View-Controller) mit einer klaren Trennung von Datenhaltung (Repositories), Geschäftslogik (Controller und Models) und Benutzeroberfläche (Views). Diese Struktur unterstützt die Hauptanforderungen an das System - insbesondere Wartbarkeit durch klare Kapselung, Robustheit durch klare Verantwortlichkeiten sowie Erweiterbarkeit durch die modulare Struktur.</p>
+<p><strong>Hauptkomponente:</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Name</strong></th>
+<th><strong>Verantwortung</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fridgely</td>
+<td>Die Hauptklasse der Anwendung, die den Spring-Anwendungskontext initialisiert, Bildschirme erkennt und die Anwendung startet. Verantwortlich für die Konfiguration der Umgebung und den Start des ausgewählten Spielmodus.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Enthaltene Bausteine:</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Name</strong></th>
+<th><strong>Verantwortung</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Präsentationsschicht (Views)</td>
+<td>Enthält alle UI-Komponenten zur Darstellung der Benutzeroberfläche und Interaktion mit dem Benutzer. Verantwortlich für die Anzeige von Kühlschrankinhalten, Spieloberflächen und Ergebnisansichten.</td>
+</tr>
+<tr>
+<td>Anwendungsschicht (Controller)</td>
+<td>Steuert den Programmablauf, vermittelt zwischen Views und Models und implementiert die Spiellogik sowie Barcode-Verarbeitung.</td>
+</tr>
+<tr>
+<td>Domänenschicht (Models)</td>
+<td>Enthält die Kernentitäten und Geschäftslogik des Systems wie Produkte, Rezepte und Spielsitzungen.</td>
+</tr>
+<tr>
+<td>Datenschicht (Repositories)</td>
+<td>Verantwortlich für den Datenzugriff und die Datenpersistenz mit SQLite-Datenbank.</td>
+</tr>
+<tr>
+<td>Querschnittskomponenten (Utils, Config, Localization)</td>
+<td>Stellt übergreifende Funktionalitäten bereit, darunter Lokalisierung, UI-Komponenten und Hilfsklassen.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Wichtige Schnittstellen:</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Schnittstelle</strong></th>
+<th><strong>Beschreibung</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BaseController</td>
+<td>Interface für alle Controller mit einheitlichen Lifecycle-Methoden</td>
+</tr>
+<tr>
+<td>PropertyChangeListener</td>
+<td>Java-Standard-Interface für den Observer-Pattern zur Benachrichtigung über Änderungen in Models</td>
+</tr>
+<tr>
+<td>LocalizationObserver</td>
+<td>Interface für UI-Komponenten zur Mehrsprachigkeitsunterstützung</td>
+</tr>
+<tr>
+<td>FridgeStockRepository</td>
+<td>Zentrale Schnittstelle zum Verwalten des Kühlschrankinhalts in der Datenbank</td>
+</tr>
+<tr>
+<td>AppLocalizationService</td>
+<td>Ermöglicht die mehrsprachige Darstellung der Benutzeroberfläche (EN, DE, FR)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="prasentationsschicht-views">Präsentationsschicht (Views)<a class="headerlink" href="#prasentationsschicht-views" title="Permanent link">¶</a></h3>
+<p><strong>Zweck/Verantwortung:</strong> Verantwortlich für die Darstellung der Benutzeroberfläche und Interaktion mit den Benutzern (hauptsächlich Kindern). Bietet eine intuitive, visuell ansprechende Oberfläche für die Spielmodi und Kühlschrankverwaltung.</p>
+<p><strong>Schnittstellen:</strong></p>
+<ul>
+<li>Stellt Oberflächenkomponenten für die Controller zur Verfügung</li>
+<li>Reagiert auf Benutzeraktionen wie Touch, Tastendrücke und Barcode-Scans</li>
+<li>Visualisiert Daten aus den Model-Klassen</li>
+<li>Implementiert PropertyChangeListener und LocalizationObserver</li>
+</ul>
+<p><strong>Qualitäts-/Leistungsmerkmale:</strong></p>
+<ul>
+<li>Unterstützt mehrsprachige Darstellung (Deutsch, Englisch, Französisch)</li>
+<li>Responsive Gestaltung für Touch-Bedienung optimiert</li>
+<li>Kindgerechtes, farbenfrohes Design mit klaren visuellen Rückmeldungen</li>
+</ul>
+<p><strong>Ablageort/Datei(en):</strong> </p>
+<div class="highlight"><pre><span></span><code>src/main/java/ch/primeo/fridgely/view/
+</code></pre></div>
+<p><strong>Hauptkomponenten:</strong></p>
+<ul>
+<li><code>BaseView</code>: Abstrakte Basisklasse für alle Views mit JFrame-Management</li>
+<li><code>ScannedItemsView</code>: Zeigt Kühlschrankinhalt auf zweitem Monitor an</li>
+<li><code>MultiplayerPlayer1View</code>: UI für Spieler 1 im Mehrspielermodus zum Scannen von Produkten</li>
+<li><code>MultiplayerPlayer2View</code>: UI für Spieler 2 im Mehrspielermodus zur Rezeptauswahl</li>
+<li><code>UnifiedRecipePanel</code>: Wiederverwendbare Komponente zur Anzeige von Rezepten</li>
+<li><code>LanguageSwitchButton</code>: UI-Komponente zum Umschalten zwischen den verfügbaren Sprachen</li>
+<li><code>DialogBox</code>: Hilfsfunktionen für die Anzeige von Benachrichtigungen und Dialogfenstern</li>
+</ul>
+<h3 id="anwendungsschicht-controller">Anwendungsschicht (Controller)<a class="headerlink" href="#anwendungsschicht-controller" title="Permanent link">¶</a></h3>
+<p><strong>Zweck/Verantwortung:</strong> Steuert den Programmablauf und die Spiellogik, koordiniert die Interaktion zwischen Views und Models und verwaltet den Zustand der Anwendung.</p>
+<p><strong>Schnittstellen:</strong></p>
+<ul>
+<li>Nimmt Benutzereingaben aus den Views entgegen</li>
+<li>Aktualisiert Datenmodelle und löst UI-Updates aus</li>
+<li>Steuert den Spielfluss im Einzel- und Mehrspielermodus</li>
+<li>Implementiert BaseController für einheitliche Lifecycle-Methoden</li>
+</ul>
+<p><strong>Qualitäts-/Leistungsmerkmale:</strong></p>
+<ul>
+<li>Klare Trennung von Darstellung und Geschäftslogik</li>
+<li>Robuste Fehlerbehandlung bei Benutzereingaben</li>
+<li>Unterstützung verschiedener Spielszenarien</li>
+<li>Dependency Injection über Spring-Komponenten</li>
+</ul>
+<p><strong>Ablageort/Datei(en):</strong> </p>
+<div class="highlight"><pre><span></span><code>src/main/java/ch/primeo/fridgely/controller/
+</code></pre></div>
+<p><strong>Hauptkomponenten:</strong></p>
+<ul>
+<li><code>ChooseGameModeController</code>: Steuert die Spielmodusauswahl</li>
+<li><code>MultiplayerGameController</code>: Hauptcontroller für den Mehrspielermodus</li>
+<li><code>MultiplayerPlayer1Controller</code>: Verwaltet das Scannen von Produkten durch Spieler 1</li>
+<li><code>MultiplayerPlayer2Controller</code>: Verwaltet die Rezeptauswahl durch Spieler 2</li>
+<li><code>MultiplayerGameLauncher</code>: Initialisiert und startet den Mehrspielermodus, verbindet Controller und Views</li>
+</ul>
+<h3 id="domanenschicht-models">Domänenschicht (Models)<a class="headerlink" href="#domanenschicht-models" title="Permanent link">¶</a></h3>
+<p><strong>Zweck/Verantwortung:</strong> Enthält die Kernentitäten und Geschäftslogik des Systems, repräsentiert die Datenstrukturen und Geschäftsregeln.</p>
+<p><strong>Schnittstellen:</strong></p>
+<ul>
+<li>Stellt Datenstrukturen für Controller und Views bereit</li>
+<li>Kapselt Geschäftslogik für Produkte, Rezepte und Spielsitzungen</li>
+<li>Bindet an Repositories zur Datenpersistenz</li>
+<li>Verwendet PropertyChangeSupport für Observer-Pattern</li>
+</ul>
+<p><strong>Qualitäts-/Leistungsmerkmale:</strong></p>
+<ul>
+<li>Klare Datenkapselung mit Getter/Setter-Methoden</li>
+<li>Validierung von Geschäftsregeln innerhalb der Modelle</li>
+<li>Unabhängigkeit von UI-Komponenten für bessere Testbarkeit</li>
+</ul>
+<p><strong>Ablageort/Datei(en):</strong> </p>
+<div class="highlight"><pre><span></span><code>src/main/java/ch/primeo/fridgely/model/
+</code></pre></div>
+<p><strong>Hauptkomponenten:</strong></p>
+<ul>
+<li><code>Product</code>: Repräsentiert ein Lebensmittelprodukt mit Eigenschaften wie Bio und Lokalität</li>
+<li><code>Recipe</code>: Stellt ein Rezept mit Zutaten und mehrsprachigen Beschreibungen dar</li>
+<li><code>FridgeStock</code>: Entity-Klasse zur Persistierung des Kühlschrankinhalts</li>
+<li><code>FridgeStockModel</code>: Modellklasse zur Verwaltung des Kühlschrankinhalts mit PropertyChangeSupport</li>
+<li><code>MultiplayerGameStateModel</code>: Verwaltet den Zustand einer Mehrspieler-Spielsitzung</li>
+<li><code>PenguinModel</code>: Verwaltet den Zustand des Pinguin-Charakters</li>
+</ul>
+<h3 id="datenschicht-repositories">Datenschicht (Repositories)<a class="headerlink" href="#datenschicht-repositories" title="Permanent link">¶</a></h3>
+<p><strong>Zweck/Verantwortung:</strong> Abstrahiert den Datenzugriff und die Datenpersistenz, stellt eine einheitliche Schnittstelle für den Zugriff auf die SQLite-Datenbank bereit.</p>
+<p><strong>Schnittstellen:</strong></p>
+<ul>
+<li>CRUD-Operationen für Entitäten wie Produkte, Kühlschrankinhalt und Rezepte</li>
+<li>SQL-Abfragen zur Datenmanipulation und -abfrage</li>
+<li>Fehlerbehandlung bei Datenbankoperationen</li>
+<li>Spring Data JPA und QueryDSL für typsicheren Datenzugriff</li>
+</ul>
+<p><strong>Qualitäts-/Leistungsmerkmale:</strong></p>
+<ul>
+<li>Kapselung aller SQL-Statements und Datenbankoperationen</li>
+<li>Effiziente Datenbankabfragen für reaktionsschnelle Anwendung</li>
+<li>Zentrale Fehlerbehandlung bei Datenbankzugriffen</li>
+<li>Transaktionsunterstützung</li>
+</ul>
+<p><strong>Ablageort/Datei(en):</strong> </p>
+<div class="highlight"><pre><span></span><code>src/main/java/ch/primeo/fridgely/service/
+</code></pre></div>
+<p><strong>Hauptkomponenten:</strong></p>
+<ul>
+<li><code>FridgeStockRepository</code>: Verwaltet den Kühlschrankinhalt (Hinzufügen, Entfernen, Abfragen)</li>
+<li><code>FridgeStockJpaRepository</code>: JPA-Interface für grundlegende CRUD-Operationen</li>
+<li><code>ProductRepository</code>: Stellt Produkte und deren Eigenschaften bereit</li>
+<li><code>RecipeRepository</code>: Verwaltet Rezepte und deren Zuordnung zu Zutaten</li>
+</ul>
+<h3 id="querschnittskomponenten-utils">Querschnittskomponenten (Utils)<a class="headerlink" href="#querschnittskomponenten-utils" title="Permanent link">¶</a></h3>
+<p><strong>Zweck/Verantwortung:</strong> </p>
+<p>Bietet übergreifende Funktionalitäten, die von verschiedenen Schichten des Systems verwendet werden.</p>
+<p><strong>Schnittstellen:</strong></p>
+<ul>
+<li>Hilfsfunktionen für UI-Komponenten</li>
+<li>Mehrsprachigkeitsunterstützung</li>
+<li>Bild- und Ressourcenverwaltung</li>
+<li>Ereignisbehandlung und Dialogfunktionen</li>
+</ul>
+<p><strong>Qualitäts-/Leistungsmerkmale:</strong></p>
+<ul>
+<li>Wiederverwendbarkeit in verschiedenen Anwendungsteilen</li>
+<li>Konsistentes Erscheinungsbild durch gemeinsame Komponenten</li>
+<li>Zentrale Konfigurierbarkeit von Anwendungsparametern</li>
+<li>Singleton-Pattern für zentrale Services</li>
+</ul>
+<p><strong>Ablageort/Datei(en):</strong></p>
+<p><div class="highlight"><pre><span></span><code>src/main/java/ch/primeo/fridgely/util/
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>src/main/java/ch/primeo/fridgely/config/
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>src/main/java/ch/primeo/fridgely/service/localization/
+</code></pre></div></p>
+<p><strong>Hauptkomponenten:</strong></p>
+<ul>
+<li><code>ImageLoader</code>: Lädt und verwaltet Bild-Ressourcen (Singleton)</li>
+<li><code>AppLocalizationService</code>: Verwaltet die mehrsprachige Unterstützung der Anwendung (Singleton)</li>
+<li><code>Constants</code>: Enthält anwendungsweite Konstanten</li>
+<li><code>GameConfig</code>: Konfigurationseinstellungen für das Spiel</li>
+<li><code>LocalizationObserver</code>: Interface für lokalisierte UI-Komponenten</li>
+</ul>
+<p><strong>Paketstruktur des Fridgely-Systems</strong></p>
+<pre class="mermaid"><code>flowchart TB
+  %% top‐level “package”
+  subgraph ch.primeo.fridgely
+    direction TB
+
+    %% view‐Package
+    subgraph view
+      direction TB
+      BV[BaseView]
+      SI[ScannedItemsView]
+      MP1V[MultiplayerPlayer1View]
+      MP2V[MultiplayerPlayer2View]
+      URP[UnifiedRecipePanel]
+    end
+
+    %% controller‐Package
+    subgraph controller
+      direction TB
+      BC[BaseController]
+      CGMC[ChooseGameModeController]
+      subgraph multiplayer
+        direction TB
+        MGC[MultiplayerGameController]
+        MP1C[MultiplayerPlayer1Controller]
+        MP2C[MultiplayerPlayer2Controller]
+      end
+    end
+
+    %% model‐Package
+    subgraph model
+      direction TB
+      P[Product]
+      R[Recipe]
+      FSM[FridgeStockModel]
+      subgraph multiplayer
+        direction TB
+        MGSM[MultiplayerGameStateModel]
+        PM[PenguinModel]
+      end
+    end
+
+    %% service‐Package
+    subgraph service
+      direction TB
+      FSR[FridgeStockRepository]
+      PR[ProductRepository]
+      RR[RecipeRepository]
+      subgraph localization
+        direction TB
+        ALS[AppLocalizationService]
+        LO[LocalizationObserver]
+      end
+    end
+
+    %% util‐Package
+    subgraph util
+      direction TB
+      IL[ImageLoader]
+      C0[Constants]
+    end
+
+    %% config‐Package
+    subgraph config
+      GameConfig[GameConfig]
+    end
+  end
+
+  %% ── Relationships ──
+  %% Inheritance (arrows with open heads)
+  BV --&gt; SI
+  BV --&gt; MP1V
+  BV --&gt; MP2V
+
+  BC --&gt; CGMC
+  BC --&gt; MGC
+
+  %% Composition (solid arrows)
+  MGC --&gt; MP1C
+  MGC --&gt; MP2C
+
+  %% Associations (labelled dashed arrows)
+  MGC -- verwaltet --&gt; MGSM
+  MGC -- aktualisiert --&gt; PM
+  MP1C -- aktualisiert --&gt; FSM
+  MP2C -- wählt aus --&gt; R</code></pre>
+<p><strong>Begründung:</strong> Die Paketstruktur spiegelt die modulare Architektur des Fridgely-Systems wider, die auf dem MVC-Pattern basiert. Jedes Paket entspricht einer Schicht oder einem Modul des Systems und enthält alle relevanten Klassen und Schnittstellen. Dies fördert die Wartbarkeit und Verständlichkeit des Codes, da verwandte Komponenten gruppiert und klar voneinander getrennt sind. Die Verwendung von Sub-Namensräumen für spezifische Funktionen oder Rollen (z.B. <code>multiplayer</code> für Mehrspieler-spezifische Klassen) hilft zusätzlich, die Verantwortlichkeiten zu kapseln und die Übersichtlichkeit zu erhöhen.</p>
+<h2 id="ebene-2">Ebene 2<a class="headerlink" href="#ebene-2" title="Permanent link">¶</a></h2>
+<p>In dieser Ebene wird die detaillierte innere Struktur der Hauptbausteine dargestellt.</p>
+<h3 id="detaillierte-struktur-der-controller-schicht">Detaillierte Struktur der Controller-Schicht<a class="headerlink" href="#detaillierte-struktur-der-controller-schicht" title="Permanent link">¶</a></h3>
+<pre class="mermaid"><code>graph TD
+    %% Controllers Layer
+    subgraph Anwendungsschicht - Controller
+        CGMC["ChooseGameModeController&lt;br&gt;(Spielmodusauswahl)"]
+        MGC["MultiplayerGameController&lt;br&gt;(Hauptcontroller)"]
+        MP1C["MultiplayerPlayer1Controller&lt;br&gt;(Spieler 1 Scannen)"]
+        MP2C["MultiplayerPlayer2Controller&lt;br&gt;(Spieler 2 Rezeptauswahl)"]
+    end
+
+    %% Views Layer
+    subgraph Präsentationsschicht
+        CGMV["ChooseGameModeView"]
+        SIV["ScannedItemsView&lt;br&gt;(Zweiter Monitor)"]
+        MP1V["MultiplayerPlayer1View"]
+        MP2V["MultiplayerPlayer2View"]
+        MGV["MultiplayerGameView"]
+    end
+
+    %% Models Layer  
+    subgraph Domänenschicht
+        PM["Product"]
+        RM["RecipeModel"]
+        FSM["FridgeStockModel"]
+        MGSM["MultiplayerGameStateModel"]
+        PEM["PenguinModel"]
+    end
+
+    %% Services Layer
+    subgraph Dienste
+        ALS["AppLocalizationService"]
+        IL["ImageLoader"]
+    end
+
+    %% Data Layer
+    subgraph Datenschicht
+        PR["ProductRepository"]
+        RR["RecipeRepository"]
+        FSR["FridgeStockRepository"]
+    end
+
+    %% Connections between controller and views
+    CGMC --&gt; CGMV
+    MGC --&gt; SIV
+    MGC --&gt; MGV
+    MP1C --&gt; MP1V
+    MP2C --&gt; MP2V
+
+    %% Connections between controllers
+    MGC --&gt; MP1C
+    MGC --&gt; MP2C
+
+    %% Connections from controllers to models
+    MP1C --&gt; FSM
+    MP1C --&gt; MGSM
+    MP1C --&gt; PEM
+    MP2C --&gt; FSM
+    MP2C --&gt; MGSM
+    MP2C --&gt; PEM
+    MP2C --&gt; RM
+    MGC --&gt; FSM
+    MGC --&gt; MGSM
+    MGC --&gt; PEM
+    MGC --&gt; RM
+
+    %% Connections to repositories
+    MP1C --&gt; PR
+    MGC --&gt; PR
+    MGC --&gt; RR
+    FSM --&gt; FSR
+
+    %% Services
+    ALS --&gt; CGMV
+    ALS --&gt; MP1V
+    ALS --&gt; MP2V
+    ALS --&gt; SIV
+    ALS --&gt; MGV
+    IL --&gt; CGMV
+    IL --&gt; MP1V
+    IL --&gt; MP2V
+    IL --&gt; SIV
+    IL --&gt; MGV
+
+    %% Styling
+    classDef controllerStyle fill:#1e3a59,stroke:#6fb1fc,stroke-width:1px;
+    classDef viewStyle fill:#2d3748,stroke:#a0aec0,stroke-width:1px;
+    classDef modelStyle fill:#252d3a,stroke:#9fa8da,stroke-width:1px;
+    classDef serviceStyle fill:#3c3836,stroke:#fabd2f,stroke-width:1px;
+    classDef repoStyle fill:#2d3b2d,stroke:#8ec07c,stroke-width:1px;
+
+    class CGMC,MGC,MP1C,MP2C controllerStyle;
+    class CGMV,SIV,MP1V,MP2V,MGV viewStyle;
+    class PM,RM,FSM,MGSM,PEM modelStyle;
+    class ALS,IL serviceStyle;
+    class PR,RR,FSR repoStyle;</code></pre>
+<h3 id="hauptinteraktionsfluss-im-mehrspielermodus">Hauptinteraktionsfluss im Mehrspielermodus<a class="headerlink" href="#hauptinteraktionsfluss-im-mehrspielermodus" title="Permanent link">¶</a></h3>
+<p>Das folgende Diagramm zeigt die wichtigsten Interaktionen zwischen den Komponenten im Mehrspielermodus:</p>
+<pre class="mermaid"><code>sequenceDiagram
+    participant MP1V as MultiplayerPlayer1View
+    participant MP1C as MultiplayerPlayer1Controller
+    participant MGC as MultiplayerGameController
+    participant MP2C as MultiplayerPlayer2Controller
+    participant MP2V as MultiplayerPlayer2View
+    participant FSM as FridgeStockModel
+    participant MGSM as MultiplayerGameStateModel
+    participant PEM as PenguinModel
+    participant RM as RecipeModel
+    participant RR as RecipeRepository
+
+    MP1V-&gt;&gt;MP1C: Produkt scannen
+    MP1C-&gt;&gt;FSM: addProduct(product)
+    FSM-&gt;&gt;FSM: firePropertyChange("products")
+    FSM--&gt;&gt;MP1C: propertyChange(evt)
+    MP1C-&gt;&gt;MGC: notifyProductScanned(product)
+    MGC-&gt;&gt;MGSM: updateScannedProducts(product)
+    MGSM-&gt;&gt;MGSM: firePropertyChange("gameState")
+    MGSM--&gt;&gt;MGC: propertyChange(evt)
+    MGC-&gt;&gt;MP2C: updateAvailableRecipes()
+    MP2C-&gt;&gt;RM: findMatchingRecipes(products)
+    RM-&gt;&gt;RR: findByIngredients(products)
+    RR--&gt;&gt;RM: recipes
+    RM--&gt;&gt;MP2C: matchingRecipes
+    MP2C-&gt;&gt;MP2V: updateRecipeDisplay(recipes)
+    MP2V-&gt;&gt;MP2C: recipeSelected(recipe)
+    MP2C-&gt;&gt;MGC: notifyRecipeSelected(recipe)
+    MGC-&gt;&gt;MGSM: setSelectedRecipe(recipe)
+    MGC-&gt;&gt;PEM: updateState(PenguinState.HAPPY)
+    PEM-&gt;&gt;PEM: firePropertyChange("penguinState")</code></pre>
+<h3 id="multiplayergamecontroller">MultiplayerGameController<a class="headerlink" href="#multiplayergamecontroller" title="Permanent link">¶</a></h3>
+<p><strong>Zweck/Verantwortung:</strong> Zentraler Controller, der den Mehrspielermodus steuert, die Kommunikation zwischen Spieler 1 und Spieler 2 koordiniert und den Spielzustand verwaltet.</p>
+<p><strong>Schnittstellen:</strong></p>
+<ul>
+<li>Stellt Zugriff auf die Modelle für die Views bereit</li>
+<li>Koordiniert die Spiellogik und den Ablauf des Mehrspielermodus</li>
+<li>Verwaltet die Spieler-Controller</li>
+</ul>
+<p><strong>Qualitäts-/Leistungsmerkmale:</strong></p>
+<ul>
+<li>Zentrale Steuerung des Spielablaufs</li>
+<li>Klare Trennung der Verantwortlichkeiten zwischen den Spieler-Controllern</li>
+<li>Robuste Fehlerbehandlung bei Benutzereingaben</li>
+</ul>
+<p><strong>Ablageort/Datei(en):</strong> </p>
+<div class="highlight"><pre><span></span><code>src/main/java/ch/primeo/fridgely/controller/multiplayer/MultiplayerGameController.java
+</code></pre></div>
+<p><strong>Enthaltene Bausteine:</strong></p>
+<ul>
+<li><code>MultiplayerPlayer1Controller</code>: Verwaltet das Scannen von Produkten durch Spieler 1</li>
+<li><code>MultiplayerPlayer2Controller</code>: Verwaltet die Rezeptauswahl durch Spieler 2</li>
+</ul>
+<h3 id="fridgestockrepository">FridgeStockRepository<a class="headerlink" href="#fridgestockrepository" title="Permanent link">¶</a></h3>
+<p><strong>Zweck/Verantwortung:</strong>
+Repository für die Verwaltung des Kühlschrankinhalts, stellt CRUD-Operationen für die Speicherung und Abfrage von Produkten im Kühlschrank bereit.</p>
+<p><strong>Schnittstellen:</strong></p>
+<ul>
+<li>Bietet Methoden zum Hinzufügen, Entfernen und Abfragen von Produkten im Kühlschrank</li>
+<li>Nutzt JPA für Datenbankabfragen</li>
+<li>Verwendet Spring Data für grundlegende CRUD-Operationen</li>
+</ul>
+<p><strong>Qualitäts-/Leistungsmerkmale:</strong></p>
+<ul>
+<li>Effiziente Datenbankzugriffe für schnelle Antwortzeiten</li>
+<li>Abstrahierung der Datenbankoperationen</li>
+<li>Transaktionale Sicherheit bei Änderungen</li>
+</ul>
+<p><strong>Ablageort/Datei(en):</strong> </p>
+<div class="highlight"><pre><span></span><code>src/main/java/ch/primeo/fridgely/service/FridgeStockRepository.java
+</code></pre></div>
+<p><strong>Enthaltene Bausteine:</strong></p>
+<ul>
+<li><code>FridgeStockJpaRepository</code>: JPA-Interface für grundlegende CRUD-Operationen</li>
+</ul>
+<h2 id="ebene-3">Ebene 3<a class="headerlink" href="#ebene-3" title="Permanent link">¶</a></h2>
+<h3 id="applocalizationservice">AppLocalizationService<a class="headerlink" href="#applocalizationservice" title="Permanent link">¶</a></h3>
+<p><strong>Zweck/Verantwortung:</strong>
+Verwaltet die mehrsprachige Unterstützung der Anwendung, ermöglicht das Umschalten zwischen Sprachen und benachrichtigt UI-Komponenten über Sprachänderungen.</p>
+<p><strong>Schnittstellen:</strong></p>
+<ul>
+<li>Bietet Methoden zum Abrufen lokalisierter Texte</li>
+<li>Ermöglicht das Umschalten zwischen Sprachen</li>
+<li>Observer-Pattern zur Benachrichtigung von UI-Komponenten</li>
+</ul>
+<p><strong>Qualitäts-/Leistungsmerkmale:</strong></p>
+<ul>
+<li>Unterstützung für drei Sprachen (Deutsch, Englisch, Französisch)</li>
+<li>Dynamische Aktualisierung der UI ohne Neustart</li>
+<li>Singleton-Design für globalen Zugriff</li>
+</ul>
+<p><strong>Ablageort/Datei(en):</strong> </p>
+<div class="highlight"><pre><span></span><code>src/main/java/ch/primeo/fridgely/service/localization/AppLocalizationService.java
+</code></pre></div>
+<p><strong>Enthaltene Bausteine:</strong></p>
+<ul>
+<li><code>LocalizationObserver</code>: Interface für UI-Komponenten, die auf Sprachänderungen reagieren</li>
+<li>Ressourcen-Bundles für die verschiedenen Sprachen</li>
+</ul>
+<pre class="mermaid"><code>graph TD
+    %% Main service
+    ALS["AppLocalizationService&lt;br&gt;Singleton"]
+
+    %% Resource bundles
+    RB_DE["languages_de.properties"]
+    RB_EN["languages_en.properties"]
+    RB_FR["languages_fr.properties"]
+
+    %% Observers
+    LOI["LocalizationObserver&lt;br&gt;Interface"]
+    subgraph UIC["UI-Komponenten"]
+        MP1V["MultiplayerPlayer1View"]
+        MP2V["MultiplayerPlayer2View"]
+        SIV["ScannedItemsView"]
+        CGMV["ChooseGameModeView"]
+        MGV["MultiplayerGameView"]
+    end
+
+    %% Connections
+    ALS --&gt; RB_DE
+    ALS --&gt; RB_EN
+    ALS --&gt; RB_FR
+    ALS -- "Benachrichtigt" --&gt; LOI
+    LOI -- "Implementiert von" --&gt; UIC
+
+    %% Styling
+    classDef serviceStyle fill:#3c3836,stroke:#fabd2f,stroke-width:1px;
+    classDef resourceStyle fill:#2d3b2d,stroke:#8ec07c,stroke-width:1px;
+    classDef interfaceStyle fill:#2b3d4f,stroke:#83a598,stroke-width:1px;
+    classDef implStyle fill:#2d3748,stroke:#a0aec0,stroke-width:1px;
+
+    class ALS serviceStyle;
+    class RB_DE,RB_EN,RB_FR resourceStyle;
+    class LOI interfaceStyle;
+    class UIC,MP1V,MP2V,SIV,CGMV,MGV implStyle;</code></pre>
+<h3 id="fridgestockmodel">FridgeStockModel<a class="headerlink" href="#fridgestockmodel" title="Permanent link">¶</a></h3>
+<pre class="mermaid"><code>classDiagram
+    class FridgeStockModel {
+        -PropertyChangeSupport pcs
+        -List~Product~ products
+        +addProduct(product: Product) void
+        +removeProduct(product: Product) void
+        +containsProduct(barcode: String) boolean
+        +getProducts() List~Product~
+        +addPropertyChangeListener(listener: PropertyChangeListener) void
+        +removePropertyChangeListener(listener: PropertyChangeListener) void
+    }
+
+    class FridgeStockRepository {
+        +save(product: Product) void
+        +delete(product: Product) void
+        +findAll() List~Product~
+        +findByBarcode(barcode: String) Optional~Product~
+    }
+
+    class Product {
+        -String barcode
+        -String name
+        -boolean isOrganic
+        -boolean isLocal
+    }
+
+    FridgeStockModel --&gt; PropertyChangeSupport : uses
+    FridgeStockModel --&gt; "0..*" Product : contains
+    FridgeStockModel --&gt; FridgeStockRepository : uses</code></pre>
+<p><strong>Zweck/Verantwortung:</strong>
+Verwaltet den aktuellen Inhalt des virtuellen Kühlschranks, ermöglicht das Hinzufügen und Entfernen von Produkten und informiert UI-Komponenten über Änderungen.</p>
+<p><strong>Schnittstellen:</strong></p>
+<ul>
+<li>PropertyChangeSupport für Observer-Pattern-Benachrichtigungen</li>
+<li>CRUD-Operationen für Produkte</li>
+<li>Integration mit dem FridgeStockRepository für Datenpersistenz</li>
+</ul>
+<p><strong>Qualitäts-/Leistungsmerkmale:</strong></p>
+<ul>
+<li>Effiziente Verwaltung der Produktliste</li>
+<li>Ereignisbasierte Aktualisierung der UI</li>
+<li>Datenkonsistenz durch Repository-Validierung</li>
+</ul>
+<p><strong>Ablageort/Datei(en):</strong></p>
+<div class="highlight"><pre><span></span><code>src/main/java/ch/primeo/fridgely/model/FridgeStockModel.java
+</code></pre></div>
+<p><strong>Enthaltene Bausteine:</strong></p>
+<ul>
+<li><code>PropertyChangeSupport</code>: Teil des Java Beans Standards für den Observer-Pattern</li>
+<li><code>Product</code>: Produktentitäten, die im Kühlschrank gespeichert werden</li>
+</ul>
+<pre class="mermaid"><code>graph TD
+    %% Main class
+    FSM["FridgeStockModel"]
+
+    %% Related classes
+    PCS["PropertyChangeSupport"]
+    PROD["Product"]
+    FS["FridgeStock"]
+    FSR["FridgeStockRepository"]
+
+    %% Connections
+    FSM --&gt; PCS
+    FSM --&gt; PROD
+    FSM --&gt; FS
+    FSM --&gt; FSR
+
+    %% Observers
+    subgraph OBS["Observer"]
+        MP1C["MultiplayerPlayer1Controller"]
+        MP2C["MultiplayerPlayer2Controller"]
+        MGC["MultiplayerGameController"]
+    end
+
+    PCS -- "Benachrichtigt" --&gt; OBS
+
+    %% Styling
+    classDef modelStyle fill:#252d3a,stroke:#9fa8da,stroke-width:1px;
+    classDef supportStyle fill:#3f3f3f,stroke:#d3d3d3,stroke-width:1px;
+    classDef repoStyle fill:#2d3b2d,stroke:#8ec07c,stroke-width:1px;
+    classDef controllerStyle fill:#1e3a59,stroke:#6fb1fc,stroke-width:1px;
+
+    class FSM modelStyle;
+    class PCS,PROD,FS supportStyle;
+    class FSR repoStyle;
+    class OBS,MP1C,MP2C,MGC controllerStyle;</code></pre>
+<h3 id="recipemodel">RecipeModel<a class="headerlink" href="#recipemodel" title="Permanent link">¶</a></h3>
+<p><strong>Zweck/Verantwortung:</strong>
+Modell für die Verwaltung von Rezepten im Mehrspielermodus, bietet Zugriff auf verfügbare Rezepte und deren Zutaten sowie Berechnungen zur Rezeptempfehlung basierend auf vorhandenen Produkten.</p>
+<p><strong>Schnittstellen:</strong></p>
+<ul>
+<li>Methoden zum Abrufen von Rezepten und deren Details</li>
+<li>Berechnung der besten Rezeptvorschläge basierend auf dem Kühlschrankinhalt</li>
+<li>Bereitstellung mehrsprachiger Rezeptbeschreibungen</li>
+</ul>
+<p><strong>Qualitäts-/Leistungsmerkmale:</strong></p>
+<ul>
+<li>Effiziente Algorithmen für Rezeptempfehlungen</li>
+<li>Caching von Rezeptdaten für schnellen Zugriff</li>
+<li>Unterstützung mehrsprachiger Anzeige von Rezeptdetails</li>
+</ul>
+<p><strong>Ablageort/Datei(en):</strong> </p>
+<div class="highlight"><pre><span></span><code>src/main/java/ch/primeo/fridgely/model/RecipeModel.java
+</code></pre></div>
+<p><strong>Enthaltene Bausteine:</strong></p>
+<ul>
+<li><code>Recipe</code>: Entität, die ein Rezept repräsentiert</li>
+<li><code>RecipeIngredient</code>: Entität, die die Zutat eines Rezepts repräsentiert</li>
+<li><code>RecipeRepository</code>: Repository für den Datenbankzugriff auf Rezepte</li>
+</ul>
+<pre class="mermaid"><code>graph TD
+    %% Main class
+    RM["RecipeModel"]
+
+    %% Related classes
+    R["Recipe"]
+    RI["RecipeIngredient"]
+    RR["RecipeRepository"]
+    PROD["Product"]
+    FSM["FridgeStockModel"]
+    ALS["AppLocalizationService"]
+
+    %% Connections
+    RM --&gt; R
+    RM --&gt; RR
+    RM --&gt; FSM
+    R --&gt; RI
+    RI --&gt; PROD
+    R --&gt; ALS
+
+    %% Styling
+    classDef modelStyle fill:#252d3a,stroke:#9fa8da,stroke-width:1px;
+    classDef entityStyle fill:#2d3748,stroke:#a0aec0,stroke-width:1px;
+    classDef repoStyle fill:#2d3b2d,stroke:#8ec07c,stroke-width:1px;
+    classDef serviceStyle fill:#3c3836,stroke:#fabd2f,stroke-width:1px;
+
+    class RM,FSM modelStyle;
+    class R,RI,PROD entityStyle;
+    class RR repoStyle;
+    class ALS serviceStyle;</code></pre>
+<h3 id="multiplayergamestatemodel">MultiplayerGameStateModel<a class="headerlink" href="#multiplayergamestatemodel" title="Permanent link">¶</a></h3>
+<p><strong>Zweck/Verantwortung:</strong>
+Zentrales Modell für den Spielzustand im Mehrspielermodus, verwaltet den Status des Spiels, die Aktionen der Spieler und den Fortschritt.</p>
+<p><strong>Schnittstellen:</strong></p>
+<ul>
+<li>PropertyChangeSupport für Benachrichtigungen über Statusänderungen</li>
+<li>Methoden zur Aktualisierung des Spielzustands</li>
+<li>Tracking der Spieleraktivitäten und des Fortschritts</li>
+</ul>
+<p><strong>Qualitäts-/Leistungsmerkmale:</strong></p>
+<ul>
+<li>Zuverlässige Zustandsverfolgung ohne Inkonsistenzen</li>
+<li>Echtzeitaktualisierung aller beteiligten Komponenten</li>
+<li>Robuste Fehlerbehandlung für unerwartete Spielerinteraktionen</li>
+</ul>
+<p><strong>Ablageort/Datei(en):</strong> </p>
+<div class="highlight"><pre><span></span><code>src/main/java/ch/primeo/fridgely/model/multiplayer/MultiplayerGameStateModel.java
+</code></pre></div>
+<p><strong>Enthaltene Bausteine:</strong></p>
+<ul>
+<li><code>PropertyChangeSupport</code>: Für Observer-Pattern-Implementierung</li>
+<li><code>PenguinModel</code>: Verwaltet den Zustand des Pinguin-Charakters</li>
+<li>Spielstatusattribute (z.B. scannedProducts, selectedRecipe)</li>
+</ul>
+<pre class="mermaid"><code>graph TD
+    %% Main class
+    MGSM["MultiplayerGameStateModel"]
+
+    %% Related classes
+    PCS["PropertyChangeSupport"]
+    PM["PenguinModel"]
+    Recipe["Recipe"]
+    Products["List&lt;Product&gt;"]
+
+    %% Connections
+    MGSM --&gt; PCS
+    MGSM --&gt; PM
+    MGSM --&gt; Recipe
+    MGSM --&gt; Products
+
+    %% Observers
+    subgraph OBS["Observer"]
+        MGC["MultiplayerGameController"]
+        MP1C["MultiplayerPlayer1Controller"]
+        MP2C["MultiplayerPlayer2Controller"]
+    end
+
+    PCS -- "Benachrichtigt" --&gt; OBS
+
+    %% Styling
+    classDef modelStyle fill:#252d3a,stroke:#9fa8da,stroke-width:1px;
+    classDef supportStyle fill:#3f3f3f,stroke:#d3d3d3,stroke-width:1px;
+    classDef controllerStyle fill:#1e3a59,stroke:#6fb1fc,stroke-width:1px;
+
+    class MGSM,PM modelStyle;
+    class PCS,Recipe,Products supportStyle;
+    class OBS,MGC,MP1C,MP2C controllerStyle;</code></pre>
+<h3 id="baseview-basecontroller">BaseView &amp; BaseController<a class="headerlink" href="#baseview-basecontroller" title="Permanent link">¶</a></h3>
+<p><strong>Zweck/Verantwortung:</strong>
+Basis-Komponenten, die grundlegende Funktionalitäten für alle Views und Controller bereitstellen, um Konsistenz und Wiederverwendbarkeit zu gewährleisten.</p>
+<p><strong>Schnittstellen:</strong></p>
+<ul>
+<li>Lifecycle-Methoden für die Initialisierung und Zerstörung von Views und Controllern</li>
+<li>Allgemeine UI-Management-Funktionen (BaseView)</li>
+<li>Gemeinsame Controller-Logik (BaseController)</li>
+</ul>
+<p><strong>Qualitäts-/Leistungsmerkmale:</strong></p>
+<ul>
+<li>Einheitliche Implementation von übergreifenden Funktionalitäten</li>
+<li>Reduzierung von redundantem Code</li>
+<li>Konsistentes Verhalten in allen Views und Controllern</li>
+</ul>
+<p><strong>Ablageort/Datei(en):</strong> </p>
+<p><div class="highlight"><pre><span></span><code>src/main/java/ch/primeo/fridgely/view/BaseView.java
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>src/main/java/ch/primeo/fridgely/controller/BaseController.java
+</code></pre></div></p>
+<h2 id="querschnitts-komponenten">Querschnitts-Komponenten<a class="headerlink" href="#querschnitts-komponenten" title="Permanent link">¶</a></h2>
+<p>Die Querschnitts-Komponenten des Fridgely-Systems bieten grundlegende Dienste, die von verschiedenen Teilen der Anwendung genutzt werden. Diese Komponenten folgen grösstenteils dem Singleton-Pattern, um eine zentrale Verwaltung und Wiederverwendbarkeit zu gewährleisten.</p>
+<h3 id="imageloader">ImageLoader<a class="headerlink" href="#imageloader" title="Permanent link">¶</a></h3>
+<p><strong>Zweck/Verantwortung:</strong>
+Zentrale Komponente zum Laden und Verwalten von Bildressourcen für die UI, implementiert als Singleton für einheitlichen Zugriff auf Bilddateien.</p>
+<p><strong>Schnittstellen:</strong></p>
+<ul>
+<li>Methoden zum Laden von Bildern aus verschiedenen Quellen</li>
+<li>Bild-Caching für verbesserte Performance</li>
+<li>Hilfsmethoden für Bildmanipulation (z.B. Skalierung)</li>
+</ul>
+<p><strong>Qualitäts-/Leistungsmerkmale:</strong></p>
+<ul>
+<li>Effizientes Laden und Zwischenspeichern von Bildressourcen</li>
+<li>Zentrale Fehlerverwaltung beim Laden von Bildern</li>
+<li>Thread-Sicherheit für den parallelen Zugriff</li>
+</ul>
+<p><strong>Ablageort/Datei(en):</strong> </p>
+<div class="highlight"><pre><span></span><code>src/main/java/ch/primeo/fridgely/util/ImageLoader.java
+</code></pre></div>
+<pre class="mermaid"><code>graph TD
+    %% Main class
+    IL["ImageLoader&lt;br&gt;(Singleton)"]
+
+    %% Related classes
+    IC["Image Cache&lt;br&gt;Map&lt;String, Image&gt;"]
+    REF["Resource Files&lt;br&gt;/resources/images/"]
+
+    %% Users
+    subgraph VIEWS["Views"]
+        MGV["MultiplayerGameView"]
+        MP1V["MultiplayerPlayer1View"]
+        MP2V["MultiplayerPlayer2View"]
+        SIV["ScannedItemsView"]
+        CGMV["ChooseGameModeView"]
+    end
+
+    %% Connections
+    IL --&gt; IC
+    IL --&gt; REF
+    VIEWS --&gt; IL
+
+    %% Styling
+    classDef singletonStyle fill:#3c3836,stroke:#fabd2f,stroke-width:1px;
+    classDef resourceStyle fill:#2d3b2d,stroke:#8ec07c,stroke-width:1px;
+    classDef viewStyle fill:#2d3748,stroke:#a0aec0,stroke-width:1px;
+
+    class IL singletonStyle;
+    class IC,REF resourceStyle;
+    class VIEWS,MGV,MP1V,MP2V,SIV,CGMV viewStyle;</code></pre>
+<h3 id="constants">Constants<a class="headerlink" href="#constants" title="Permanent link">¶</a></h3>
+<p><strong>Zweck/Verantwortung:</strong>
+Zentrale Klasse für anwendungsweite Konstanten, die in verschiedenen Teilen des Systems verwendet werden.</p>
+<p><strong>Schnittstellen:</strong></p>
+<ul>
+<li>Definiert statische Konstanten für UI-Einstellungen, Datenbankzugriff, etc.</li>
+<li>Gruppiert zusammengehörige Konstanten in inneren Klassen/Interfaces</li>
+</ul>
+<p><strong>Qualitäts-/Leistungsmerkmale:</strong></p>
+<ul>
+<li>Zentralisierte Konfigurationswerte für einfache Wartung</li>
+<li>Typsicherheit durch starke Typisierung der Konstanten</li>
+<li>Vermeidung von Magic Numbers im Quellcode</li>
+</ul>
+<p><strong>Ablageort/Datei(en):</strong> </p>
+<div class="highlight"><pre><span></span><code>src/main/java/ch/primeo/fridgely/Constants.java
+</code></pre></div>
+<h2 id="zusammenfassung-der-bausteinsicht">Zusammenfassung der Bausteinsicht<a class="headerlink" href="#zusammenfassung-der-bausteinsicht" title="Permanent link">¶</a></h2>
+<p>Die Bausteinsicht des Fridgely-Systems zeigt eine klare Trennung der Verantwortlichkeiten nach dem MVC-Pattern:</p>
+<ol>
+<li>
+<p><strong>Präsentationsschicht (Views)</strong>: Kümmert sich um die kindgerechte Darstellung der Benutzeroberfläche, mit spezialisierten Views für verschiedene Spielmodi und Spielerrollen.</p>
+</li>
+<li>
+<p><strong>Anwendungsschicht (Controller)</strong>: Steuert den Programmablauf und die Spiellogik, orchestriert die Interaktion zwischen Benutzern und der Anwendung.</p>
+</li>
+<li>
+<p><strong>Domänenschicht (Models)</strong>: Repräsentiert die Kerndaten und Geschäftslogik des Systems, darunter Produkte, Rezepte und Spielzustände.</p>
+</li>
+<li>
+<p><strong>Datenschicht (Repositories)</strong>: Abstrahiert den Datenbankzugriff und stellt persistente Daten für die Anwendung bereit.</p>
+</li>
+<li>
+<p><strong>Querschnittskomponenten</strong>: Bieten übergreifende Funktionalitäten wie Mehrsprachigkeit und Bildverwaltung für alle Schichten.</p>
+</li>
+</ol>
+<p>Diese Architektur ermöglicht eine hohe Wartbarkeit und Erweiterbarkeit des Systems. Durch die klare Trennung der Komponenten können einzelne Teile unabhängig voneinander entwickelt, getestet und angepasst werden. Die verwendeten Design-Patterns (Observer, Singleton, Repository) tragen zur Robustheit und Flexibilität des Systems bei.</p>
+<pre class="mermaid"><code>graph TD
+    subgraph Anwendungsschicht - Controller
+        CGMC["ChooseGameModeController"]
+        MGC["MultiplayerGameController"]
+        MP1C["MultiplayerPlayer1Controller"]
+        MP2C["MultiplayerPlayer2Controller"]
+    end
+
+    subgraph Präsentationsschicht
+        CGMV["ChooseGameModeView"]
+        SIV["ScannedItemsView&lt;br&gt;(Zweiter Monitor)"]
+        MP1V["MultiplayerPlayer1View"]
+        MP2V["MultiplayerPlayer2View"]
+        URP["UnifiedRecipePanel"]
+    end
+
+    subgraph Domänenschicht
+        PM["Product"]
+        RM["RecipeModel"]
+        FSM["FridgeStockModel"]
+        MGSM["MultiplayerGameStateModel"]
+        PEM["PenguinModel"]
+    end
+
+    subgraph Dienste
+        ALS["AppLocalizationService"]
+        IL["ImageLoader"]
+    end
+
+    subgraph Datenschicht
+        PR["ProductRepository"]
+        RR["RecipeRepository"]
+        FSR["FridgeStockRepository"]
+    end
+
+    %% Connections between controller and views
+    CGMC --&gt; CGMV
+    MGC --&gt; SIV
+    MGC --&gt; MP1V
+    MGC --&gt; MP2V
+    MGC --&gt; URP
+
+    %% Connections between controllers
+    MGC --&gt; MP1C
+    MGC --&gt; MP2C
+
+    %% Connections from controllers to models
+    MP1C --&gt; FSM
+    MP1C --&gt; MGSM
+    MP1C --&gt; PEM
+    MP2C --&gt; FSM
+    MP2C --&gt; MGSM
+    MP2C --&gt; PEM
+    MP2C --&gt; RM
+    MGC --&gt; FSM
+    MGC --&gt; MGSM
+    MGC --&gt; PEM
+    MGC --&gt; RM
+
+    %% Connections to repositories
+    MP1C --&gt; PR
+    MGC --&gt; PR
+    MGC --&gt; RR
+
+    %% Services
+    ALS --&gt; CGMV
+    ALS --&gt; MP1V
+    ALS --&gt; MP2V
+    ALS --&gt; SIV
+    IL --&gt; CGMV
+    IL --&gt; MP1V
+    IL --&gt; MP2V
+    IL --&gt; SIV
+    IL --&gt; URP
+
+    %% Styling
+
+    classDef serviceStyle fill:#930049,stroke:#ff0080,stroke-width:1px;
+    classDef repoStyle fill:#0f5132,stroke:#4b8f71,stroke-width:1px;
+    classDef controllerStyle fill:#3c3836,stroke:#fabd2f,stroke-width:1px;
+    classDef modelStyle fill:#2d3b2d,stroke:#8ec07c,stroke-width:1px;
+    classDef viewStyle fill:#2d3748,stroke:#a0aec0,stroke-width:1px;
+
+    class CGMC,MGC,MP1C,MP2C controllerStyle;
+    class CGMV,SIV,MP1V,MP2V,URP viewStyle;
+    class PM,RM,FSM,MGSM,PEM modelStyle;
+    class ALS,IL serviceStyle;
+    class PR,RR,FSR repoStyle;</code></pre>
+<h3 id="multiplayergamecontroller_1">MultiplayerGameController<a class="headerlink" href="#multiplayergamecontroller_1" title="Permanent link">¶</a></h3>
+<p><strong>Zweck/Verantwortung:</strong> Zentraler Controller, der den Mehrspielermodus steuert, die Kommunikation zwischen Spieler 1 und Spieler 2 koordiniert und den Spielzustand verwaltet.</p>
+<p><strong>Schnittstellen:</strong></p>
+<ul>
+<li>Stellt Zugriff auf die Modelle für die Views bereit</li>
+<li>Koordiniert die Spiellogik und den Ablauf des Mehrspielermodus</li>
+<li>Verwaltet die Spieler-Controller</li>
+</ul>
+<p><strong>Qualitäts-/Leistungsmerkmale:</strong></p>
+<ul>
+<li>Zentrale Steuerung des Spielablaufs</li>
+<li>Klare Trennung der Verantwortlichkeiten zwischen den Spieler-Controllern</li>
+<li>Robuste Fehlerbehandlung bei Benutzereingaben</li>
+</ul>
+<p><strong>Ablageort/Datei(en):</strong> </p>
+<div class="highlight"><pre><span></span><code>src/main/java/ch/primeo/fridgely/controller/multiplayer/MultiplayerGameController.java
+</code></pre></div>
+<p><strong>Enthaltene Bausteine:</strong></p>
+<ul>
+<li><code>MultiplayerPlayer1Controller</code>: Verwaltet das Scannen von Produkten durch Spieler 1</li>
+<li><code>MultiplayerPlayer2Controller</code>: Verwaltet die Rezeptauswahl durch Spieler 2</li>
+</ul>
+<h3 id="fridgestockrepository_1">FridgeStockRepository<a class="headerlink" href="#fridgestockrepository_1" title="Permanent link">¶</a></h3>
+<p><strong>Zweck/Verantwortung:</strong> Repository für die Verwaltung des Kühlschrankinhalts, stellt CRUD-Operationen für die Speicherung und Abfrage von Produkten im Kühlschrank bereit.</p>
+<p><strong>Schnittstellen:</strong></p>
+<ul>
+<li>Bietet Methoden zum Hinzufügen, Entfernen und Abfragen von Produkten im Kühlschrank</li>
+<li>Nutzt QueryDSL für typsichere Datenbankabfragen</li>
+<li>Verwendet Spring Data JPA für grundlegende CRUD-Operationen</li>
+</ul>
+<p><strong>Qualitäts-/Leistungsmerkmale:</strong></p>
+<ul>
+<li>Effiziente Datenbankzugriffe für schnelle Antwortzeiten</li>
+<li>Abstrahierung der Datenbankoperationen</li>
+<li>Transaktionale Sicherheit bei Änderungen</li>
+</ul>
+<p><strong>Ablageort/Datei(en):</strong>
+<div class="highlight"><pre><span></span><code>src/main/java/ch/primeo/fridgely/service/FridgeStockRepository.java
+</code></pre></div></p>
+<p><strong>Enthaltene Bausteine:</strong></p>
+<ul>
+<li><code>FridgeStockJpaRepository</code>: JPA-Interface für grundlegende CRUD-Operationen</li>
+<li><code>QFridgeStock</code>: QueryDSL-generierte Klasse für typsichere Abfragen</li>
+</ul>
+<pre class="mermaid"><code>flowchart TB
+  %% Präsentations‑Schicht
+  subgraph Präsentationsschicht
+    direction TB
+    BV[BaseView]
+    MP1V[MultiplayerPlayer1View]
+    MP2V[MultiplayerPlayer2View]
+  end
+
+  %% Anwendungs‑Schicht
+  subgraph Anwendungsschicht
+    direction TB
+    MGC[MultiplayerGameController]
+    MP1C[MultiplayerPlayer1Controller]
+    MP2C[MultiplayerPlayer2Controller]
+  end
+
+  %% Domänen‑Schicht
+  subgraph Domänenschicht
+    direction TB
+    FSM[FridgeStockModel]
+    RM[RecipeModel]
+    MGSM[MultiplayerGameStateModel]
+    PM[PenguinModel]
+  end
+
+  %% Daten‑Schicht
+  subgraph Datenschicht
+    direction TB
+    FSR[FridgeStockRepository]
+    RR[RecipeRepository]
+  end
+
+  %% Datenbank
+  DB[(SQLite DB)]
+
+  %% Interfaces als kleine Kreise mit Beschriftung
+  UI_CTRL(("UI‑Controller&lt;br/&gt;Schnittstelle"))
+  CTRL_MODEL(("Controller‑Model&lt;br/&gt;Schnittstelle"))
+  MODEL_REPO(("Model‑Repository&lt;br/&gt;Schnittstelle"))
+  REPO_DB(("Repository‑DB&lt;br/&gt;Schnittstelle"))
+
+  %% ── unsichtbare Kanten zum Stapeln ──
+  BV --&gt; controller
+  controller --&gt; model
+  model --&gt; service
+
+  %% ── Haupt‑Verbindungen ──
+  BV --&gt; UI_CTRL
+  UI_CTRL --&gt; MGC
+  MGC --&gt; CTRL_MODEL
+  CTRL_MODEL --&gt; FSM
+  FSM --&gt; MODEL_REPO
+  MODEL_REPO --&gt; FSR
+  FSR --&gt; REPO_DB
+  REPO_DB --&gt; DB
+
+  %% ── Komposition MultiplayerGameController → PlayerControllers ──
+  MGC --&gt; MP1C
+  MGC --&gt; MP2C
+
+  %% ── Spezifische Komponenten‑Verbindungen ──
+    MP1V -- PropertyChangeListener --&gt; MP1C
+    MP2V -- PropertyChangeListener --&gt; MP2C
+  MP1C -- Datenaustausch --&gt; FSM
+  MP2C -- Rezeptauswahl --&gt; RM 
+  FSM  -- CRUD‑Operationen --&gt; FSR
+  RM   -- Abfragen --&gt; RR
+
+  %% ── zusätzliche Beziehungen des Controllers ──
+  MGC -- verwaltet --&gt; MGSM
+  MGC -- aktualisiert --&gt; PM</code></pre>
+<h2 id="enthaltene-bausteine">Enthaltene Bausteine:<a class="headerlink" href="#enthaltene-bausteine" title="Permanent link">¶</a></h2>
+<ul>
+<li><strong>Präsentationsschicht:</strong></li>
+<li><code>BaseView</code>: Abstrakte Basisklasse für alle Views mit JFrame-Management</li>
+<li><code>ChooseGameModeView</code>: Startbildschirm zur Auswahl des Spielmodus</li>
+<li><code>ScannedItemsView</code>: Zeigt Kühlschrankinhalt auf zweitem Monitor an</li>
+<li><code>MultiplayerGameView</code>: Hauptansicht für den Mehrspielermodus, integriert die Spieleransichten</li>
+<li><code>MultiplayerPlayer1View</code>: UI für Spieler 1 im Mehrspielermodus zum Scannen von Produkten</li>
+<li><code>MultiplayerPlayer2View</code>: UI für Spieler 2 im Mehrspielermodus zur Rezeptauswahl</li>
+<li><code>PenguinReactionOverlay</code>: Zeigt Reaktionen des Pinguin-Charakters an</li>
+<li><code>UnifiedRecipePanel</code>: Wiederverwendbare Komponente zur Anzeige von Rezepten</li>
+<li><code>LanguageSwitchButton</code>: UI-Komponente zum Umschalten zwischen den verfügbaren Sprachen</li>
+<li>
+<p><code>DialogBox</code>: Hilfsfunktionen für die Anzeige von Benachrichtigungen und Dialogfenstern</p>
+</li>
+<li>
+<p><strong>Anwendungsschicht:</strong></p>
+</li>
+<li><code>ChooseGameModeController</code>: Steuert die Spielmodusauswahl</li>
+<li><code>MultiplayerGameController</code>: Hauptcontroller für den Mehrspielermodus</li>
+<li><code>MultiplayerPlayer1Controller</code>: Verwaltet das Scannen von Produkten durch Spieler 1</li>
+<li><code>MultiplayerPlayer2Controller</code>: Verwaltet die Rezeptauswahl durch Spieler 2</li>
+<li>
+<p><code>MultiplayerGameLauncher</code>: Initialisiert und startet den Mehrspielermodus, verbindet Controller und Views</p>
+</li>
+<li>
+<p><strong>Domänenschicht:</strong></p>
+</li>
+<li><code>Product</code>: Repräsentiert ein Lebensmittelprodukt mit Eigenschaften wie Bio und Lokalität</li>
+<li><code>Recipe</code>: Stellt ein Rezept mit Zutaten und mehrsprachigen Beschreibungen dar</li>
+<li><code>RecipeIngredient</code>: Entity-Klasse für die Zuordnung von Zutaten zu Rezepten</li>
+<li><code>FridgeStock</code>: Entity-Klasse zur Persistierung des Kühlschrankinhalts</li>
+<li><code>FridgeStockModel</code>: Modellklasse zur Verwaltung des Kühlschrankinhalts mit PropertyChangeSupport</li>
+<li><code>MultiplayerGameStateModel</code>: Verwaltet den Zustand einer Mehrspieler-Spielsitzung</li>
+<li><code>PenguinModel</code>: Verwaltet den Zustand des Pinguin-Charakters</li>
+<li><code>PenguinFacialExpression</code>: Enumeration für Gesichtsausdrücke des Pinguins</li>
+<li><code>PenguinHPState</code>: Enumeration für Gesundheitszustände des Pinguins</li>
+<li>
+<p><code>GameMode</code>: Enumeration für die verschiedenen Spielmodi</p>
+</li>
+<li>
+<p><strong>Datenschicht:</strong></p>
+</li>
+<li><code>FridgeStockRepository</code>: Verwaltet den Kühlschrankinhalt (Hinzufügen, Entfernen, Abfragen)</li>
+<li><code>FridgeStockJpaRepository</code>: JPA-Interface für grundlegende CRUD-Operationen</li>
+<li><code>ProductRepository</code>: Stellt Produkte und deren Eigenschaften bereit</li>
+<li>
+<p><code>RecipeRepository</code>: Verwaltet Rezepte und deren Zuordnung zu Zutaten</p>
+</li>
+<li>
+<p><strong>Querschnittskomponenten:</strong></p>
+</li>
+<li><code>ImageLoader</code>: Lädt und verwaltet Bild-Ressourcen (Singleton)</li>
+<li><code>AppLocalizationService</code>: Verwaltet die mehrsprachige Unterstützung der Anwendung (Singleton)</li>
+<li><code>Constants</code>: Enthält anwendungsweite Konstanten</li>
+<li><code>AppConfig</code>: Konfiguriert Spring-Anwendungskontext und Komponenten-Scanning</li>
+<li><code>DataLoader</code>: Lädt initiale Daten in die Datenbank beim Anwendungsstart</li>
+<li><code>GameConfig</code>: Konfigurationseinstellungen für das Spiel</li>
+<li><code>LocalizationObserver</code>: Interface für lokalisierte UI-Komponenten</li>
+</ul>
+<p>Die Bausteinsicht zeigt die modulare Architektur des Fridgely-Systems, das auf dem MVC-Pattern basiert. Jedes Modul ist für spezifische Funktionen verantwortlich und kommuniziert über klar definierte Schnittstellen. Dies ermöglicht eine einfache Wartbarkeit, Testbarkeit und Erweiterbarkeit des Systems.</p>
+<pre class="mermaid"><code>graph LR
+    %% Cross-cutting components
+    subgraph Querschnittskomponenten
+        ALS[AppLocalizationService]
+        IL[ImageLoader]
+        C[Constants]
+        GC[GameConfig]
+        LO[LocalizationObserver]
+    end
+
+    %% Main app layers
+    subgraph PS[Präsentationsschicht]
+        BV[BaseView]
+        subgraph Views
+            MP1V[MultiplayerPlayer1View]
+            MP2V[MultiplayerPlayer2View]
+            SIV[ScannedItemsView]
+        end
+    end
+
+    subgraph AS[Anwendungsschicht]
+        BC[BaseController]
+        subgraph Controllers
+            MGC[MultiplayerGameController]
+            MP1C[MultiplayerPlayer1Controller]
+            MP2C[MultiplayerPlayer2Controller]
+        end
+    end
+
+    subgraph DS[Domänenschicht]
+        Models
+    end
+
+    %% Connections
+    ALS --&gt; LO
+    LO -.-&gt; BV
+    BV --&gt; Views
+
+    IL --&gt; PS
+
+    C --&gt; PS
+    C --&gt; AS
+    C --&gt; DS
+
+    GC --&gt; Controllers
+
+    %% Styling
+    classDef compStyle fill:#3c3836,stroke:#fabd2f,stroke-width:1px;
+    classDef viewStyle fill:#2d3748,stroke:#a0aec0,stroke-width:1px;
+    classDef ctrlStyle fill:#1e3a59,stroke:#6fb1fc,stroke-width:1px;
+    classDef layerStyle fill:#1a202c,stroke:#4a5568,stroke-width:2px;
+
+    class ALS,IL,C,GC,LO compStyle;
+    class PS,BV,MP1V,MP2V,SIV,Views viewStyle;
+    class AS,BC,MGC,MP1C,MP2C,Controllers ctrlStyle;
+    class PS,AS,DS layerStyle;</code></pre>
+<h3 id="imageloader_1">ImageLoader<a class="headerlink" href="#imageloader_1" title="Permanent link">¶</a></h3>
+<p><strong>Zweck/Verantwortung:</strong> Lädt und verwaltet Bild-Ressourcen für die Anwendung, stellt sicher, dass Bilder in der richtigen Grösse und Auflösung vorliegen und optimiert die Ladezeiten durch Caching.</p>
+<p><strong>Schnittstellen:</strong></p>
+<ul>
+<li>Bietet Methoden zum Laden von Bildern aus Ressourcen oder Dateien</li>
+<li>Unterstützt verschiedene Bildformate und -grössen</li>
+<li>Implementiert Lazy Loading und Caching für optimierte Ladezeiten</li>
+</ul>
+<p><strong>Qualitäts-/Leistungsmerkmale:</strong></p>
+<ul>
+<li>Schnelle Ladezeiten durch Caching und optimierte Bildgrössen</li>
+<li>Unterstützung für verschiedene Bildformate (JPEG, PNG, GIF)</li>
+<li>Einfache Integration in die Views zur dynamischen Anzeige von Bildern</li>
+</ul>
+<p><strong>Ablageort/Datei(en):</strong> </p>
+<div class="highlight"><pre><span></span><code>src/main/java/ch/primeo/fridgely/util/ImageLoader.java
+</code></pre></div>
+<p><strong>Enthaltene Bausteine:</strong></p>
+<ul>
+<li><code>ImageLoader</code>: Hauptklasse zum Laden und Verwalten von Bildern mit integriertem Caching über ConcurrentMap</li>
+<li>Interne Bildbearbeitungsmethoden für Skalierung und Format-Konvertierung</li>
+</ul>
+<pre class="mermaid"><code>graph TD
+    %% ImageLoader components
+    subgraph ImageLoader
+        IL[ImageLoader]
+        IC[ImageCache]
+        IU[ImageUtil]
+    end
+
+    %% Connections
+    IL --&gt; IC
+    IL --&gt; IU
+
+    %% Styling
+    classDef loaderStyle fill:#2b3d4f,stroke:#83a598,stroke-width:1px;
+
+    class ImageLoader,ImageCache,ImageUtil loaderStyle;</code></pre>
+<h2 id="enthaltene-bausteine_1">Enthaltene Bausteine:<a class="headerlink" href="#enthaltene-bausteine_1" title="Permanent link">¶</a></h2>
+<ul>
+<li><strong>ImageLoader:</strong></li>
+<li><code>ImageLoader</code>: Hauptklasse zum Laden und Verwalten von Bildern mit integriertem Caching über ConcurrentMap</li>
+<li>Interne Bildbearbeitungsmethoden für Skalierung und Format-Konvertierung</li>
+</ul>
+<p>Die Querschnittskomponenten des Fridgely-Systems bieten wichtige unterstützende Funktionen, die von mehreren Bausteinen der Anwendung genutzt werden. Dazu gehören die mehrsprachige Unterstützung durch <code>AppLocalizationService</code>, das Laden und Caching von Bildern durch <code>ImageLoader</code> sowie zentrale Konfigurations- und Konstantenverwaltung. Diese Komponenten sind entscheidend für die Einhaltung der Qualitätsmerkmale wie Wartbarkeit, Erweiterbarkeit und Leistung der Anwendung.</p>
+<h2 id="zusammenfassung-und-bewertung">Zusammenfassung und Bewertung<a class="headerlink" href="#zusammenfassung-und-bewertung" title="Permanent link">¶</a></h2>
+<ol>
+<li>
+<p><strong>Modularer Aufbau</strong>: Die Anwendung ist in klar abgegrenzte Komponenten mit definierten Verantwortlichkeiten unterteilt, was die Wartbarkeit und Erweiterbarkeit fördert.</p>
+</li>
+<li>
+<p><strong>Observer-Pattern</strong>: Durchgängige Verwendung des Observer-Patterns (PropertyChangeSupport/PropertyChangeListener) für die ereignisbasierte Aktualisierung der UI-Komponenten.</p>
+</li>
+<li>
+<p><strong>Mehrsprachigkeit</strong>: Durchgängige Unterstützung von Mehrsprachigkeit durch den AppLocalizationService und das LocalizationObserver-Interface.</p>
+</li>
+<li>
+<p><strong>Klare Schichtenarchitektur</strong>: Die Trennung in Präsentations-, Anwendungs-, Domänen- und Datenschicht ermöglicht eine klare Zuordnung von Verantwortlichkeiten.</p>
+</li>
+<li>
+<p><strong>Spring Framework</strong>: Nutzung von Spring für Dependency Injection und Konfigurationsmanagement, was die Testbarkeit und Modularität verbessert.</p>
+</li>
+</ol>
+<aside class="md-source-file">
+<span class="md-source-file__fact">
+<span class="md-icon" title="Letztes Update">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
+</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="11. Juni 2025 08:40:14 UTC">11. Juni 2025</span>
+</span>
+<span class="md-source-file__fact">
+<span class="md-icon" title="Erstellt">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"></path></svg>
+</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="11. Juni 2025 08:40:14 UTC">11. Juni 2025</span>
+</span>
+<span class="md-source-file__fact">
+<span class="md-icon" title="Mitwirkende">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"></path></svg>
+</span>
+<nav>
+<a href="mailto:ben.woodtli@students.fhnw.ch">Ben Woodtli</a>
+</nav>
+</span>
+</aside>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "In Zwischenablage kopiert", "clipboard.copy": "In Zwischenablage kopieren", "search.result.more.one": "1 weiteres Suchergebnis auf dieser Seite", "search.result.more.other": "# weitere Suchergebnisse auf dieser Seite", "search.result.none": "Keine Suchergebnisse", "search.result.one": "1 Suchergebnis", "search.result.other": "# Suchergebnisse", "search.result.placeholder": "Suchbegriff eingeben", "search.result.term.missing": "Es fehlt", "select.version": "Version ausw\u00e4hlen"}, "version": null}</script>
+<script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+<script src="../../javascripts/extra.js"></script>
+<script src="../../javascripts/mermaid-config.js"></script>
+<script src="../../javascripts/ambient-background.js"></script>
+</body>
+</html>

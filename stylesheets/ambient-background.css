@@ -1,0 +1,237 @@
+/* Ambient & Reactive Background Effects for MkDocs Dark Theme */
+
+/* ===== AMBIENT BACKGROUND ANIMATION ===== */
+:root {
+    --ambient-bg-primary: rgba(15, 20, 30, 1);
+    --ambient-bg-secondary: rgba(20, 25, 35, 1);
+    --ambient-blue-glow: rgba(41, 121, 255, 0.2);
+    --ambient-blue-bright: rgba(64, 156, 255, 0.3);
+    --ambient-blue-accent: rgba(100, 181, 246, 0.15);
+    --ambient-dot-size: 2px;
+    --ambient-dot-space: 25px;
+    --ambient-dot-blur: 3px;
+}
+
+/* Dark theme background with subtle noise pattern */
+body {
+    background-color: var(--ambient-bg-primary);
+    position: relative;
+}
+
+/* Background gradient animation */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(circle at 15% 15%, var(--ambient-blue-glow) 0%, transparent 50%),
+        radial-gradient(circle at 85% 85%, var(--ambient-blue-accent) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(30, 70, 150, 0.05) 0%, transparent 65%);
+    opacity: 0.65;
+    z-index: -2;
+    animation: ambient-bg-shift 30s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+/* Subtle noise texture */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Glowing blue dot pattern */
+.md-main {
+    position: relative;
+    background-image:
+        radial-gradient(circle, var(--ambient-blue-glow) 8%, transparent 10%),
+        radial-gradient(circle, var(--ambient-blue-bright) 4%, transparent 6%);
+    background-size: var(--ambient-dot-space) var(--ambient-dot-space);
+    background-position: 0 0, calc(var(--ambient-dot-space) / 2) calc(var(--ambient-dot-space) / 2);
+}
+
+/* Ambient background gradient shift animation */
+@keyframes ambient-bg-shift {
+    0% {
+        background-position: 0% 0%;
+        filter: hue-rotate(0deg) brightness(1);
+    }
+
+    25% {
+        background-position: 20% 10%;
+        filter: hue-rotate(5deg) brightness(1.05);
+    }
+
+    50% {
+        background-position: 10% 20%;
+        filter: hue-rotate(10deg) brightness(1.1);
+    }
+
+    75% {
+        background-position: 5% 15%;
+        filter: hue-rotate(15deg) brightness(1.05);
+    }
+
+    100% {
+        background-position: 15% 5%;
+        filter: hue-rotate(0deg) brightness(1);
+    }
+}
+
+/* Blue glowing light effect */
+.ambient-light {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(circle, 
+    rgba(64, 156, 255, 0.06) 0%, 
+    rgba(32, 87, 193, 0.04) 30%, 
+    transparent 100%);
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.7;
+  z-index: -1;
+  pointer-events: none;
+  transition: left 0.5s ease-out, top 0.5s ease-out;
+  mix-blend-mode: screen;
+}
+
+/* Glowing blue floating particles */
+.ambient-particle {
+    position: fixed;
+    border-radius: 50%;
+    background-color: rgba(100, 181, 246, 0.4);
+    box-shadow: 0 0 10px 2px rgba(64, 156, 255, 0.4);
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.3;
+    filter: blur(1px);
+    animation: float-particle 20s linear infinite;
+    mix-blend-mode: screen;
+}
+
+@keyframes float-particle {
+    0% {
+        transform: translateY(0) translateX(0) scale(1);
+        opacity: 0.2;
+    }
+
+    25% {
+        transform: translateY(-30px) translateX(20px) scale(1.1);
+        opacity: 0.35;
+    }
+
+    50% {
+        transform: translateY(-10px) translateX(40px) scale(1);
+        opacity: 0.25;
+    }
+
+    75% {
+        transform: translateY(-40px) translateX(10px) scale(1.2);
+        opacity: 0.35;
+    }
+
+    100% {
+        transform: translateY(0) translateX(0) scale(1);
+        opacity: 0.2;
+    }
+}
+
+dot-pulse
+
+/* Dark theme content container enhancements */
+.md-container {
+    background: transparent;
+}
+
+/* Make content area slightly lighter for better contrast with blue glow effect */
+@media (max-width: 1220px) {
+    .md-main__inner {
+        background: radial-gradient(ellipse at center,
+                rgba(25, 35, 50) 0%,
+                rgba(15, 25, 35) 70%);
+    }
+}
+
+@media (min-width: 1220px) {
+    .md-main__inner {
+        background: radial-gradient(ellipse at center,
+                rgba(25, 35, 50, 0.5) 0%,
+                rgba(15, 25, 35, 0) 70%);
+        backdrop-filter: blur(10px);
+    }
+}
+
+/* Make scrollbars more subtle with blue glow */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(15, 25, 35, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(41, 121, 255, 0.3);
+    border-radius: 5px;
+    border: 2px solid rgba(15, 25, 35, 0.5);
+    box-shadow: inset 0 0 6px rgba(64, 156, 255, 0.2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(64, 156, 255, 0.5);
+    box-shadow: inset 0 0 8px rgba(100, 181, 246, 0.4);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .md-main__inner {
+        background: none;
+    }
+
+    .md-content {
+        backdrop-filter: none;
+        background: rgba(30, 35, 45, 0.7);
+    }
+}
+
+@keyframes grid-drift1 {
+    0% {
+        background-position: 0px 0px;
+    }
+
+    100% {
+        background-position: 30px 30px;
+    }
+}
+
+@keyframes grid-drift2 {
+    0% {
+        background-position: 0px 0px;
+    }
+
+    100% {
+        background-position: -20px 20px;
+    }
+}
+
+@keyframes grid-drift3 {
+    0% {
+        background-position: 0px 0px;
+    }
+
+    100% {
+        background-position: 15px -15px;
+    }
+}

@@ -1,0 +1,2308 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="de">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://fhnw-ip12-24vt.github.io/fridgely-docu/SAD/11_technical_risks/" rel="canonical"/>
+<link href="../10_quality_requirements/" rel="prev"/>
+<link href="../12_glossary/" rel="next"/>
+<link href="../../images/fridgely_doc_logo.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.6.14" name="generator"/>
+<title>Risiken und technische Schulden - Fridgely Dokumentation</title>
+<link href="../../assets/stylesheets/main.342714a4.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../stylesheets/extra.css" rel="stylesheet"/>
+<link href="../../stylesheets/ambient-background.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="black" data-md-color-primary="black" data-md-color-scheme="slate" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#11-risiken-und-technische-schulden">
+          Zum Inhalt
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="Kopfzeile" class="md-header__inner md-grid">
+<a aria-label="Fridgely Dokumentation" class="md-header__button md-logo" data-md-component="logo" href="https://docu-71ce93.pages.fhnw.ch/" title="Fridgely Dokumentation">
+<img alt="logo" src="../../images/fridgely_doc_logo.png"/>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Fridgely Dokumentation
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Risiken und technische Schulden
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-hidden="true" class="md-option" data-md-color-accent="black" data-md-color-media="" data-md-color-primary="black" data-md-color-scheme="slate" id="__palette_0" name="__palette" type="radio"/>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Suche" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Suche" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Suche" class="md-search__options">
+<button aria-label="Zurücksetzen" class="md-search__icon md-icon" tabindex="-1" title="Zurücksetzen" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Suche wird initialisiert
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Fridgely Dokumentation" class="md-nav__button md-logo" data-md-component="logo" href="https://docu-71ce93.pages.fhnw.ch/" title="Fridgely Dokumentation">
+<img alt="logo" src="../../images/fridgely_doc_logo.png"/>
+</a>
+    Fridgely Dokumentation
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+<span class="md-ellipsis">
+    Home
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../System-idea/system-idee/">
+<span class="md-ellipsis">
+    Systemidee
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Erweiterungen
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            Erweiterungen
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+<span class="md-ellipsis">
+    Produkte
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_1_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_1">
+<span class="md-nav__icon md-icon"></span>
+            Produkte
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Other/3D-Products/">
+<span class="md-ellipsis">
+    Produkt Modelle
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Other/Adding3DProducts/">
+<span class="md-ellipsis">
+    Produkte Hinzufügen
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Rezepte
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_2">
+<span class="md-nav__icon md-icon"></span>
+            Rezepte
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Other/AddingRecipes/">
+<span class="md-ellipsis">
+    Rezepte Hinzufügen
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Sprachen
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_3">
+<span class="md-nav__icon md-icon"></span>
+            Sprachen
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Other/AddingLanguages/">
+<span class="md-ellipsis">
+    Sprachen Hinzufügen
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-ellipsis">
+    Software Architecture Documentation
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            Software Architecture Documentation
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../01_introduction_and_goals/">
+<span class="md-ellipsis">
+    Einführung und Ziele
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../02_architecture_constraints/">
+<span class="md-ellipsis">
+    Randbedingungen
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../03_system_scope_and_context/">
+<span class="md-ellipsis">
+    Kontextabgrenzung
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../04_solution_strategy/">
+<span class="md-ellipsis">
+    Lösungsstrategie
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../05_building_block_view/">
+<span class="md-ellipsis">
+    Bausteinsicht
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../06_runtime_view/">
+<span class="md-ellipsis">
+    Laufzeitsicht
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../07_deployment_view/">
+<span class="md-ellipsis">
+    Verteilungssicht
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../08_concepts/">
+<span class="md-ellipsis">
+    Querschnittliche Konzepte
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../09_architecture_decisions/">
+<span class="md-ellipsis">
+    Architekturentscheidungen
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../10_quality_requirements/">
+<span class="md-ellipsis">
+    Qualitätsanforderungen
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    Risiken und technische Schulden
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    Risiken und technische Schulden
+    
+  </span>
+</a>
+<nav aria-label="Inhaltsverzeichnis" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Inhaltsverzeichnis
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#111-ubersicht-der-risiken-und-technischen-schulden">
+<span class="md-ellipsis">
+      11.1 Übersicht der Risiken und technischen Schulden
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#112-detaillierte-risikobewertung-und-massnahmen">
+<span class="md-ellipsis">
+      11.2 Detaillierte Risikobewertung und Massnahmen
+    </span>
+</a>
+<nav aria-label="11.2 Detaillierte Risikobewertung und Massnahmen" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1121-hardwareperformance-risiken">
+<span class="md-ellipsis">
+      11.2.1 Hardware/Performance-Risiken
+    </span>
+</a>
+<nav aria-label="11.2.1 Hardware/Performance-Risiken" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#r-01-ressourcenlimitierung-auf-dem-raspberry-pi">
+<span class="md-ellipsis">
+      R-01: Ressourcenlimitierung auf dem Raspberry Pi
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1122-uibenutzbarkeit-risiken">
+<span class="md-ellipsis">
+      11.2.2 UI/Benutzbarkeit-Risiken
+    </span>
+</a>
+<nav aria-label="11.2.2 UI/Benutzbarkeit-Risiken" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#r-02-eingeschrankte-ui-moglichkeiten-durch-swing">
+<span class="md-ellipsis">
+      R-02: Eingeschränkte UI-Möglichkeiten durch Swing
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1123-datenbank-risiken">
+<span class="md-ellipsis">
+      11.2.3 Datenbank-Risiken
+    </span>
+</a>
+<nav aria-label="11.2.3 Datenbank-Risiken" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#r-03-skalierungslimitierung-durch-sqlite">
+<span class="md-ellipsis">
+      R-03: Skalierungslimitierung durch SQLite
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1124-hardware-risiken">
+<span class="md-ellipsis">
+      11.2.4 Hardware-Risiken
+    </span>
+</a>
+<nav aria-label="11.2.4 Hardware-Risiken" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#r-04-abhangigkeit-von-spezifischen-display-auflosungen">
+<span class="md-ellipsis">
+      R-04: Abhängigkeit von spezifischen Display-Auflösungen
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1125-betriebs-risiken">
+<span class="md-ellipsis">
+      11.2.5 Betriebs-Risiken
+    </span>
+</a>
+<nav aria-label="11.2.5 Betriebs-Risiken" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#r-05-backup-und-recovery-problematik">
+<span class="md-ellipsis">
+      R-05: Backup- und Recovery-Problematik
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1126-architektur-risiken">
+<span class="md-ellipsis">
+      11.2.6 Architektur-Risiken
+    </span>
+</a>
+<nav aria-label="11.2.6 Architektur-Risiken" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#r-06-wartbarkeit-der-observer-pattern-implementierung">
+<span class="md-ellipsis">
+      R-06: Wartbarkeit der Observer-Pattern Implementierung
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1127-deployment-risiken">
+<span class="md-ellipsis">
+      11.2.7 Deployment-Risiken
+    </span>
+</a>
+<nav aria-label="11.2.7 Deployment-Risiken" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#r-07-komplexitat-des-deployment-prozesses">
+<span class="md-ellipsis">
+      R-07: Komplexität des Deployment-Prozesses
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1128-implementation-risiken">
+<span class="md-ellipsis">
+      11.2.8 Implementation-Risiken
+    </span>
+</a>
+<nav aria-label="11.2.8 Implementation-Risiken" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#r-11-fest-codierte-display-identifikation">
+<span class="md-ellipsis">
+      R-11: Fest codierte Display-Identifikation
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#113-technische-schulden">
+<span class="md-ellipsis">
+      11.3 Technische Schulden
+    </span>
+</a>
+<nav aria-label="11.3 Technische Schulden" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1131-unvollstandige-testabdeckung-r-08">
+<span class="md-ellipsis">
+      11.3.1 Unvollständige Testabdeckung (R-08)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1132-hardcodierte-konfigurationswerte-r-09">
+<span class="md-ellipsis">
+      11.3.2 Hardcodierte Konfigurationswerte (R-09)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1133-abhangigkeit-von-jpa-und-hibernate-r-10">
+<span class="md-ellipsis">
+      11.3.3 Abhängigkeit von JPA und Hibernate (R-10)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1134-fehlender-backup-mechanismus-erweiterung-von-r-05">
+<span class="md-ellipsis">
+      11.3.4 Fehlender Backup-Mechanismus (Erweiterung von R-05)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1135-unzureichende-fehlerbehandlung-und-logging-r-12">
+<span class="md-ellipsis">
+      11.3.5 Unzureichende Fehlerbehandlung und Logging (R-12)
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#114-risikobewertungsmatrix">
+<span class="md-ellipsis">
+      11.4 Risikobewertungsmatrix
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#115-fazit-und-ausblick">
+<span class="md-ellipsis">
+      11.5 Fazit und Ausblick
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../12_glossary/">
+<span class="md-ellipsis">
+    Glossar
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+<span class="md-ellipsis">
+    Hardware
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+            Hardware
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Hardware/Hardware/">
+<span class="md-ellipsis">
+    Dokumentation
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+<span class="md-ellipsis">
+    Testing
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+            Testing
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Testplan/">
+<span class="md-ellipsis">
+    Testplan
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Inhalt/">
+<span class="md-ellipsis">
+    Test Überblick
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Tests
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_3">
+<span class="md-nav__icon md-icon"></span>
+            Tests
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_3_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3_1" id="__nav_6_3_1_label" tabindex="0">
+<span class="md-ellipsis">
+    Abnahme-Test
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_1_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_3_1">
+<span class="md-nav__icon md-icon"></span>
+            Abnahme-Test
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Abnahmetest/">
+<span class="md-ellipsis">
+    Abnahme-Test
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_3_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3_2" id="__nav_6_3_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Funktions- und Integrationstests
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_2_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_3_2">
+<span class="md-nav__icon md-icon"></span>
+            Funktions- und Integrationstests
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_3_2_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3_2_1" id="__nav_6_3_2_1_label" tabindex="0">
+<span class="md-ellipsis">
+    Gameloop-Tests
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_2_1_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_6_3_2_1">
+<span class="md-nav__icon md-icon"></span>
+            Gameloop-Tests
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Funktion_Integrationtests/Gamelooptest01_08052025/">
+<span class="md-ellipsis">
+    Gameloop-Test 01
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_3_2_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3_2_2" id="__nav_6_3_2_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Rezept-Tests
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_2_2_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_6_3_2_2">
+<span class="md-nav__icon md-icon"></span>
+            Rezept-Tests
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Funktion_Integrationtests/Rezepttest01_02042025/">
+<span class="md-ellipsis">
+    Rezept-Test 01
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Funktion_Integrationtests/Rezepttest02_07052025/">
+<span class="md-ellipsis">
+    Rezept-Test 02
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_3_2_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3_2_3" id="__nav_6_3_2_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Scan-Tests
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_2_3_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_6_3_2_3">
+<span class="md-nav__icon md-icon"></span>
+            Scan-Tests
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Funktion_Integrationtests/Scantest_Mock01_05032025/">
+<span class="md-ellipsis">
+    Mock Scan-Test 01
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Funktion_Integrationtests/Scantest02_02042025/">
+<span class="md-ellipsis">
+    Scan-Test 02
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Funktion_Integrationtests/Scantest03_05052025/">
+<span class="md-ellipsis">
+    Scan-Test 03
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_3_2_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3_2_4" id="__nav_6_3_2_4_label" tabindex="0">
+<span class="md-ellipsis">
+    Sprach-Tests
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_2_4_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_6_3_2_4">
+<span class="md-nav__icon md-icon"></span>
+            Sprach-Tests
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Funktion_Integrationtests/Sprachtest01_26022025/">
+<span class="md-ellipsis">
+    Sprach-Test 01
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_3_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3_3" id="__nav_6_3_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Hardware-Tests
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_3_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_3_3">
+<span class="md-nav__icon md-icon"></span>
+            Hardware-Tests
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Hardwaretests/TestHardware01_26022025/">
+<span class="md-ellipsis">
+    Hardware-Test 01
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Hardwaretests/TestHardware02_05052025/">
+<span class="md-ellipsis">
+    Hardware-Test 02
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_3_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3_4" id="__nav_6_3_4_label" tabindex="0">
+<span class="md-ellipsis">
+    Langzeit-Tests
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_4_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_3_4">
+<span class="md-nav__icon md-icon"></span>
+            Langzeit-Tests
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Langzeittests/Langzeittest01_06052025/">
+<span class="md-ellipsis">
+    Langzeit-Test 01
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Langzeittests/Langzeittest02_14052025/">
+<span class="md-ellipsis">
+    Langzeit-Test 02
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_3_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3_5" id="__nav_6_3_5_label" tabindex="0">
+<span class="md-ellipsis">
+    Smoke-Tests
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_5_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_3_5">
+<span class="md-nav__icon md-icon"></span>
+            Smoke-Tests
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Smoketests/Smoketest_Mock01_26022025/">
+<span class="md-ellipsis">
+    Mock Smoke-Test 01
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Smoketests/Smoketest_Mock02_05032025/">
+<span class="md-ellipsis">
+    Mock Smoke-Test 02
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Smoketests/Smoketest_Mock03_12032025/">
+<span class="md-ellipsis">
+    Mock Smoke-Test 03
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Smoketests/Smoketest_Mock04_19032025/">
+<span class="md-ellipsis">
+    Mock Smoke-Test 04
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Smoketests/Smoketest_Mock05_26032025/">
+<span class="md-ellipsis">
+    Mock Smoke-Test 05
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Smoketests/Smoketest_Mock06_02042025/">
+<span class="md-ellipsis">
+    Mock Smoke-Test 06
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Smoketests/Smoketest_Mock07_09042025/">
+<span class="md-ellipsis">
+    Mock Smoke-Test 07
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Smoketests/Smoketest_Mock08_16042025/">
+<span class="md-ellipsis">
+    Mock Smoke-Test 08
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Smoketests/Smoketest09_06052025/">
+<span class="md-ellipsis">
+    Smoke-Test 09
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/Tests/Smoketests/Smoketest10_14052025/">
+<span class="md-ellipsis">
+    Smoke-Test 10
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+<span class="md-ellipsis">
+    Testfälle
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_4_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_4">
+<span class="md-nav__icon md-icon"></span>
+            Testfälle
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_4_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_4_1" id="__nav_6_4_1_label" tabindex="0">
+<span class="md-ellipsis">
+    Hardware Setup
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_4_1_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_4_1">
+<span class="md-nav__icon md-icon"></span>
+            Hardware Setup
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_0_1_BootRaspberryPI/">
+<span class="md-ellipsis">
+    Boot Raspberry PI
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_0_2_BildsignalGrosserMonitor/">
+<span class="md-ellipsis">
+    Bildsignal Grosser Monitor
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_0_3_BildsignalTouchscreen/">
+<span class="md-ellipsis">
+    Bildsignal Touchscreen
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_0_4_ScannerAufstarten/">
+<span class="md-ellipsis">
+    Scanner Aufstarten
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_0_5_TouchfunktionTouchscreen/">
+<span class="md-ellipsis">
+    Touchfunktion Touchscreen
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_4_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_4_2" id="__nav_6_4_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Grundlegende Funktionen
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_4_2_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_4_2">
+<span class="md-nav__icon md-icon"></span>
+            Grundlegende Funktionen
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_1_1_FridgelyEinschalten/">
+<span class="md-ellipsis">
+    Einschalten
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_1_2_FridgelyAusschalten/">
+<span class="md-ellipsis">
+    Ausschalten
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_4_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_4_3" id="__nav_6_4_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Produktscanning
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_4_3_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_4_3">
+<span class="md-nav__icon md-icon"></span>
+            Produktscanning
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_2_1_ProduktScannen/">
+<span class="md-ellipsis">
+    Produkt scannen
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_2_2_UnbekanntesProduktScan/">
+<span class="md-ellipsis">
+    Unbekanntes Produkt scannen
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_2_3_BestandAnzeigen/">
+<span class="md-ellipsis">
+    Bestand anzeigen
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_2_4_DoppelterScan/">
+<span class="md-ellipsis">
+    Doppelter Scan
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_2_5_Ablaufwarnung/">
+<span class="md-ellipsis">
+    Ablaufwarnung
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_4_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_4_4" id="__nav_6_4_4_label" tabindex="0">
+<span class="md-ellipsis">
+    UI-Funktionen
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_4_4_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_4_4">
+<span class="md-nav__icon md-icon"></span>
+            UI-Funktionen
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_3_1_SpracheUmschalten/">
+<span class="md-ellipsis">
+    Sprache umschalten
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_4_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_4_5" id="__nav_6_4_5_label" tabindex="0">
+<span class="md-ellipsis">
+    Rezeptfunktionen
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_4_5_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_4_5">
+<span class="md-nav__icon md-icon"></span>
+            Rezeptfunktionen
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_4_1_Rezeptvorschl%C3%A4geAnzeigen/">
+<span class="md-ellipsis">
+    Rezeptvorschläge anzeigen
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_4_2_RezeptvorschlagNichtGefunden/">
+<span class="md-ellipsis">
+    Kein Rezeptvorschlag gefunden
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_4_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_4_6" id="__nav_6_4_6_label" tabindex="0">
+<span class="md-ellipsis">
+    Analyse
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_4_6_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_4_6">
+<span class="md-nav__icon md-icon"></span>
+            Analyse
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_7_1_EinkaufsEnergieAnalyse/">
+<span class="md-ellipsis">
+    Einkaufs- und Energieanalyse
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_4_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_4_7" id="__nav_6_4_7_label" tabindex="0">
+<span class="md-ellipsis">
+    Spielmodus
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_4_7_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_4_7">
+<span class="md-nav__icon md-icon"></span>
+            Spielmodus
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_8_1_EinkaufsphaseStarten/">
+<span class="md-ellipsis">
+    Einkaufsphase starten
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_8_2_EinkaufsphaseBeenden/">
+<span class="md-ellipsis">
+    Einkaufsphase beenden
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_8_3_Kochphasebeenden/">
+<span class="md-ellipsis">
+    Kochphase beenden
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_8_4_NachhaltigkeitsbewertungFeedback.adoc/">
+<span class="md-ellipsis">
+    Nachhaltigkeitsbewertung
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_8_5_PunktesystemBerechnung/">
+<span class="md-ellipsis">
+    Punktesystem Berechnung
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Testing/TestCases/TC_8_6_Spielzyklen/">
+<span class="md-ellipsis">
+    Spielzyklen
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Inhaltsverzeichnis" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Inhaltsverzeichnis
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#111-ubersicht-der-risiken-und-technischen-schulden">
+<span class="md-ellipsis">
+      11.1 Übersicht der Risiken und technischen Schulden
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#112-detaillierte-risikobewertung-und-massnahmen">
+<span class="md-ellipsis">
+      11.2 Detaillierte Risikobewertung und Massnahmen
+    </span>
+</a>
+<nav aria-label="11.2 Detaillierte Risikobewertung und Massnahmen" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1121-hardwareperformance-risiken">
+<span class="md-ellipsis">
+      11.2.1 Hardware/Performance-Risiken
+    </span>
+</a>
+<nav aria-label="11.2.1 Hardware/Performance-Risiken" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#r-01-ressourcenlimitierung-auf-dem-raspberry-pi">
+<span class="md-ellipsis">
+      R-01: Ressourcenlimitierung auf dem Raspberry Pi
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1122-uibenutzbarkeit-risiken">
+<span class="md-ellipsis">
+      11.2.2 UI/Benutzbarkeit-Risiken
+    </span>
+</a>
+<nav aria-label="11.2.2 UI/Benutzbarkeit-Risiken" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#r-02-eingeschrankte-ui-moglichkeiten-durch-swing">
+<span class="md-ellipsis">
+      R-02: Eingeschränkte UI-Möglichkeiten durch Swing
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1123-datenbank-risiken">
+<span class="md-ellipsis">
+      11.2.3 Datenbank-Risiken
+    </span>
+</a>
+<nav aria-label="11.2.3 Datenbank-Risiken" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#r-03-skalierungslimitierung-durch-sqlite">
+<span class="md-ellipsis">
+      R-03: Skalierungslimitierung durch SQLite
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1124-hardware-risiken">
+<span class="md-ellipsis">
+      11.2.4 Hardware-Risiken
+    </span>
+</a>
+<nav aria-label="11.2.4 Hardware-Risiken" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#r-04-abhangigkeit-von-spezifischen-display-auflosungen">
+<span class="md-ellipsis">
+      R-04: Abhängigkeit von spezifischen Display-Auflösungen
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1125-betriebs-risiken">
+<span class="md-ellipsis">
+      11.2.5 Betriebs-Risiken
+    </span>
+</a>
+<nav aria-label="11.2.5 Betriebs-Risiken" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#r-05-backup-und-recovery-problematik">
+<span class="md-ellipsis">
+      R-05: Backup- und Recovery-Problematik
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1126-architektur-risiken">
+<span class="md-ellipsis">
+      11.2.6 Architektur-Risiken
+    </span>
+</a>
+<nav aria-label="11.2.6 Architektur-Risiken" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#r-06-wartbarkeit-der-observer-pattern-implementierung">
+<span class="md-ellipsis">
+      R-06: Wartbarkeit der Observer-Pattern Implementierung
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1127-deployment-risiken">
+<span class="md-ellipsis">
+      11.2.7 Deployment-Risiken
+    </span>
+</a>
+<nav aria-label="11.2.7 Deployment-Risiken" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#r-07-komplexitat-des-deployment-prozesses">
+<span class="md-ellipsis">
+      R-07: Komplexität des Deployment-Prozesses
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1128-implementation-risiken">
+<span class="md-ellipsis">
+      11.2.8 Implementation-Risiken
+    </span>
+</a>
+<nav aria-label="11.2.8 Implementation-Risiken" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#r-11-fest-codierte-display-identifikation">
+<span class="md-ellipsis">
+      R-11: Fest codierte Display-Identifikation
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#113-technische-schulden">
+<span class="md-ellipsis">
+      11.3 Technische Schulden
+    </span>
+</a>
+<nav aria-label="11.3 Technische Schulden" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1131-unvollstandige-testabdeckung-r-08">
+<span class="md-ellipsis">
+      11.3.1 Unvollständige Testabdeckung (R-08)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1132-hardcodierte-konfigurationswerte-r-09">
+<span class="md-ellipsis">
+      11.3.2 Hardcodierte Konfigurationswerte (R-09)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1133-abhangigkeit-von-jpa-und-hibernate-r-10">
+<span class="md-ellipsis">
+      11.3.3 Abhängigkeit von JPA und Hibernate (R-10)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1134-fehlender-backup-mechanismus-erweiterung-von-r-05">
+<span class="md-ellipsis">
+      11.3.4 Fehlender Backup-Mechanismus (Erweiterung von R-05)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1135-unzureichende-fehlerbehandlung-und-logging-r-12">
+<span class="md-ellipsis">
+      11.3.5 Unzureichende Fehlerbehandlung und Logging (R-12)
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#114-risikobewertungsmatrix">
+<span class="md-ellipsis">
+      11.4 Risikobewertungsmatrix
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#115-fazit-und-ausblick">
+<span class="md-ellipsis">
+      11.5 Fazit und Ausblick
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="11-risiken-und-technische-schulden">11. Risiken und technische Schulden<a class="headerlink" href="#11-risiken-und-technische-schulden" title="Permanent link">¶</a></h1>
+<p>Diese Sektion listet und bewertet die wichtigsten technischen Risiken und Schulden auf, die im Rahmen der Fridgely-Systementwicklung identifiziert wurden. Die Risiken und Schulden sind nach ihrer Priorität geordnet, mit entsprechenden Strategien zur Risikominimierung und zum Abbau technischer Schulden.</p>
+<h2 id="111-ubersicht-der-risiken-und-technischen-schulden">11.1 Übersicht der Risiken und technischen Schulden<a class="headerlink" href="#111-ubersicht-der-risiken-und-technischen-schulden" title="Permanent link">¶</a></h2>
+<p>Die nachfolgende Tabelle bietet einen Überblick über alle identifizierten Risiken und technischen Schulden, kategorisiert nach Bereich und mit Angabe der Priorität.</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Kategorie</th>
+<th>Beschreibung</th>
+<th>Priorität</th>
+<th>Risikobewertung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R-01</td>
+<td>Hardware/Performance</td>
+<td>Ressourcenlimitierung auf dem Raspberry Pi</td>
+<td>Hoch</td>
+<td>Wahrscheinlichkeit: Mittel<br/>Auswirkung: Hoch</td>
+</tr>
+<tr>
+<td>R-02</td>
+<td>UI/Benutzbarkeit</td>
+<td>Eingeschränkte UI-Möglichkeiten durch Swing</td>
+<td>Mittel</td>
+<td>Wahrscheinlichkeit: Hoch<br/>Auswirkung: Mittel</td>
+</tr>
+<tr>
+<td>R-03</td>
+<td>Datenbank</td>
+<td>Skalierungslimitierung durch SQLite</td>
+<td>Niedrig</td>
+<td>Wahrscheinlichkeit: Niedrig<br/>Auswirkung: Mittel</td>
+</tr>
+<tr>
+<td>R-04</td>
+<td>Hardware</td>
+<td>Abhängigkeit von spezifischen Display-Auflösungen</td>
+<td>Hoch</td>
+<td>Wahrscheinlichkeit: Hoch<br/>Auswirkung: Hoch</td>
+</tr>
+<tr>
+<td>R-05</td>
+<td>Betrieb</td>
+<td>Backup- und Recovery-Problematik</td>
+<td>Mittel</td>
+<td>Wahrscheinlichkeit: Niedrig<br/>Auswirkung: Hoch</td>
+</tr>
+<tr>
+<td>R-06</td>
+<td>Architektur</td>
+<td>Wartbarkeit der Observer-Pattern Implementierung</td>
+<td>Mittel</td>
+<td>Wahrscheinlichkeit: Mittel<br/>Auswirkung: Mittel</td>
+</tr>
+<tr>
+<td>R-07</td>
+<td>Deployment</td>
+<td>Komplexität des Deployment-Prozesses</td>
+<td>Mittel</td>
+<td>Wahrscheinlichkeit: Mittel<br/>Auswirkung: Mittel</td>
+</tr>
+<tr>
+<td>R-08</td>
+<td>Technische Schuld</td>
+<td>Unvollständige Testabdeckung</td>
+<td>Hoch</td>
+<td>Wahrscheinlichkeit: Hoch<br/>Auswirkung: Hoch</td>
+</tr>
+<tr>
+<td>R-09</td>
+<td>Technische Schuld</td>
+<td>Hardcodierte Konfigurationswerte</td>
+<td>Niedrig</td>
+<td>Wahrscheinlichkeit: Hoch<br/>Auswirkung: Niedrig</td>
+</tr>
+<tr>
+<td>R-10</td>
+<td>Architektur</td>
+<td>Abhängigkeit von JPA und Hibernate auf ressourcenbeschränkter Hardware</td>
+<td>Mittel</td>
+<td>Wahrscheinlichkeit: Mittel<br/>Auswirkung: Mittel</td>
+</tr>
+<tr>
+<td>R-11</td>
+<td>Implementation</td>
+<td>Fest codierte Display-Identifikation (600x1024 und 1080x1920)</td>
+<td>Hoch</td>
+<td>Wahrscheinlichkeit: Hoch<br/>Auswirkung: Hoch</td>
+</tr>
+<tr>
+<td>R-12</td>
+<td>Implementation</td>
+<td>Unzureichende Fehlerbehandlung und Logging</td>
+<td>Mittel</td>
+<td>Wahrscheinlichkeit: Mittel<br/>Auswirkung: Mittel</td>
+</tr>
+</tbody>
+</table>
+<h2 id="112-detaillierte-risikobewertung-und-massnahmen">11.2 Detaillierte Risikobewertung und Massnahmen<a class="headerlink" href="#112-detaillierte-risikobewertung-und-massnahmen" title="Permanent link">¶</a></h2>
+<h3 id="1121-hardwareperformance-risiken">11.2.1 Hardware/Performance-Risiken<a class="headerlink" href="#1121-hardwareperformance-risiken" title="Permanent link">¶</a></h3>
+<h4 id="r-01-ressourcenlimitierung-auf-dem-raspberry-pi">R-01: Ressourcenlimitierung auf dem Raspberry Pi<a class="headerlink" href="#r-01-ressourcenlimitierung-auf-dem-raspberry-pi" title="Permanent link">¶</a></h4>
+<p><strong>Beschreibung:</strong>
+Das Fridgely-System läuft auf einem Raspberry Pi 5 mit begrenzten Ressourcen (RAM, CPU). Bei steigender Komplexität der Anwendung oder bei gleichzeitiger Nutzung mehrerer Funktionen könnte es zu Performance-Engpässen kommen.</p>
+<p><strong>Auswirkungen:</strong></p>
+<ul>
+<li>Verzögerungen in der Benutzeroberfläche</li>
+<li>Eingeschränkte Benutzererfahrung, besonders für Kinder, die sofortige Reaktionen erwarten</li>
+<li>Im schlimmsten Fall System-Timeouts oder Abstürze</li>
+</ul>
+<p><strong>Gegenmassnahmen:</strong></p>
+<pre class="mermaid"><code>flowchart TD
+    R[Ressourcenrisiko]
+
+    R --&gt; M1[Ressourcenoptimierung]
+    R --&gt; M2[Performance-Monitoring]
+    R --&gt; M3[Lastbegrenzung]
+
+    M1 --&gt; M11[Speichernutzung profilen]
+    M1 --&gt; M12[UI-Rendering optimieren]
+    M1 --&gt; M13[Image-Caching verbessern]
+
+    M2 --&gt; M21[Implementierung von Performance-Metriken]
+    M2 --&gt; M22[Automatische Warnungen bei Ressourcenknappheit]
+
+    M3 --&gt; M31[Begrenzung gleichzeitiger Operationen]
+    M3 --&gt; M32[Asynchrone Verarbeitung für Barcode-Scanning]
+
+    classDef riskStyle fill:#4d1f1c,stroke:#fb4934,stroke-width:2px;
+    classDef measureStyle fill:#1d2021,stroke:#83a598,stroke-width:1px;
+    classDef submeasureStyle fill:#282828,stroke:#b8bb26,stroke-width:1px;
+
+    class R riskStyle;
+    class M1,M2,M3 measureStyle;
+    class M11,M12,M13,M21,M22,M31,M32 submeasureStyle;</code></pre>
+<p><strong>Status:</strong>
+In Bearbeitung. Performance-Optimierungen wurden bereits umgesetzt, aber kontinuierliches Monitoring ist erforderlich.</p>
+<h3 id="1122-uibenutzbarkeit-risiken">11.2.2 UI/Benutzbarkeit-Risiken<a class="headerlink" href="#1122-uibenutzbarkeit-risiken" title="Permanent link">¶</a></h3>
+<h4 id="r-02-eingeschrankte-ui-moglichkeiten-durch-swing">R-02: Eingeschränkte UI-Möglichkeiten durch Swing<a class="headerlink" href="#r-02-eingeschrankte-ui-moglichkeiten-durch-swing" title="Permanent link">¶</a></h4>
+<p><strong>Beschreibung:</strong>
+Die Entscheidung für Java Swing als UI-Framework (statt JavaFX) war durch Performance-Gründe motiviert (ADR-1), führt aber zu Einschränkungen bei modernen UI-Funktionen und Animationen.</p>
+<p><strong>Auswirkungen:</strong></p>
+<ul>
+<li>Weniger attraktive Benutzeroberfläche im Vergleich zu moderneren Frameworks</li>
+<li>Eingeschränkte Animationsmöglichkeiten, die für die Zielgruppe (Kinder) wichtig sein könnten</li>
+<li>Höherer Entwicklungsaufwand für spezielle UI-Effekte</li>
+</ul>
+<p><strong>Gegenmassnahmen:</strong></p>
+<pre class="mermaid"><code>flowchart LR
+    R[UI-Einschränkungen]
+
+    R --&gt; M1[Custom Swing-Erweiterungen]
+    R --&gt; M2[Ressourcenoptimierte Animationen]
+    R --&gt; M3[Hybridansatz für kritische UI-Elemente]
+
+    M1 --&gt; M11[Eigene erweiterte UI-Komponenten]
+    M1 --&gt; M12[Verbesserte Renderingpipeline]
+
+    M2 --&gt; M21[Sprite-basierte Animationen]
+    M2 --&gt; M22[Vorberechnete Animationssequenzen]
+
+    M3 --&gt; M31[Prüfung auf JavaFX für isolierte Komponenten]
+    M3 --&gt; M32[Experimentelles UI-Layer als Option]
+
+    classDef riskStyle fill:#4d1f1c,stroke:#fb4934,stroke-width:2px;
+    classDef measureStyle fill:#1d2021,stroke:#83a598,stroke-width:1px;
+    classDef submeasureStyle fill:#282828,stroke:#b8bb26,stroke-width:1px;
+
+    class R riskStyle;
+    class M1,M2,M3 measureStyle;
+    class M11,M12,M21,M22,M31,M32 submeasureStyle;</code></pre>
+<p><strong>Status:</strong>
+Akzeptiertes Risiko. Die UI wurde für die aktuelle Zielplattform optimiert, aber zukünftige Versionen könnten alternative UI-Frameworks evaluieren.</p>
+<h3 id="1123-datenbank-risiken">11.2.3 Datenbank-Risiken<a class="headerlink" href="#1123-datenbank-risiken" title="Permanent link">¶</a></h3>
+<h4 id="r-03-skalierungslimitierung-durch-sqlite">R-03: Skalierungslimitierung durch SQLite<a class="headerlink" href="#r-03-skalierungslimitierung-durch-sqlite" title="Permanent link">¶</a></h4>
+<p><strong>Beschreibung:</strong>
+Die Verwendung von SQLite als eingebettete Datenbank (ADR-5) bietet Vorteile hinsichtlich Einfachheit und Ressourceneffizienz, könnte aber bei wachsender Datenmenge oder erhöhter Anzahl gleichzeitiger Zugriffe an Grenzen stossen.</p>
+<p><strong>Auswirkungen:</strong></p>
+<ul>
+<li>Mögliche Performance-Einbussen bei grossen Datenmengen</li>
+<li>Eingeschränkte Parallelzugriffsmöglichkeiten</li>
+<li>Komplexere Datenmigration bei zukünftigem Datenbankwechsel</li>
+</ul>
+<p><strong>Gegenmassnahmen:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Massnahme</th>
+<th>Beschreibung</th>
+<th>Priorität</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DB-Zugriffsoptimierung</td>
+<td>Optimierung von Queries, Indexierung kritischer Felder</td>
+<td>Hoch</td>
+</tr>
+<tr>
+<td>Datenarchivierung</td>
+<td>Implementierung einer Strategie zur Archivierung älterer Daten</td>
+<td>Niedrig</td>
+</tr>
+<tr>
+<td>Abstraktionsschicht</td>
+<td>Stärkere Isolation der Datenbankzugriffe durch Repository-Pattern</td>
+<td>Mittel</td>
+</tr>
+<tr>
+<td>Vorbereitete Migration</td>
+<td>Dokumentation von Migrationspfaden zu alternativen Datenbanksystemen</td>
+<td>Niedrig</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Status:</strong>
+Überwachtes Risiko. Aktuelle Datenvolumina sind unkritisch, regelmässige Überprüfung der Performance-Indikatoren ist geplant. Repository-Pattern ist implementiert und bietet eine gute Abstraktionsschicht für mögliche zukünftige Datenbankmigrationen.</p>
+<h3 id="1124-hardware-risiken">11.2.4 Hardware-Risiken<a class="headerlink" href="#1124-hardware-risiken" title="Permanent link">¶</a></h3>
+<h4 id="r-04-abhangigkeit-von-spezifischen-display-auflosungen">R-04: Abhängigkeit von spezifischen Display-Auflösungen<a class="headerlink" href="#r-04-abhangigkeit-von-spezifischen-display-auflosungen" title="Permanent link">¶</a></h4>
+<p><strong>Beschreibung:</strong>
+Das Dual-Display-Management (ADR-6) identifiziert Displays anhand fester Auflösungswerte (1024x600 für Hauptdisplay, 1080x1920 für Kühlschrankdisplay). Dies könnte zu Problemen führen, wenn andere Displays verwendet werden.</p>
+<p><strong>Auswirkungen:</strong></p>
+<ul>
+<li>Eingeschränkte Hardware-Kompatibilität</li>
+<li>Potenzielle Fehler bei der Displayerkennung</li>
+<li>Schwierigkeiten bei der Installation in anderen Umgebungen</li>
+</ul>
+<p><strong>Gegenmassnahmen:</strong></p>
+<pre class="mermaid"><code>flowchart TD
+    R[Display-Abhängigkeit]
+
+    R --&gt; M1[Flexiblere Displayerkennung]
+    R --&gt; M2[Konfigurierbare Displayzuweisung]
+    R --&gt; M3[UI-Skalierung]
+
+    M1 --&gt; M11[Erkennung über relative Grössenverhältnisse]
+    M1 --&gt; M12[Erkennung über Display-IDs]
+
+    M2 --&gt; M21[Externe Konfigurationsdatei]
+    M2 --&gt; M22[UI zur Display-Auswahl]
+
+    M3 --&gt; M31[Responsive Layouts]
+    M3 --&gt; M32[Dynamische Anpassung an Auflösung]
+
+    classDef riskStyle fill:#4d1f1c,stroke:#fb4934,stroke-width:2px;
+    classDef measureStyle fill:#1d2021,stroke:#83a598,stroke-width:1px;
+    classDef submeasureStyle fill:#282828,stroke:#b8bb26,stroke-width:1px;
+
+    class R riskStyle;
+    class M1,M2,M3 measureStyle;
+    class M11,M12,M21,M22,M31,M32 submeasureStyle;</code></pre>
+<p><strong>Status:</strong>
+Hohe Priorität. Eine überarbeitete Implementierung der Displayerkennung ist in Planung.</p>
+<h3 id="1125-betriebs-risiken">11.2.5 Betriebs-Risiken<a class="headerlink" href="#1125-betriebs-risiken" title="Permanent link">¶</a></h3>
+<h4 id="r-05-backup-und-recovery-problematik">R-05: Backup- und Recovery-Problematik<a class="headerlink" href="#r-05-backup-und-recovery-problematik" title="Permanent link">¶</a></h4>
+<p><strong>Beschreibung:</strong>
+Obwohl SQLite als filebasierte Datenbank einfach zu sichern ist, fehlt eine automatisierte Backup- und Recovery-Strategie für das Gesamtsystem.</p>
+<p><strong>Auswirkungen:</strong></p>
+<ul>
+<li>Möglicher Datenverlust bei Hardware-Defekten</li>
+<li>Aufwändige manuelle Wiederherstellung</li>
+<li>Potenziell inkonsistente Daten nach Wiederherstellung</li>
+</ul>
+<p><strong>Gegenmassnahmen:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Massnahme</th>
+<th>Beschreibung</th>
+<th>Priorität</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Automatische Backups</td>
+<td>Implementierung von regelmässigen Datenbank-Backups</td>
+<td>Hoch</td>
+</tr>
+<tr>
+<td>Cloud-Synchronisation</td>
+<td>Optional: Synchronisation wichtiger Daten mit Cloud-Storage</td>
+<td>Niedrig</td>
+</tr>
+<tr>
+<td>Wiederherstellungsprozedur</td>
+<td>Dokumentierte und getestete Recovery-Prozeduren</td>
+<td>Mittel</td>
+</tr>
+<tr>
+<td>Zustandssicherung</td>
+<td>Regelmässige Speicherung des Systemzustands</td>
+<td>Mittel</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Status:</strong>
+In Planung. Konzeptionelle Arbeit für eine Backup-Lösung hat begonnen.</p>
+<h3 id="1126-architektur-risiken">11.2.6 Architektur-Risiken<a class="headerlink" href="#1126-architektur-risiken" title="Permanent link">¶</a></h3>
+<h4 id="r-06-wartbarkeit-der-observer-pattern-implementierung">R-06: Wartbarkeit der Observer-Pattern Implementierung<a class="headerlink" href="#r-06-wartbarkeit-der-observer-pattern-implementierung" title="Permanent link">¶</a></h4>
+<p><strong>Beschreibung:</strong>
+Das System verwendet das Observer-Pattern (über PropertyChangeSupport/Listener) für Modell-Aktualisierungen, wie in der <code>PenguinModel</code>-Klasse implementiert. Die Code-Analyse bestätigt, dass die Anwendung PropertyChangeSupport für die Aktualisierung von UI-Komponenten bei Modelländerungen verwendet. Bei steigender Komplexität könnte dies zu schwer nachvollziehbaren Abhängigkeiten führen.</p>
+<p><strong>Auswirkungen:</strong></p>
+<ul>
+<li>Schwierigkeiten bei der Fehlersuche</li>
+<li>Potenzielle Memory-Leaks durch nicht entfernte Listener</li>
+<li>Mögliche Race-Conditions bei Aktualisierungen</li>
+</ul>
+<p><strong>Gegenmassnahmen:</strong></p>
+<pre class="mermaid"><code>flowchart LR
+    R[Observer-Pattern-Wartbarkeit]
+
+    R --&gt; M1[Kodierstandards]
+    R --&gt; M2[Memory-Management]
+    R --&gt; M3[Überwachung]
+
+    M1 --&gt; M11[Einheitliche Observer-Implementierung]
+    M1 --&gt; M12[Klare Dokumentation der Listener-Beziehungen]
+
+    M2 --&gt; M21[Systematisches Entfernen von Listenern]
+    M2 --&gt; M22[Weak References für langlebige Beziehungen]
+
+    M3 --&gt; M31[Monitoring-Tools für Speicherlecks]
+    M3 --&gt; M32[Zentrale Registrierung aktiver Listener]
+
+    classDef riskStyle fill:#4d1f1c,stroke:#fb4934,stroke-width:2px;
+    classDef measureStyle fill:#1d2021,stroke:#83a598,stroke-width:1px;
+    classDef submeasureStyle fill:#282828,stroke:#b8bb26,stroke-width:1px;
+
+    class R riskStyle;
+    class M1,M2,M3 measureStyle;
+    class M11,M12,M21,M22,M31,M32 submeasureStyle;</code></pre>
+<p><strong>Status:</strong>
+In Beobachtung. Aktuell keine kritischen Probleme, aber die konsequente Implementierung von <code>removePropertyChangeListener()</code> bei der Komponentenzerstörung sollte überprüft werden.</p>
+<h3 id="1127-deployment-risiken">11.2.7 Deployment-Risiken<a class="headerlink" href="#1127-deployment-risiken" title="Permanent link">¶</a></h3>
+<h4 id="r-07-komplexitat-des-deployment-prozesses">R-07: Komplexität des Deployment-Prozesses<a class="headerlink" href="#r-07-komplexitat-des-deployment-prozesses" title="Permanent link">¶</a></h4>
+<p><strong>Beschreibung:</strong>
+Der Deployment-Prozess für das Fridgely-System auf einem Raspberry Pi erfordert mehrere manuelle Schritte und ist anfällig für Fehler. In der Code-Analyse konnten keine automatisierten Deployment-Skripte gefunden werden.</p>
+<p><strong>Auswirkungen:</strong></p>
+<ul>
+<li>Erhöhter Zeitaufwand bei Updates</li>
+<li>Mögliche Inkonsistenzen zwischen Entwicklungs- und Produktionsumgebung</li>
+<li>Erschwertes Troubleshooting bei Deployment-Problemen</li>
+</ul>
+<p><strong>Gegenmassnahmen:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Massnahme</th>
+<th>Beschreibung</th>
+<th>Priorität</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Automatisiertes Deployment</td>
+<td>Entwicklung von Shell-Skripten für den gesamten Deployment-Prozess</td>
+<td>Hoch</td>
+</tr>
+<tr>
+<td>Deployment-Dokumentation</td>
+<td>Erstellung einer detaillierten Schritt-für-Schritt-Anleitung</td>
+<td>Hoch</td>
+</tr>
+<tr>
+<td>Container-Evaluation</td>
+<td>Prüfung von Container-Technologien für den Raspberry Pi</td>
+<td>Niedrig</td>
+</tr>
+<tr>
+<td>CI/CD-Pipeline</td>
+<td>Implementierung einer kontinuierlichen Integration und Deployment über Git</td>
+<td>Mittel</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Status:</strong>
+Hohe Priorität. Es ist dringend erforderlich, automatisierte Deployment-Lösungen zu entwickeln, da die manuelle Installation auf dem Raspberry Pi mit speziellen Hardware-Anforderungen (Dual-Display) das Risiko von fehlerhaften Installationen erheblich erhöht.</p>
+<h3 id="1128-implementation-risiken">11.2.8 Implementation-Risiken<a class="headerlink" href="#1128-implementation-risiken" title="Permanent link">¶</a></h3>
+<h4 id="r-11-fest-codierte-display-identifikation">R-11: Fest codierte Display-Identifikation<a class="headerlink" href="#r-11-fest-codierte-display-identifikation" title="Permanent link">¶</a></h4>
+<p><strong>Beschreibung:</strong>
+Die aktuelle Display-Erkennung in der <code>Fridgely.java</code> Klasse verwendet fest codierte Auflösungswerte (<code>bounds.width == 600 &amp;&amp; bounds.height == 1024</code> und <code>bounds.width == 1080 &amp;&amp; bounds.height == 1920</code>) zur Identifikation der Displays, was die Flexibilität des Systems stark einschränkt. Die Code-Analyse hat folgende spezifische Implementierung bestätigt:</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bounds</span><span class="p">.</span><span class="na">width</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">600</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">bounds</span><span class="p">.</span><span class="na">height</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1024</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">mainAppScreen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">screen</span><span class="p">;</span>
+<span class="w">    </span><span class="n">LOGGER</span><span class="p">.</span><span class="na">info</span><span class="p">(</span><span class="s">"Identified main app screen (1024x600): "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">screen</span><span class="p">.</span><span class="na">getIDstring</span><span class="p">());</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bounds</span><span class="p">.</span><span class="na">width</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1080</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">bounds</span><span class="p">.</span><span class="na">height</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1920</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">scannedItemsScreen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">screen</span><span class="p">;</span>
+<span class="w">    </span><span class="n">LOGGER</span><span class="p">.</span><span class="na">info</span><span class="p">(</span><span class="s">"Identified scanned items screen (1920x1080): "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">screen</span><span class="p">.</span><span class="na">getIDstring</span><span class="p">());</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Diese Implementierung macht das System sehr abhängig von spezifischen Display-Konfigurationen.</p>
+<p><strong>Auswirkungen:</strong></p>
+<ul>
+<li>Sehr spezifische Hardware-Abhängigkeit</li>
+<li>Funktioniert nicht mit leicht abweichenden Display-Konfigurationen</li>
+<li>Fehleranfällig bei Gerätetreiber-Updates, die Auflösungen anders melden</li>
+<li>Einschränkung bei der Auswahl alternativer Displays</li>
+</ul>
+<p><strong>Gegenmassnahmen:</strong></p>
+<pre class="mermaid"><code>flowchart TD
+    R[Risiko: Fest codierte Display-Identifikation]
+
+    R --&gt; M1[Konfigurierbare Display-Erkennung]
+    R --&gt; M2[Intelligentere Erkennungslogik]
+    R --&gt; M3[UI-Anpassungsfähigkeit]
+
+    M1 --&gt; M11[Externalisierte Konfiguration]
+    M1 --&gt; M12[Admin-UI für Display-Konfiguration]
+
+    M2 --&gt; M21[Aspektverhältnis statt fester Auflösung]
+    M2 --&gt; M22[Display-Name/ID als Alternative]
+
+    M3 --&gt; M31[Responsive Layouts für alle Komponenten]
+    M3 --&gt; M32[Automatische Skalierung]
+
+    classDef riskStyle fill:#4d1f1c,stroke:#fb4934,stroke-width:2px;
+    classDef measureStyle fill:#1d2021,stroke:#83a598,stroke-width:1px;
+    classDef submeasureStyle fill:#282828,stroke:#b8bb26,stroke-width:1px;
+
+    class R riskStyle;
+    class M1,M2,M3 measureStyle;
+    class M11,M12,M21,M22,M31,M32 submeasureStyle;</code></pre>
+<p><strong>Status:</strong>
+Hohe Priorität. Die Code-Analyse zeigt eine direkte Abhängigkeit von spezifischen Auflösungswerten ohne Konfigurationsmöglichkeit. Eine überarbeitete Implementierung mit relativer Display-Erkennung ist dringend erforderlich.</p>
+<h2 id="113-technische-schulden">11.3 Technische Schulden<a class="headerlink" href="#113-technische-schulden" title="Permanent link">¶</a></h2>
+<h3 id="1131-unvollstandige-testabdeckung-r-08">11.3.1 Unvollständige Testabdeckung (R-08)<a class="headerlink" href="#1131-unvollstandige-testabdeckung-r-08" title="Permanent link">¶</a></h3>
+<p><strong>Beschreibung:</strong>
+Die Code-Analyse bestätigt, dass die aktuelle Testabdeckung unzureichend ist, da keine dedizierten Testklassen im Projekt identifiziert werden konnten. Eine systematische Suche nach "*<em>/</em>Test.java" im Quellcode-Verzeichnis ergab keine Treffer. Dies betrifft insbesondere kritische Komponenten wie die UI, Barcode-Scanner-Integration und das Dual-Display-Management.</p>
+<p><strong>Auswirkungen:</strong></p>
+<ul>
+<li>Erhöhtes Risiko für unentdeckte Fehler</li>
+<li>Erschwertes Refactoring</li>
+<li>Höherer Aufwand bei der Qualitätssicherung</li>
+<li>Mögliche Regressionsfehler bei Änderungen am Code</li>
+</ul>
+<p><strong>Massnahmen zum Schuldenabbau:</strong></p>
+<pre class="mermaid"><code>graph TD
+    TS[Technische Schuld: Testabdeckung]
+
+    TS --&gt; M1[Test-Strategie]
+    TS --&gt; M2[Test-Infrastruktur]
+    TS --&gt; M3[Kontinuierliche Überwachung]
+
+    M1 --&gt; M11[Priorisierung kritischer Komponenten]
+    M1 --&gt; M12[Definition von Testzielen pro Komponente]
+
+    M2 --&gt; M21[Mock-Objekte für Hardware-Komponenten]
+    M2 --&gt; M22[UI-Testautomatisierung]
+
+    M3 --&gt; M31[Test-Coverage-Reporting]
+    M3 --&gt; M32[Integration in CI/CD-Pipeline]
+
+    classDef debtStyle fill:#4d1f1c,stroke:#fb4934,stroke-width:2px;
+    classDef measureStyle fill:#1d2021,stroke:#83a598,stroke-width:1px;
+    classDef submeasureStyle fill:#282828,stroke:#b8bb26,stroke-width:1px;
+
+    class TS debtStyle;
+    class M1,M2,M3 measureStyle;
+    class M11,M12,M21,M22,M31,M32 submeasureStyle;</code></pre>
+<p><strong>Status:</strong>
+Hohe Priorität. Die Einführung einer strukturierten Teststrategie mit automatisierten Unit- und Integrationstests sollte als eine der dringlichsten Massnahmen betrachtet werden. Der Testplan sollte ein ausgewogenes Verhältnis zwischen manuellen und automatisierten Tests vorsehen, mit Fokus auf kritische Pfade wie Barcode-Scanning und Dual-Display-Interaktionen.</p>
+<h3 id="1132-hardcodierte-konfigurationswerte-r-09">11.3.2 Hardcodierte Konfigurationswerte (R-09)<a class="headerlink" href="#1132-hardcodierte-konfigurationswerte-r-09" title="Permanent link">¶</a></h3>
+<p><strong>Beschreibung:</strong>
+Im aktuellen Codebase finden sich an verschiedenen Stellen hardcodierte Konfigurationswerte, die in externe Konfigurationsdateien ausgelagert werden sollten. Die Code-Analyse hat folgende konkreten Beispiele identifiziert:</p>
+<ol>
+<li>Display-Auflösungswerte in <code>Fridgely.java</code> (600x1024 und 1080x1920)</li>
+<li>UI-Farbwerte in <code>Constants.java</code> (z.B. <code>BACKGROUND_COLOR = new Color(248, 248, 255)</code>)</li>
+<li>Spielparameter in <code>GameConfig.java</code> (z.B. <code>DEFAULT_ROUNDS = 3</code>, <code>MIN_PRODUCTS_PER_ROUND = 3</code>, <code>STARTING_HP = 30</code>)</li>
+</ol>
+<p>Diese Werte sind direkt im Code definiert und können nicht ohne Code-Änderung und Neukompilierung angepasst werden.</p>
+<p><strong>Auswirkungen:</strong></p>
+<ul>
+<li>Erschwertes Anpassen von Konfigurationen</li>
+<li>Notwendigkeit von Code-Änderungen und Neukompilierung für einfache Anpassungen</li>
+<li>Potenzielle Inkonsistenzen bei unvollständiger Aktualisierung</li>
+<li>Höherer Aufwand bei der Anpassung an verschiedene Installationsumgebungen</li>
+</ul>
+<p><strong>Massnahmen zum Schuldenabbau:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Massnahme</th>
+<th>Beschreibung</th>
+<th>Priorität</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Konfigurationsanalyse</td>
+<td>Identifikation aller hardcodierten Werte</td>
+<td>Hoch</td>
+</tr>
+<tr>
+<td>Zentralisierte Konfiguration</td>
+<td>Einführung einer einheitlichen Konfigurationsverwaltung</td>
+<td>Mittel</td>
+</tr>
+<tr>
+<td>Externalisierung</td>
+<td>Auslagerung in Properties-Dateien oder YAML-Konfigurationen</td>
+<td>Mittel</td>
+</tr>
+<tr>
+<td>Hot-Reload</td>
+<td>Möglichkeit zur Konfigurationsänderung ohne Neustart</td>
+<td>Niedrig</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Status:</strong>
+Geplant. Die Identifikation hardcodierter Werte hat begonnen.</p>
+<h3 id="1133-abhangigkeit-von-jpa-und-hibernate-r-10">11.3.3 Abhängigkeit von JPA und Hibernate (R-10)<a class="headerlink" href="#1133-abhangigkeit-von-jpa-und-hibernate-r-10" title="Permanent link">¶</a></h3>
+<p><strong>Beschreibung:</strong>
+Die Code-Analyse bestätigt die Verwendung von JPA und Hibernate für die Datenbankabstraktion, wie in den Entity-Klassen (z.B. <code>Product.java</code> mit <code>@Entity</code> und <code>@Id</code> Annotationen) zu sehen ist. Diese Technologie bietet zwar Vorteile wie typsichere Abfragen und ein einheitliches Datenzugriffsmodell, könnte aber einen erheblichen Overhead auf dem ressourcenbeschränkten Raspberry Pi verursachen. Insbesondere zeigt die Code-Analyse in <code>Product.java</code> und anderen Modellklassen, dass JPA-Annotationen verwendet werden, ohne dass spezifische Performance-Optimierungen für die ressourcenbeschränkte Umgebung erkennbar sind.</p>
+<p><strong>Auswirkungen:</strong></p>
+<ul>
+<li>Höherer Speicherverbrauch, insbesondere beim Start der Anwendung</li>
+<li>Längere Startup-Zeit der Anwendung durch Hibernate-Initialisierung</li>
+<li>Potenziell komplexes Fehlerverhalten bei ORM-Problemen</li>
+</ul>
+<p><strong>Massnahmen zum Schuldenabbau:</strong></p>
+<pre class="mermaid"><code>flowchart TD
+    TS[Technische Schuld: JPA/Hibernate]
+
+    TS --&gt; M1[Kurzfristige Optimierung]
+    TS --&gt; M2[Mittelfristige Alternative]
+    TS --&gt; M3[Langfristige Strategie]
+
+    M1 --&gt; M11[Optimierung der JPA-Konfiguration]
+    M1 --&gt; M12[Reduzierung Lazy-Loading]
+
+    M2 --&gt; M21[Evaluation leichtgewichtigerer ORM-Lösungen]
+    M2 --&gt; M22[Teilweise Migration kritischer Komponenten]
+
+    M3 --&gt; M31[Modulare Repository-Implementierungen]
+    M3 --&gt; M32[Strategie zur vollständigen Migration]
+
+    classDef debtStyle fill:#4d1f1c,stroke:#fb4934,stroke-width:2px;
+    classDef measureStyle fill:#1d2021,stroke:#83a598,stroke-width:1px;
+    classDef submeasureStyle fill:#282828,stroke:#b8bb26,stroke-width:1px;
+
+    class TS debtStyle;
+    class M1,M2,M3 measureStyle;
+    class M11,M12,M21,M22,M31,M32 submeasureStyle;</code></pre>
+<p><strong>Status:</strong>
+Mittlere Priorität. Es ist notwendig, die JPA-Konfiguration zu überprüfen und zu optimieren, oder eine Evaluierung leichtgewichtigerer Alternativen wie JDBC Template oder JDBI in Betracht zu ziehen. Die potenzielle Kombination von ORM-Overhead und ressourcenbeschränkter Hardware (Raspberry Pi) bleibt ein signifikantes Risiko für die Anwendungsperformance.</p>
+<h3 id="1134-fehlender-backup-mechanismus-erweiterung-von-r-05">11.3.4 Fehlender Backup-Mechanismus (Erweiterung von R-05)<a class="headerlink" href="#1134-fehlender-backup-mechanismus-erweiterung-von-r-05" title="Permanent link">¶</a></h3>
+<p><strong>Beschreibung:</strong>
+Die Code-Analyse zeigt, dass derzeit kein automatisierter Backup-Mechanismus für die SQLite-Datenbank implementiert ist. Obwohl die filebasierte Natur von SQLite manuelle Backups durch Dateikopien ermöglicht, fehlt eine integrierte Lösung im Anwendungscode. Es wurden keine dedizierten Backup- oder Recovery-Klassen oder -Methoden im Quellcode identifiziert.</p>
+<p><strong>Auswirkungen:</strong></p>
+<ul>
+<li>Erhöhtes Risiko von Datenverlust bei unerwarteten Systemausfällen</li>
+<li>Keine Möglichkeit zur automatischen Wiederherstellung nach Fehlern</li>
+<li>Fehlende Versionierung und Historisierung von Daten</li>
+<li>Komplexe manuelle Eingriffe erforderlich bei Datenkorruption</li>
+</ul>
+<p><strong>Massnahmen zum Schuldenabbau:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Massnahme</th>
+<th>Beschreibung</th>
+<th>Priorität</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Backup-Service</td>
+<td>Implementation eines Backup-Services mit zeitgesteuerter Ausführung</td>
+<td>Hoch</td>
+</tr>
+<tr>
+<td>Integriertes Wiederherstellungstool</td>
+<td>Entwicklung einer UI zur Auswahl und Wiederherstellung von Backups</td>
+<td>Mittel</td>
+</tr>
+<tr>
+<td>SQLite-Datenbank-Checkpointing</td>
+<td>Regelmässiges Checkpointing zur Vermeidung von Datenkorruption</td>
+<td>Hoch</td>
+</tr>
+<tr>
+<td>Exportfunktionalität</td>
+<td>Möglichkeit zum manuellen Export wichtiger Daten (z.B. Rezepte, eigene Produkte)</td>
+<td>Mittel</td>
+</tr>
+<tr>
+<td>Transaktionslogging</td>
+<td>Erweiterung um Write-Ahead-Logging für Point-in-Time-Recovery</td>
+<td>Niedrig</td>
+</tr>
+<tr>
+<td>Export/Import-Funktionalität</td>
+<td>Implementierung von Funktionen zum manuellen Backup/Restore durch den Benutzer</td>
+<td>Mittel</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Status:</strong>
+Hohe Priorität. Die Code-Analyse bestätigt, dass keinerlei Backup-Funktionalität implementiert ist. Angesichts der Natur des Systems als Langzeit-Installationsgerät mit Benutzerdaten ist die Entwicklung von Backup- und Wiederherstellungsfunktionalität kritisch.</p>
+<h3 id="1135-unzureichende-fehlerbehandlung-und-logging-r-12">11.3.5 Unzureichende Fehlerbehandlung und Logging (R-12)<a class="headerlink" href="#1135-unzureichende-fehlerbehandlung-und-logging-r-12" title="Permanent link">¶</a></h3>
+<p><strong>Beschreibung:</strong>
+Die Code-Analyse zeigt, dass die aktuelle Implementierung eine Mischung aus verschiedenen Logging-Ansätzen verwendet. Im <code>Fridgely.java</code> wird <code>java.util.logging.Logger</code> verwendet, wie in folgendem Codebeispiel zu sehen:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Logger</span><span class="w"> </span><span class="n">LOGGER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Logger</span><span class="p">.</span><span class="na">getLogger</span><span class="p">(</span><span class="n">Fridgely</span><span class="p">.</span><span class="na">class</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span>
+<span class="c1">// ...</span>
+<span class="n">LOGGER</span><span class="p">.</span><span class="na">info</span><span class="p">(</span><span class="s">"Identified main app screen (1024x600): "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">screen</span><span class="p">.</span><span class="na">getIDstring</span><span class="p">());</span>
+<span class="c1">// ...</span>
+<span class="n">LOGGER</span><span class="p">.</span><span class="na">warning</span><span class="p">(</span><span class="s">"Target main app screen (1024x600) not found. Using default: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">mainAppScreen</span><span class="p">.</span><span class="na">getIDstring</span><span class="p">());</span>
+</code></pre></div>
+<p>Ausserdem sind die Fehlerbehandlungsstrategien nicht konsistent, und es gibt keine zentrale Erfassung oder Reporting von Anwendungsfehlern. Die Exception-Handling-Strategie ist häufig auf einfache Konsolen-Ausgaben beschränkt.</p>
+<p><strong>Auswirkungen:</strong></p>
+<ul>
+<li>Erschwerte Fehleranalyse bei Systemabstürzen oder unerwarteten Verhaltensweisen</li>
+<li>Inkonsistente Logging-Informationen in verschiedenen Teilen der Anwendung</li>
+<li>Keine Möglichkeit zur proaktiven Überwachung des Systemzustands</li>
+<li>Potenzielle Sicherheitslücken durch unbehandelte Ausnahmen</li>
+</ul>
+<p><strong>Massnahmen zum Schuldenabbau:</strong></p>
+<pre class="mermaid"><code>flowchart TD
+    TS[Technische Schuld: Fehlerbehandlung &amp; Logging]
+
+    TS --&gt; M1[Vereinheitlichung des Loggings]
+    TS --&gt; M2[Robustere Fehlerbehandlung]
+    TS --&gt; M3[Monitoring-Infrastruktur]
+
+    M1 --&gt; M11["Migration zu einem einheitlichen Logger (SLF4J)"]
+    M1 --&gt; M12[Konsistente Log-Level-Strategie]
+
+    M2 --&gt; M21[Zentrale Fehlerbehandlung implementieren]
+    M2 --&gt; M22[Graceful Degradation bei nicht-kritischen Fehlern]
+
+    M3 --&gt; M31[Logfile-Rotation und -Archivierung]
+    M3 --&gt; M32[Optionales Remote-Monitoring]
+
+    classDef debtStyle fill:#4d1f1c,stroke:#fb4934,stroke-width:2px;
+    classDef measureStyle fill:#1d2021,stroke:#83a598,stroke-width:1px;
+    classDef submeasureStyle fill:#282828,stroke:#b8bb26,stroke-width:1px;
+
+    class TS debtStyle;
+    class M1,M2,M3 measureStyle;
+    class M11,M12,M21,M22,M31,M32 submeasureStyle;</code></pre>
+<p><strong>Status:</strong>
+Mittlere Priorität. Die Vereinheitlichung des Logging-Ansatzes sollte kurzfristig angegangen werden, während die Implementierung einer robusten Fehlerbehandlung und eines Monitoring-Systems mittelfristig erfolgen sollte.</p>
+<h2 id="114-risikobewertungsmatrix">11.4 Risikobewertungsmatrix<a class="headerlink" href="#114-risikobewertungsmatrix" title="Permanent link">¶</a></h2>
+<p>Die folgende Matrix visualisiert die identifizierten Risiken nach Eintrittswahrscheinlichkeit und Auswirkung:</p>
+<pre class="mermaid"><code>%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "darkMode": true, 
+    "background": "transparent",
+    "quadrant1Fill": "#2E3440",
+    "quadrant2Fill": "#2E3440",
+    "quadrant3Fill": "#2E3440",
+    "quadrant4Fill": "#2E3440",
+    "quadrantXAxisTextFill": "#fff",
+    "quadrantYAxisTextFill": "#fff",
+    "quadrant1TextFill": "#fff",
+    "quadrant2TextFill": "#fff",
+    "quadrant3TextFill": "#fff",
+    "quadrant4TextFill": "#fff",
+    "quadrantPointTextFill": "#fff",
+    "quadrantPointFill": "#FF6347",
+    "quadrantInternalBorderStrokeFill": "#888",
+    "quadrantExternalBorderStrokeFill": "#888"
+  }
+}}%%
+quadrantChart
+    title Risikobewertungsmatrix
+    x-axis Eintrittswahrscheinlichkeit --&gt; Niedrig Mittel Hoch
+    y-axis Auswirkung --&gt; Niedrig Mittel Hoch
+    quadrant-1 Kritische Risiken
+    quadrant-2 Mittlere Risiken
+    quadrant-3 Geringe Risiken
+    quadrant-4 Mittlere Risiken
+    "R-01": [0.55, 0.80] color: #FF6347, radius: 8
+    "R-02": [0.75, 0.50] color: #7CFC00, radius: 8
+    "R-03": [0.30, 0.50] color: #00FA9A, radius: 8
+    "R-04": [0.80, 0.85] color: #1E90FF, radius: 8
+    "R-05": [0.30, 0.75] color: #FFD700, radius: 8
+    "R-06": [0.50, 0.55] color: #FF69B4, radius: 8
+    "R-07": [0.45, 0.60] color: #20B2AA, radius: 8
+    "R-08": [0.70, 0.75] color: #FF4500, radius: 8
+    "R-09": [0.75, 0.30] color: #ADFF2F, radius: 8
+    "R-10": [0.60, 0.45] color: #8A2BE2, radius: 8
+    "R-11": [0.85, 0.80] color: #DC143C, radius: 8
+    "R-12": [0.50, 0.50] color: #4682B4, radius: 8</code></pre>
+<h2 id="115-fazit-und-ausblick">11.5 Fazit und Ausblick<a class="headerlink" href="#115-fazit-und-ausblick" title="Permanent link">¶</a></h2>
+<p>Die identifizierten Risiken und technischen Schulden im Fridgely-System sind typisch für ein innovatives Projekt, das Hardware- und Softwarekomponenten integriert und auf einer ressourcenbeschränkten Plattform läuft. Die meisten Risiken sind mit angemessenen Gegenmassnahmen kontrollierbar.</p>
+<p>Besondere Aufmerksamkeit erfordern:</p>
+<ol>
+<li><strong>Ressourcenlimitierung (R-01)</strong>, <strong>Display-Abhängigkeit (R-04)</strong> und <strong>Fest codierte Display-Identifikation (R-11)</strong> aufgrund ihrer hohen Auswirkung und Wahrscheinlichkeit</li>
+<li><strong>Unvollständige Testabdeckung (R-08)</strong> als technische Schuld mit hohem Risikopotenzial</li>
+<li><strong>Hardcodierte Konfigurationswerte (R-09)</strong> in verschiedenen Teilen des Codes, die externalisiert werden sollten</li>
+</ol>
+<p>Die Codeanalyse hat die in der Dokumentation beschriebenen Risiken bestätigt und konkrete Implementierungsdetails identifiziert, die diese Risiken untermauern. Die Verwendung von JPA/Hibernate auf ressourcenbeschränkter Hardware (R-10), die fest codierte Display-Identifikation (R-11) und die Verwendung des Observer-Patterns (R-06) wurden im Code bestätigt und entsprechend dokumentiert.</p>
+<p>Der vorgestellte Plan zum Risikomanagement und Abbau technischer Schulden sollte in Abstimmung mit dem Product Owner und den Stakeholdern kontinuierlich verfolgt und aktualisiert werden.</p>
+<p>Durch proaktive Adressierung dieser Risiken wird sichergestellt, dass das Fridgely-System als robuste, wartbare und benutzerfreundliche Lösung für seine pädagogischen Ziele eingesetzt werden kann.</p>
+<aside class="md-source-file">
+<span class="md-source-file__fact">
+<span class="md-icon" title="Letztes Update">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
+</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="11. Juni 2025 08:40:14 UTC">11. Juni 2025</span>
+</span>
+<span class="md-source-file__fact">
+<span class="md-icon" title="Erstellt">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"></path></svg>
+</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="11. Juni 2025 08:40:14 UTC">11. Juni 2025</span>
+</span>
+<span class="md-source-file__fact">
+<span class="md-icon" title="Mitwirkende">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"></path></svg>
+</span>
+<nav>
+<a href="mailto:ben.woodtli@students.fhnw.ch">Ben Woodtli</a>
+</nav>
+</span>
+</aside>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "In Zwischenablage kopiert", "clipboard.copy": "In Zwischenablage kopieren", "search.result.more.one": "1 weiteres Suchergebnis auf dieser Seite", "search.result.more.other": "# weitere Suchergebnisse auf dieser Seite", "search.result.none": "Keine Suchergebnisse", "search.result.one": "1 Suchergebnis", "search.result.other": "# Suchergebnisse", "search.result.placeholder": "Suchbegriff eingeben", "search.result.term.missing": "Es fehlt", "select.version": "Version ausw\u00e4hlen"}, "version": null}</script>
+<script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+<script src="../../javascripts/extra.js"></script>
+<script src="../../javascripts/mermaid-config.js"></script>
+<script src="../../javascripts/ambient-background.js"></script>
+</body>
+</html>
