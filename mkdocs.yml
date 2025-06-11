@@ -176,7 +176,7 @@ nav:
     - Test Überblick: Testing/Tests/Inhalt.md
     - Tests:
       - Abnahme-Test:
-        - Abnahme-Test Entwurf: Testing/Tests/Abnahmetest_Entwurf.md
+        - Abnahme-Test: Testing/Tests/Abnahmetest.md
       - Funktions- und Integrationstests:
         - Gameloop-Tests:
           - Gameloop-Test 01: Testing/Tests/Funktion_Integrationtests/Gamelooptest01_08052025.md

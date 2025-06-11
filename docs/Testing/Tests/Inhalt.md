@@ -56,6 +56,8 @@ Test | Datum | Status|
 
 
 ## Abnahmetest
+In diesem Test werden noch einmal alle Test-Cases geprüft, geschaut, ob alle Must-Have Features implementiert sind und ob die installation des Projekts an einem neuen Ort reibungslos funktioniert.
+
 Test | Datum | Status| 
 -------- | -------- |-------- |  
-[Abnahmetest](Abnahmetest_Entwurf.md)| 29.05.2025  | **TBD**  | 
+[Abnahmetest](Abnahmetest_Entwurf.md)| 29.05.2025  | <span style="color:green;">Erfolgreich</span>   | 

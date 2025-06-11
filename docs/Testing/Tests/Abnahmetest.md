@@ -12,6 +12,7 @@ Ziel des Abnahmetests ist es, die Übergabe und in Betriebnahme von Fridgely zu 
 
 
 ## Ergebnis
-**Status:** TBD
+**Status:** Erfolgreich
 
-**Bemerkungen:** TBD
+**Bemerkungen:** Alle Test-Cases waren erfolgreich und alle "Must-Have" Funktionen wurden nach Vereinbarung umgesetzt.
+Desweiteren wurde die Installation von Fridgely an einem neuen Ort simuliert, was auch erfolgreich war.

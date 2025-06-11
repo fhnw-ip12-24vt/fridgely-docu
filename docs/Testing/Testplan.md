@@ -29,12 +29,12 @@ Um die Übergabe, Abnahme und Inbetriebnahme des Produktes zu testen und überpr
 ### Generelle Planung der Tests
 | Art               | Zeitpunkt / Regelmässigkeit                     | Test(s)               | Verantwortlich | Status         |
 |--------------------|------------------------------------|-----------------------|----------------|----------------|
-| Smoketests         | Wöchentlich (Mi)                  | TC 1.1, TC 1.2, (TC 2.1) | TM             | Ongoing       |
-| Funktions / Unit-Tests         | Nach jeder neuen Software-Funktion |            -           | DEV / TM             | Ongoing |
-| Integrationstests  | Nach Implementierung neuer Module  | TC_2_* - TC_8_*       | TM / DEV / SA  | Ongoing       |
-| Usability-Tests    | Nach Fertigstellung Gehäuse und Zielgruppenfindung (siehe Usability Tests) | TC_8_1 bis TC_8_3 | UX / TM        | Done / Planning       |
+| Smoketests         | Wöchentlich (Mi)                  | TC 1.1, TC 1.2, (TC 2.1) | TM             | Done       |
+| Funktions / Unit-Tests         | Nach jeder neuen Software-Funktion |            -           | DEV / TM             | Done |
+| Integrationstests  | Nach Implementierung neuer Module  | TC_2_* - TC_8_*       | TM / DEV / SA  | Done       |
+| Usability-Tests    | Nach Fertigstellung Gehäuse und Zielgruppenfindung (siehe Usability Tests) | TC_8_1 bis TC_8_3 | UX / TM        | Done        |
 | Langzeit-Tests    | Nach Fertigstellung Gehäuse und Komponenteneinbau (siehe Langzeit-Tests) | TC_* |  TM        | Done        |
-| Abnahmetest    | Gegen Ende des Projekts  | TC_* |  TM        | Planning        |
+| Abnahmetest    | Gegen Ende des Projekts  | TC_* |  TM        | Done        |
 
 ### Genauere Planung
 #### Usability-Tests
@@ -48,18 +48,18 @@ Um die Übergabe, Abnahme und Inbetriebnahme des Produktes zu testen und überpr
 | Datum       | Art            | Test | Verantwortlich | Status    |
 |-------------|----------------|------|----------------|-----------|
 | 14.05.2025  | Usability-Test | TBD  | UX       | Done  |
-| 22.05.2025  | Usability-Test | TBD  | UX         | Planning  |
+| 22.05.2025  | Usability-Test | TBD  | UX         | Done  |
 
 #### Langzeit-Tests
 | Datum                        | Art          | Test | Verantwortlich | Status    |
 |------------------------------|--------------|------|----------------|-----------|
-| 06.05.2025 | Abnahmetest | TC_*  | TM             | Planning  |
-| 14.05.2025 | Abnahmetest | TC_*  | TM             | Planning  |
+| 06.05.2025 | Abnahmetest | TC_*  | TM             | Done  |
+| 14.05.2025 | Abnahmetest | TC_*  | TM             | Done  |
 #### Abnahme-Test
 
 | Datum                        | Art          | Test | Verantwortlich | Status    |
 |------------------------------|--------------|------|----------------|-----------|
-| Transition-Phase (29.05.2025) | Abnahmetest | TC_*  | TM             | Planning  |
+| Transition-Phase (29.05.2025) | Abnahmetest | TC_*  | TM             | Done  |
 
 ## 4. Testumgebung
 | Kategorie       | Details                          |
